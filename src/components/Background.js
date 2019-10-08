@@ -1,8 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import mainBg from "../images/main-bg.png";
 
 const Wrapper = styled.div`
+  ${({ flex }) =>
+    flex &&
+    css`
+      display: flex;
+      flex-direction: column;
+    `}
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -13,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const Background = props => {
-  return <Wrapper>{props.children}</Wrapper>;
+  return <Wrapper flex={props.flex}>{props.children}</Wrapper>;
 };
 
 export default Background;

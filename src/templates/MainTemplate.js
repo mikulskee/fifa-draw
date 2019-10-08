@@ -1,12 +1,13 @@
 import React from "react";
-
 import Background from "../components/Background";
 import Logo from "../components/Logo";
+import Navbar from "../components/Navbar";
 
 const MainTemplate = () => {
   return (
-    <Background>
-      <Logo />
+    <Background flex>
+      <Logo big={"big"} />
+      <Navbar />
     </Background>
   );
 };
