@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 
 const MainTemplate = () => {
   return (
-    <Background flex>
+    <Background main flex>
       <Logo big={"big"} />
       <Navbar />
     </Background>

@@ -4,6 +4,7 @@ import logoWhite from "../images/logo-white-png.png";
 
 const Wrapper = styled.div`
   width: 171px;
+  margin-left: 20px;
   ${({ big }) =>
     big &&
     css`
