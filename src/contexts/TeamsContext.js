@@ -61,7 +61,7 @@ const TeamsContextProvider = props => {
   };
 
   return (
-    <TeamsContext.Provider value={{ teams, setTeamSelected }}>
+    <TeamsContext.Provider value={{ teams, setTeamSelected, teamsInBasket }}>
       {props.children}
     </TeamsContext.Provider>
   );

@@ -7,46 +7,7 @@ import { Title } from "../components/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import ConfirmButtons from "../components/ConfirmButtons";
-
-const TeamsTable = styled.ul`
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  width: 70%;
-  list-style: none;
-  justify-content: space-between;
-  align-items: center;
-  height: 40%;
-  li {
-    margin: 0 10px;
-    div {
-      position: relative;
-      color: #19ff00;
-      &.selected {
-        svg {
-          opacity: 1;
-        }
-        img {
-          opacity: 0.3;
-        }
-      }
-      svg {
-        position: absolute;
-        pointer-events: none;
-        opacity: 0;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      img {
-        display: block;
-        height: 60px;
-        cursor: pointer;
-      }
-    }
-  }
-`;
+import TeamsTable from "../components/TeamsTable";
 
 const StyledTitle = styled(Title)`
   position: relative;

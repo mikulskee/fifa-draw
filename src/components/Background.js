@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import mainBg from "../images/main-bg.png";
 import statsBg from "../images/stats-bg.png";
 import newCupBg from "../images/newcup-bg.png";
+import tournamentBg from "../images/tournament-bg.png";
 
 const Wrapper = styled.div`
   ${({ flex }) =>
@@ -10,6 +11,8 @@ const Wrapper = styled.div`
     css`
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     `}
   position: fixed;
   height: 100vh;
@@ -30,6 +33,11 @@ const Wrapper = styled.div`
     css`
       background-image: url(${newCupBg});
     `}
+  ${({ tournament }) =>
+    tournament &&
+    css`
+      background-image: url(${tournamentBg});
+    `}
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -41,6 +49,7 @@ const Background = props => {
       newcup={props.newcup}
       main={props.main}
       stats={props.stats}
+      tournament={props.tournament}
       flex={props.flex}
     >
       {props.children}
