@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import mainBg from "../images/main-bg.png";
 import statsBg from "../images/stats-bg.png";
+import newCupBg from "../images/newcup-bg.png";
 
 const Wrapper = styled.div`
   ${({ flex }) =>
@@ -24,6 +25,11 @@ const Wrapper = styled.div`
     css`
       background-image: url(${statsBg});
     `}
+  ${({ newcup }) =>
+    newcup &&
+    css`
+      background-image: url(${newCupBg});
+    `}
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -31,7 +37,12 @@ const Wrapper = styled.div`
 
 const Background = props => {
   return (
-    <Wrapper main={props.main} stats={props.stats} flex={props.flex}>
+    <Wrapper
+      newcup={props.newcup}
+      main={props.main}
+      stats={props.stats}
+      flex={props.flex}
+    >
       {props.children}
     </Wrapper>
   );
