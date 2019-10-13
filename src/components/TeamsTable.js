@@ -5,9 +5,9 @@ const Wrapper = styled.ul`
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  width: 70%;
+  width: 40%;
   list-style: none;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 40%;
   ${({ column }) =>

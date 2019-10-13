@@ -54,8 +54,15 @@ const ChooseTeams = props => {
   const { unsubmitNewPlayersForm, clearPlayers } = useContext(PlayersContext);
 
   const handleConfirm = () => {
-    console.log(props);
-    props.history.push("/tournament");
+    if (teamsInBasket.length > 0) {
+      if (teamsInBasket.length % 2 !== 0) {
+        alert("Wybierz parzystą liczbę drużyn!");
+        return;
+      } else if (teamsInBasket.length % 2 === 0) {
+        props.history.push("/tournament");
+      }
+    } else alert("Wybierz drużyny!");
+    return;
   };
 
   const goBackFunction = () => {
@@ -108,6 +115,7 @@ const ChooseTeams = props => {
         goBackFunction={goBackFunction}
         handleConfirm={handleConfirm}
       />
+      {/* <WarningWindow /> */}
     </>
   );
 };
