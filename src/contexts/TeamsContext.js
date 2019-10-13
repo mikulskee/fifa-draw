@@ -45,6 +45,7 @@ const TeamsContextProvider = props => {
     { id: 18, team: "Tottenham Hotspur", img: tottenham },
     { id: 19, team: "Manchester United", img: united }
   ]);
+
   const [teamsInBasket, setTeamsInBasket] = useState([]);
 
   const deleteTeamsInBasket = () => setTeamsInBasket([]);

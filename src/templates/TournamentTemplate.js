@@ -21,6 +21,8 @@ const StyledTitle = styled(Title)`
   line-height: 0.7;
 `;
 const StyledButton = styled(Button)`
+  position: fixed;
+  bottom: 20px;
   font-size: 16px;
 `;
 const TournamentTemplate = () => {
@@ -38,21 +40,20 @@ const TournamentTemplate = () => {
             <DateDescription>{moment(new Date()).calendar()}</DateDescription>
           </StyledTitle>
         </TopBar>
-
         {teamsInBasket.length === 0 ? null : (
           <>
             <Basket />
             <DrawingButtons />
           </>
         )}
-
         <PlayersTeams>
           <PlayerBasket>
             <Title>Team {players[0].toUpperCase()}</Title>
             <TeamsTable column>
-              {playerOneTeams.map(team => (
+              {playerOneTeams.map((team, id) => (
                 <li key={team.id}>
                   <div>
+                    <h1>{id + 1}.</h1>
                     <img src={team.img} alt={team.team}></img>
                   </div>
                 </li>
@@ -62,9 +63,10 @@ const TournamentTemplate = () => {
           <PlayerBasket>
             <Title>Team {players[1].toUpperCase()}</Title>
             <TeamsTable column>
-              {playerTwoTeams.map(team => (
+              {playerTwoTeams.map((team, id) => (
                 <li key={team.id}>
                   <div>
+                    <h1>{id + 1}.</h1>
                     <img src={team.img} alt={team.team}></img>
                   </div>
                 </li>
@@ -72,7 +74,9 @@ const TournamentTemplate = () => {
             </TeamsTable>
           </PlayerBasket>
         </PlayersTeams>
-        <StyledButton>Zakończ turniej</StyledButton>
+        {teamsInBasket.length === 0 ? (
+          <StyledButton>Zakończ turniej</StyledButton>
+        ) : null}
       </Background>
     );
   } else return null;

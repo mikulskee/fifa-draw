@@ -6,6 +6,6 @@ export const PlayersTeams = styled.div`
   align-items: start;
   justify-content: space-between;
   margin: 20px auto;
-  height: 40%;
+  height: 100%;
   width: 95%;
 `;

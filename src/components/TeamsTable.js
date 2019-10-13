@@ -14,14 +14,16 @@ const Wrapper = styled.ul`
     column &&
     css`
       flex-direction: column;
-      flex-wrap: nowrap;
+      width: 80%;
+      flex-flow: wrap;
+      justify-content: space-around;
     `}
   li {
     margin: 0 10px;
     ${({ column }) =>
       column &&
       css`
-        width: 100%;
+        width: 50%;
         margin: 20px 0;
       `}
     div {
@@ -45,10 +47,26 @@ const Wrapper = styled.ul`
       }
 
       img {
+        position: relative;
         display: block;
         height: 60px;
         cursor: pointer;
         margin: 0 auto;
+        z-index: 2;
+      }
+
+      h1 {
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-82%, -50%);
+        font-size: 86px;
+        font-weight: bolder;
+        z-index: 1;
+        width: 100px;
+        text-align: center;
+        opacity: 0.2;
       }
     }
   }
