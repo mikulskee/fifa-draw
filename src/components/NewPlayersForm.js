@@ -25,6 +25,7 @@ const Input = styled.input`
 
 const Form = styled.form`
   flex-grow: 1;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;

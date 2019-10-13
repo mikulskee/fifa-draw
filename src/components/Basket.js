@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 
 const Basket = () => {
   const { teamsInBasket } = useContext(TeamsContext);
-  console.log(teamsInBasket);
+
   return (
     <Wrapper>
       <Title>Koszyk</Title>

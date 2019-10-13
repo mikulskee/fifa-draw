@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
 import { PlayersContext } from "../contexts/PlayersContext";
+import { TeamsContext } from "../contexts/TeamsContext";
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,11 +18,36 @@ const StyledButton = styled(Button)`
 `;
 
 const DrawingButtons = () => {
-  const { players } = useContext(PlayersContext);
+  const { players, addTeamForPlayerOne, addTeamForPlayerTwo } = useContext(
+    PlayersContext
+  );
+
+  const { teamsInBasket, deleteTeamsInBasket } = useContext(TeamsContext);
+
+  const handleDrawAll = () => {
+    let teamsNumber = teamsInBasket.length;
+    let teamOne = [];
+    let teamTwo = [];
+
+    for (let i = teamsNumber; i > 0; i--) {
+      let index = Math.floor(Math.random() * i);
+      let teamDraw = teamsInBasket[index];
+      if (i % 2 === 0) {
+        teamOne.push(teamDraw);
+      } else {
+        teamTwo.push(teamDraw);
+      }
+      teamsInBasket.splice(index, 1);
+    }
+    deleteTeamsInBasket();
+    addTeamForPlayerOne(teamOne);
+    addTeamForPlayerTwo(teamTwo);
+  };
+
   return (
     <Wrapper>
       <StyledButton>Losuj drużynę dla {players[0].toUpperCase()} </StyledButton>
-      <StyledButton>Wylosuj wszystkie</StyledButton>
+      <StyledButton onClick={handleDrawAll}>Wylosuj wszystkie</StyledButton>
       <StyledButton>Losuj drużynę dla {players[1].toUpperCase()}</StyledButton>
     </Wrapper>
   );

@@ -4,7 +4,14 @@ export const PlayersContext = createContext();
 
 const PlayersContextProvider = props => {
   const [players, setPlayers] = useState([]);
+  const [playerOneTeams, setPlayerOneTeams] = useState([]);
+  const [playerTwoTeams, setPlayerTwoTeams] = useState([]);
   const [isNewPlayersSubmited, setSubmitPlayers] = useState(false);
+
+  const addTeamForPlayerOne = team =>
+    setPlayerOneTeams([...playerOneTeams].concat(team));
+  const addTeamForPlayerTwo = team =>
+    setPlayerTwoTeams([...playerTwoTeams].concat(team));
 
   const submitNewPlayersForm = () => {
     setSubmitPlayers(true);
@@ -18,6 +25,7 @@ const PlayersContextProvider = props => {
   const addPlayers = (playerOne, playerTwo) => {
     setPlayers([playerOne, playerTwo]);
   };
+
   return (
     <PlayersContext.Provider
       value={{
@@ -26,7 +34,11 @@ const PlayersContextProvider = props => {
         submitNewPlayersForm,
         unsubmitNewPlayersForm,
         isNewPlayersSubmited,
-        clearPlayers
+        clearPlayers,
+        playerOneTeams,
+        playerTwoTeams,
+        addTeamForPlayerOne,
+        addTeamForPlayerTwo
       }}
     >
       {props.children}

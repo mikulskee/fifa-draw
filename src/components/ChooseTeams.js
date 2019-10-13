@@ -12,11 +12,16 @@ import TeamsTable from "../components/TeamsTable";
 const StyledTitle = styled(Title)`
   position: relative;
   text-align: center;
-  margin: 20px 0;
+  margin: 20px auto;
   font-size: 44px;
+  left: auto;
+  transform: translateX(0);
   ::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     content: "";
-    width: 40%;
+    width: 250%;
     height: 2px;
     background-color: white;
     display: block;

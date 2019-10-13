@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Wrapper = styled.ul`
   margin: 0 auto;
@@ -10,8 +10,20 @@ const Wrapper = styled.ul`
   justify-content: space-between;
   align-items: center;
   height: 40%;
+  ${({ column }) =>
+    column &&
+    css`
+      flex-direction: column;
+      flex-wrap: nowrap;
+    `}
   li {
     margin: 0 10px;
+    ${({ column }) =>
+      column &&
+      css`
+        width: 100%;
+        margin: 20px 0;
+      `}
     div {
       position: relative;
       color: #19ff00;
@@ -36,13 +48,14 @@ const Wrapper = styled.ul`
         display: block;
         height: 60px;
         cursor: pointer;
+        margin: 0 auto;
       }
     }
   }
 `;
 
 const TeamsTable = props => {
-  return <Wrapper>{props.children}</Wrapper>;
+  return <Wrapper column={props.column}>{props.children}</Wrapper>;
 };
 
 export default TeamsTable;
