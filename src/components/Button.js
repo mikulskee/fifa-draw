@@ -7,7 +7,7 @@ export const Button = styled.button`
   box-shadow: none;
   height: 51px;
   color: white;
-  font-size: 34px;
+  font-size: ${({ small }) => (small ? "18px" : "34px")};
   font-weight: bold;
   border-radius: 10px;
   padding: 0 20px;

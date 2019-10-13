@@ -4,10 +4,16 @@ import { withRouter } from "react-router-dom";
 import { TeamsContext } from "../contexts/TeamsContext";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { Title } from "../components/Title";
+import { Button } from "../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import ConfirmButtons from "../components/ConfirmButtons";
 import TeamsTable from "../components/TeamsTable";
+
+const AmountOfTeams = styled(Title)`
+  position: fixed;
+  bottom: 200px;
+`;
 
 const StyledTitle = styled(Title)`
   position: relative;
@@ -29,9 +35,24 @@ const StyledTitle = styled(Title)`
   }
 `;
 
+const ManageButtons = styled.div`
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 const ChooseTeams = props => {
-  const { teams, setTeamSelected } = useContext(TeamsContext);
+  const {
+    teams,
+    setTeamSelected,
+    teamsInBasket,
+    deleteTeamsInBasket,
+    addAllTeamsToBasket
+  } = useContext(TeamsContext);
+
   const { unsubmitNewPlayersForm, clearPlayers } = useContext(PlayersContext);
+
   const handleConfirm = () => {
     console.log(props);
     props.history.push("/tournament");
@@ -47,19 +68,41 @@ const ChooseTeams = props => {
     setTeamSelected(e.target.alt);
   };
 
+  const addAllToBasket = () => {
+    const teams = window.document.querySelectorAll(".team-in-basket");
+    teams.forEach(team => team.classList.add("selected"));
+    addAllTeamsToBasket();
+  };
+  const deleteAllFromBasket = () => {
+    const teams = window.document.querySelectorAll(".team-in-basket");
+    teams.forEach(team => team.classList.remove("selected"));
+    deleteTeamsInBasket();
+  };
+
   return (
     <>
       <StyledTitle>Wybierz drużyny :</StyledTitle>
       <TeamsTable>
         {teams.map(team => (
           <li key={team.id} onClick={handleTeamClick}>
-            <div>
+            <div className={"team-in-basket"}>
               <img src={team.img} alt={team.team}></img>
               <FontAwesomeIcon icon={faCheckCircle} />
             </div>
           </li>
         ))}
       </TeamsTable>
+      <ManageButtons>
+        <Button small onClick={addAllToBasket}>
+          Dodaj wszystkie do koszyka
+        </Button>
+        <Button small onClick={deleteAllFromBasket}>
+          Usuń zanaczenie
+        </Button>
+      </ManageButtons>
+      <AmountOfTeams>
+        Ilość wybranych drużyn: {teamsInBasket.length}
+      </AmountOfTeams>
       <ConfirmButtons
         textButton={"Utwórz turniej"}
         goBackFunction={goBackFunction}

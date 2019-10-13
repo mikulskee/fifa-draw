@@ -5,8 +5,9 @@ import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../components/Button";
 
 const Wrapper = styled.div`
+  position: fixed;
+  bottom: 100px;
   width: 90%;
-  height: 50%;
   font-size: 40px;
   color: #d4b726;
   display: flex;
