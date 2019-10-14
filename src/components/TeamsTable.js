@@ -5,7 +5,7 @@ const Wrapper = styled.ul`
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  width: 40%;
+  width: 60%;
   list-style: none;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@ const Wrapper = styled.ul`
       justify-content: space-around;
     `}
   li {
-    margin: 0 10px;
+    margin: 10px;
     ${({ column }) =>
       column &&
       css`

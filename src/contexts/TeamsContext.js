@@ -45,8 +45,8 @@ const TeamsContextProvider = props => {
     { id: 18, team: "Tottenham Hotspur", img: tottenham },
     { id: 19, team: "Manchester United", img: united }
   ]);
-
   const [teamsInBasket, setTeamsInBasket] = useState([]);
+  const [matchTeams, setMatchTeam] = useState([]);
 
   const deleteTeamsInBasket = () => setTeamsInBasket([]);
   const addAllTeamsToBasket = () => setTeamsInBasket(teams);
@@ -62,6 +62,9 @@ const TeamsContextProvider = props => {
       setTeamsInBasket([...teamsInBasket].concat(teamToAddToBasket));
     }
   };
+  const setTeam = team => {
+    setMatchTeam([...matchTeams].concat(team));
+  };
 
   return (
     <TeamsContext.Provider
@@ -70,7 +73,9 @@ const TeamsContextProvider = props => {
         setTeamSelected,
         teamsInBasket,
         deleteTeamsInBasket,
-        addAllTeamsToBasket
+        addAllTeamsToBasket,
+        matchTeams,
+        setTeam
       }}
     >
       {props.children}

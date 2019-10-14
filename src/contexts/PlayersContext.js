@@ -13,6 +13,19 @@ const PlayersContextProvider = props => {
   const addTeamForPlayerTwo = team =>
     setPlayerTwoTeams([...playerTwoTeams].concat(team));
 
+  const deletePlayerOneTeam = teamToDelete => {
+    const team = playerOneTeams.filter(
+      team => team.team !== teamToDelete[0].team
+    );
+    setPlayerOneTeams(team);
+  };
+  const deletePlayerTwoTeam = teamToDelete => {
+    const team = playerTwoTeams.filter(
+      team => team.team !== teamToDelete[0].team
+    );
+    setPlayerTwoTeams(team);
+  };
+
   const submitNewPlayersForm = () => {
     setSubmitPlayers(true);
   };
@@ -38,7 +51,9 @@ const PlayersContextProvider = props => {
         playerOneTeams,
         playerTwoTeams,
         addTeamForPlayerOne,
-        addTeamForPlayerTwo
+        addTeamForPlayerTwo,
+        deletePlayerOneTeam,
+        deletePlayerTwoTeam
       }}
     >
       {props.children}

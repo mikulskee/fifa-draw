@@ -7,11 +7,17 @@ export const PlayerBasket = styled.div`
   border-radius: 10px;
   padding: 20px 0;
   max-height: 80%;
-  overflow: overlay;
 
   h1 {
     position: static;
     text-align: center;
     transform: translateX(0);
+  }
+
+  h1.choose-team {
+    color: #d4b726;
+    position: absolute;
+    bottom: -50px;
+    transform: translateX(-50%);
   }
 `;

@@ -12,6 +12,7 @@ import { PlayerBasket } from "../components/PlayerBasket";
 import moment from "moment";
 import styled from "styled-components";
 import TeamsTable from "../components/TeamsTable";
+import MatchResults from "../components/MatchResult";
 
 const DateDescription = styled.span`
   font-weight: 300;
@@ -26,10 +27,40 @@ const StyledButton = styled(Button)`
   font-size: 16px;
 `;
 const TournamentTemplate = () => {
-  const { players, playerOneTeams, playerTwoTeams } = useContext(
-    PlayersContext
-  );
-  const { teamsInBasket } = useContext(TeamsContext);
+  const {
+    players,
+    playerOneTeams,
+    playerTwoTeams,
+    deletePlayerOneTeam,
+    deletePlayerTwoTeam
+  } = useContext(PlayersContext);
+
+  const { teamsInBasket, setTeam, matchTeams } = useContext(TeamsContext);
+
+  const handleClick = e => {
+    console.log(matchTeams);
+
+    if (matchTeams.length > 1) {
+      return;
+    } else {
+      const teams = playerOneTeams.concat(playerTwoTeams);
+      const selectedTeam = teams.filter(team => team.team === e.target.alt);
+      if (
+        e.target.classList.contains("player-one") &&
+        playerOneTeams.length === playerTwoTeams.length
+      ) {
+        deletePlayerOneTeam(selectedTeam);
+        setTeam(selectedTeam);
+      } else if (
+        e.target.classList.contains("player-two") &&
+        playerOneTeams.length < playerTwoTeams.length
+      ) {
+        deletePlayerTwoTeam(selectedTeam);
+        setTeam(selectedTeam);
+      }
+    }
+  };
+
   if (players.length > 0) {
     return (
       <Background flex tournament>
@@ -54,11 +85,21 @@ const TournamentTemplate = () => {
                 <li key={team.id}>
                   <div>
                     <h1>{id + 1}.</h1>
-                    <img src={team.img} alt={team.team}></img>
+                    <img
+                      src={team.img}
+                      alt={team.team}
+                      onClick={handleClick}
+                      className="player-one"
+                    ></img>
                   </div>
                 </li>
               ))}
             </TeamsTable>
+
+            {playerOneTeams.length > 0 &&
+            playerOneTeams.length === playerTwoTeams.length ? (
+              <Title className={"choose-team"}>Wybierz drużynę</Title>
+            ) : null}
           </PlayerBasket>
           <PlayerBasket>
             <Title>Team {players[1].toUpperCase()}</Title>
@@ -67,15 +108,28 @@ const TournamentTemplate = () => {
                 <li key={team.id}>
                   <div>
                     <h1>{id + 1}.</h1>
-                    <img src={team.img} alt={team.team}></img>
+                    <img
+                      src={team.img}
+                      alt={team.team}
+                      onClick={handleClick}
+                      className="player-two"
+                    ></img>
                   </div>
                 </li>
               ))}
             </TeamsTable>
+            {playerTwoTeams.length > 0 &&
+            playerOneTeams.length < playerTwoTeams.length ? (
+              <Title className={"choose-team"}>Wybierz drużynę</Title>
+            ) : null}
           </PlayerBasket>
         </PlayersTeams>
         {teamsInBasket.length === 0 ? (
           <StyledButton>Zakończ turniej</StyledButton>
+        ) : null}
+
+        {playerOneTeams.length !== 0 && playerTwoTeams.length !== 0 ? (
+          <MatchResults />
         ) : null}
       </Background>
     );
