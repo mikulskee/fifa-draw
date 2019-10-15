@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { TeamsContext } from "../contexts/TeamsContext";
+import { ScoresContext } from "../contexts/ScoresContext";
 import Background from "../components/Background";
 import TopBar from "../components/TopBar";
 import { Title } from "../components/Title";
@@ -13,6 +14,7 @@ import moment from "moment";
 import styled from "styled-components";
 import TeamsTable from "../components/TeamsTable";
 import MatchResults from "../components/MatchResult";
+import ScoresTable from "../components/ScoresTable";
 
 const DateDescription = styled.span`
   font-weight: 300;
@@ -26,7 +28,7 @@ const StyledButton = styled(Button)`
   bottom: 20px;
   font-size: 16px;
 `;
-const TournamentTemplate = () => {
+const TournamentTemplate = props => {
   const {
     players,
     playerOneTeams,
@@ -36,6 +38,8 @@ const TournamentTemplate = () => {
   } = useContext(PlayersContext);
 
   const { teamsInBasket, setTeam, matchTeams } = useContext(TeamsContext);
+
+  const { tournament } = useContext(ScoresContext);
 
   const handleClick = e => {
     console.log(matchTeams);
@@ -96,8 +100,7 @@ const TournamentTemplate = () => {
               ))}
             </TeamsTable>
 
-            {playerOneTeams.length > 0 &&
-            playerOneTeams.length === playerTwoTeams.length ? (
+            {playerOneTeams.length > 0 && matchTeams.length === 0 ? (
               <Title className={"choose-team"}>Wybierz drużynę</Title>
             ) : null}
           </PlayerBasket>
@@ -118,8 +121,7 @@ const TournamentTemplate = () => {
                 </li>
               ))}
             </TeamsTable>
-            {playerTwoTeams.length > 0 &&
-            playerOneTeams.length < playerTwoTeams.length ? (
+            {matchTeams.length === 1 ? (
               <Title className={"choose-team"}>Wybierz drużynę</Title>
             ) : null}
           </PlayerBasket>
@@ -131,6 +133,7 @@ const TournamentTemplate = () => {
         {playerOneTeams.length !== 0 && playerTwoTeams.length !== 0 ? (
           <MatchResults />
         ) : null}
+        {tournament.length > 0 ? <ScoresTable /> : null}
       </Background>
     );
   } else return null;

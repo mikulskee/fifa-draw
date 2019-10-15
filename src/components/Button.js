@@ -15,6 +15,9 @@ export const Button = styled.button`
   cursor: pointer;
   overflow: hidden;
   transition: color 0.2s linear;
+  &:focus {
+    outline: none;
+  }
 
   ::before {
     position: absolute;

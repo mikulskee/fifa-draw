@@ -65,6 +65,9 @@ const TeamsContextProvider = props => {
   const setTeam = team => {
     setMatchTeam([...matchTeams].concat(team));
   };
+  const clearScore = () => {
+    setMatchTeam([]);
+  };
 
   return (
     <TeamsContext.Provider
@@ -75,7 +78,8 @@ const TeamsContextProvider = props => {
         deleteTeamsInBasket,
         addAllTeamsToBasket,
         matchTeams,
-        setTeam
+        setTeam,
+        clearScore
       }}
     >
       {props.children}

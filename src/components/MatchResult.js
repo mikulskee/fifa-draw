@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { TeamsContext } from "../contexts/TeamsContext";
+import { PlayersContext } from "../contexts/PlayersContext";
+import { ScoresContext } from "../contexts/ScoresContext";
 import { ColumnFlexWrapper } from "./ColumnFlexWrapper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -117,7 +119,9 @@ const StyledRowFlexWrapper = styled(RowFlexWrapper)`
 `;
 
 const MatchResults = () => {
-  const { matchTeams } = useContext(TeamsContext);
+  const { matchTeams, clearScore } = useContext(TeamsContext);
+  const { players } = useContext(PlayersContext);
+  const { addMatchResult } = useContext(ScoresContext);
   const [playerOneInput, setPlayerOneInput] = useState(0);
   const [playerTwoInput, setPlayerTwoInput] = useState(0);
 
@@ -146,6 +150,25 @@ const MatchResults = () => {
       return;
     } else {
       setPlayerTwoInput(playerTwoInput + -1);
+    }
+  };
+  const handleSaveScore = e => {
+    e.preventDefault();
+
+    if (playerOneInput > playerTwoInput) {
+      const win = 0;
+      const result = Array.of(playerOneInput, playerTwoInput);
+      addMatchResult(result, players, matchTeams, win);
+      clearScore();
+      setPlayerTwoInput(0);
+      setPlayerOneInput(0);
+    } else if (playerOneInput < playerTwoInput) {
+      const win = 1;
+      const result = Array.of(playerOneInput, playerTwoInput);
+      addMatchResult(result, players, matchTeams, win);
+      clearScore();
+      setPlayerTwoInput(0);
+      setPlayerOneInput(0);
     }
   };
 
@@ -239,7 +262,9 @@ const MatchResults = () => {
 
       {matchTeams.length > 1 ? (
         <StyledRowFlexWrapper>
-          <Button small>Zapisz wynik</Button>
+          <Button small onClick={handleSaveScore}>
+            Zapisz wynik
+          </Button>
         </StyledRowFlexWrapper>
       ) : null}
     </Wrapper>

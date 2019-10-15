@@ -6,7 +6,7 @@ const PlayersContextProvider = props => {
   const [players, setPlayers] = useState([]);
   const [playerOneTeams, setPlayerOneTeams] = useState([]);
   const [playerTwoTeams, setPlayerTwoTeams] = useState([]);
-  const [isNewPlayersSubmited, setSubmitPlayers] = useState(false);
+  const [isNewPlayersSubmited, setSubmitPlayers] = useState();
 
   const addTeamForPlayerOne = team =>
     setPlayerOneTeams([...playerOneTeams].concat(team));
