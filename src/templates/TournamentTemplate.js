@@ -42,8 +42,6 @@ const TournamentTemplate = props => {
   const { tournament } = useContext(ScoresContext);
 
   const handleClick = e => {
-    console.log(matchTeams);
-
     if (matchTeams.length > 1) {
       return;
     } else {
@@ -81,7 +79,7 @@ const TournamentTemplate = props => {
             <DrawingButtons />
           </>
         )}
-        <PlayersTeams>
+        <PlayersTeams className={"players-baskets"}>
           <PlayerBasket>
             <Title>Team {players[0].toUpperCase()}</Title>
             <TeamsTable column>
@@ -130,7 +128,7 @@ const TournamentTemplate = props => {
           <StyledButton>Zakończ turniej</StyledButton>
         ) : null}
 
-        {playerOneTeams.length !== 0 && playerTwoTeams.length !== 0 ? (
+        {tournament.length >= 0 && matchTeams.length > 0 ? (
           <MatchResults />
         ) : null}
         {tournament.length > 0 ? <ScoresTable /> : null}

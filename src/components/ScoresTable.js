@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { ColumnFlexWrapper } from "./ColumnFlexWrapper";
 import { Title } from "./Title";
 import { ScoresContext } from "../contexts/ScoresContext";
+import { TeamsContext } from "../contexts/TeamsContext";
+import { PlayersContext } from "../contexts/PlayersContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,17 +14,37 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
   top: 116px;
   left: 50%;
   transform: translateX(-50%);
-  height: 55px;
+  max-height: 55px;
   width: 20%;
   border-radius: 10px;
   justify-content: flex-start;
   overflow: hidden;
+  transition: max-height 0.25s ease-out, width 0.25s 0.25s ease-out;
+  &.end {
+    max-height: 900px;
+    width: 40%;
+    .results > * {
+      opacity: 1;
+    }
+    button {
+      display: none;
+    }
+  }
+
+  & .results > * {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+  }
 
   &.active {
-    height: auto;
+    max-height: 800px;
     button {
       transform: rotate(180deg);
     }
+  }
+
+  &.active .results > * {
+    opacity: 1;
   }
 
   button {
@@ -54,7 +76,7 @@ const PlayersNames = styled.div`
   width: 70%;
   display: flex;
   justify-content: space-between;
-  transition: transform 0.15s linear;
+  transition: transform 0.25s ease-in-out;
   &.active {
     transform: translateY(-10px);
   }
@@ -92,16 +114,46 @@ const Result = styled.div`
     text-align: center;
     width: 20%;
   }
+  p:first-child.team-0 {
+    color: #d4b726;
+  }
+  p:last-child.team-1 {
+    color: #d4b726;
+  }
 `;
 
 const ScoresTable = () => {
   const { tournament } = useContext(ScoresContext);
+  const { matchTeams } = useContext(TeamsContext);
+  const { playerTwoTeams } = useContext(PlayersContext);
+
   const handleClick = e => {
     e.target.parentNode.classList.toggle("active");
     document.querySelector(".player-names").classList.toggle("active");
   };
+
+  useEffect(() => {
+    if (!matchTeams.length) {
+      const pl1wins = tournament.filter(tour => tour.win === 0).length;
+      const pl2wins = tournament.filter(tour => tour.win === 1).length;
+      const requiredWins = (playerTwoTeams.length + tournament.length) / 2;
+
+      console.log(requiredWins, pl1wins, pl2wins);
+
+      if (
+        requiredWins < pl1wins ||
+        requiredWins < pl2wins ||
+        (!playerTwoTeams.length && tournament.length)
+      ) {
+        document.querySelector(".results-wrapper").classList.add("end");
+        document.querySelector(".players-baskets").classList.add("end");
+        console.log("a");
+      }
+    }
+  });
+
   return (
-    <StyledColumnFlexWrapper>
+    <StyledColumnFlexWrapper className={"results-wrapper"}>
       <button onClick={handleClick}>
         <FontAwesomeIcon icon={faAngleDown} />
       </button>
@@ -117,10 +169,10 @@ const ScoresTable = () => {
         </Title>
       </PlayersNames>
 
-      <Results>
+      <Results className="results">
         {tournament.map(tour => (
           <Result key={tour.teams[0].team}>
-            <p>{tour.teams[0].team}</p>
+            <p className={`team-${tour.win}`}>{tour.teams[0].team}</p>
             <div className={"image"}>
               <img src={tour.teams[0].img} alt={tour.teams[0].team} />
             </div>
@@ -131,13 +183,10 @@ const ScoresTable = () => {
             <div className={"image"}>
               <img src={tour.teams[1].img} alt={tour.teams[1].team} />
             </div>
-            <p>{tour.teams[1].team}</p>
+            <p className={`team-${tour.win}`}>{tour.teams[1].team}</p>
           </Result>
         ))}
       </Results>
-
-      <div></div>
-      <div></div>
     </StyledColumnFlexWrapper>
   );
 };

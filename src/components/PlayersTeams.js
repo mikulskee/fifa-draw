@@ -8,4 +8,8 @@ export const PlayersTeams = styled.div`
   margin: 20px auto;
   height: 100%;
   width: 95%;
+
+  &.end {
+    display: none;
+  }
 `;
