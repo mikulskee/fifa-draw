@@ -123,11 +123,20 @@ const Result = styled.div`
 `;
 
 const WinnerTitle = styled(Title)`
+  height: 0;
   width: 100%;
   position: static;
   text-align: center;
-  transform: translate(0);
+  opacity: 0;
+  display: block;
+  transform: translate(0, 100%);
   padding: 20px 0;
+  transition: opacity 0.25s 0.5s ease-out, transform 0.25s 0.5s ease-out;
+  &.end {
+    height: auto;
+    transform: translate(0, 0);
+    opacity: 1;
+  }
   span {
     color: #d4b726;
   }
@@ -172,6 +181,7 @@ const ScoresTable = () => {
     if (isTournamentFinish) {
       const pl1Name = tournament[0].playersNames[0];
       const pl2Name = tournament[0].playersNames[1];
+      document.querySelector(".tournament-winner").classList.add("end");
       if (pl1wins > pl2wins) {
         setWinner(pl1Name.toUpperCase());
       } else if (pl1wins < pl2wins) {
