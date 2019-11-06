@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { ColumnFlexWrapper } from "./ColumnFlexWrapper";
 import { Title } from "./Title";
@@ -122,6 +122,17 @@ const Result = styled.div`
   }
 `;
 
+const WinnerTitle = styled(Title)`
+  width: 100%;
+  position: static;
+  text-align: center;
+  transform: translate(0);
+  padding: 20px 0;
+  span {
+    color: #d4b726;
+  }
+`;
+
 const ScoresTable = () => {
   const { tournament } = useContext(ScoresContext);
   const { matchTeams } = useContext(TeamsContext);
@@ -138,8 +149,6 @@ const ScoresTable = () => {
       const pl2wins = tournament.filter(tour => tour.win === 1).length;
       const requiredWins = (playerTwoTeams.length + tournament.length) / 2;
 
-      console.log(requiredWins, pl1wins, pl2wins);
-
       if (
         requiredWins < pl1wins ||
         requiredWins < pl2wins ||
@@ -147,11 +156,31 @@ const ScoresTable = () => {
       ) {
         document.querySelector(".results-wrapper").classList.add("end");
         document.querySelector(".players-baskets").classList.add("end");
-        console.log("a");
       }
     }
   });
 
+  const [winner, setWinner] = useState("");
+  useEffect(() => {
+    const pl1wins = tournament.filter(tour => tour.win === 0).length;
+    const pl2wins = tournament.filter(tour => tour.win === 1).length;
+
+    const isTournamentFinish = document
+      .querySelector(".results-wrapper")
+      .classList.contains("end");
+
+    if (isTournamentFinish) {
+      const pl1Name = tournament[0].playersNames[0];
+      const pl2Name = tournament[0].playersNames[1];
+      if (pl1wins > pl2wins) {
+        setWinner(pl1Name.toUpperCase());
+      } else if (pl1wins < pl2wins) {
+        setWinner(pl2Name.toUpperCase());
+      } else {
+        return;
+      }
+    }
+  }, [tournament]);
   return (
     <StyledColumnFlexWrapper className={"results-wrapper"}>
       <button onClick={handleClick}>
@@ -187,6 +216,16 @@ const ScoresTable = () => {
           </Result>
         ))}
       </Results>
+
+      {winner.length ? (
+        <WinnerTitle className="tournament-winner">
+          Wygrał gracz <span>{winner}</span>
+        </WinnerTitle>
+      ) : (
+        <WinnerTitle className="tournament-winner">
+          Turniej zakończony <span>REMISEM</span>
+        </WinnerTitle>
+      )}
     </StyledColumnFlexWrapper>
   );
 };

@@ -45,8 +45,15 @@ const TournamentTemplate = props => {
     if (matchTeams.length > 1) {
       return;
     } else {
+      const matchResults = document.querySelector(".results-wrapper");
+      const playerNames = document.querySelector(".player-names");
       const teams = playerOneTeams.concat(playerTwoTeams);
       const selectedTeam = teams.filter(team => team.team === e.target.alt);
+
+      if (matchResults) {
+        matchResults.classList.remove("active");
+        playerNames.classList.remove("active");
+      }
       if (
         e.target.classList.contains("player-one") &&
         playerOneTeams.length === playerTwoTeams.length
