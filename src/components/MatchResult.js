@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import moment from "moment";
+import "moment/locale/pl";
 import { TeamsContext } from "../contexts/TeamsContext";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { ScoresContext } from "../contexts/ScoresContext";
@@ -152,20 +154,36 @@ const MatchResults = () => {
       setPlayerTwoInput(playerTwoInput + -1);
     }
   };
+
   const handleSaveScore = e => {
     e.preventDefault();
 
     if (playerOneInput > playerTwoInput) {
       const win = 0;
-      const result = Array.of(playerOneInput, playerTwoInput);
-      addMatchResult(result, players, matchTeams, win);
+      const result = Object.assign(
+        {},
+        Array.of(playerOneInput, playerTwoInput)
+      );
+      const playersNames = Object.assign({}, players);
+      const teams = Object.assign({}, matchTeams);
+      const date = moment(new Date())
+        .locale("pl")
+        .format("lll");
+
+      addMatchResult(date, result, playersNames, teams, win);
       clearScore();
       setPlayerTwoInput(0);
       setPlayerOneInput(0);
     } else if (playerOneInput < playerTwoInput) {
       const win = 1;
-      const result = Array.of(playerOneInput, playerTwoInput);
-      addMatchResult(result, players, matchTeams, win);
+      const result = Object.assign(
+        {},
+        Array.of(playerOneInput, playerTwoInput)
+      );
+      const playersNames = Object.assign({}, players);
+      const teams = Object.assign({}, matchTeams);
+      const date = moment(new Date()).format("LLLL");
+      addMatchResult(date, result, playersNames, teams, win);
       clearScore();
       setPlayerTwoInput(0);
       setPlayerOneInput(0);

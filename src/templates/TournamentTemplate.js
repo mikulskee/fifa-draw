@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { TeamsContext } from "../contexts/TeamsContext";
 import { ScoresContext } from "../contexts/ScoresContext";
+import { StatsContext } from "../contexts/StatsContext";
 import Background from "../components/Background";
 import TopBar from "../components/TopBar";
 import { Title } from "../components/Title";
@@ -11,6 +12,7 @@ import DrawingButtons from "../components/DrawingButtons";
 import { PlayersTeams } from "../components/PlayersTeams";
 import { PlayerBasket } from "../components/PlayerBasket";
 import moment from "moment";
+import "moment/locale/pl";
 import styled from "styled-components";
 import TeamsTable from "../components/TeamsTable";
 import MatchResults from "../components/MatchResult";
@@ -34,12 +36,16 @@ const TournamentTemplate = props => {
     playerOneTeams,
     playerTwoTeams,
     deletePlayerOneTeam,
-    deletePlayerTwoTeam
+    deletePlayerTwoTeam,
+    setPlayerTwoTeams,
+    setPlayerOneTeams
   } = useContext(PlayersContext);
 
   const { teamsInBasket, setTeam, matchTeams } = useContext(TeamsContext);
-
-  const { tournament } = useContext(ScoresContext);
+  const { addTournamentToStats } = useContext(StatsContext);
+  const { tournament, isTournamentEnd, setTournamentEnd } = useContext(
+    ScoresContext
+  );
 
   const handleClick = e => {
     if (matchTeams.length > 1) {
@@ -69,6 +75,14 @@ const TournamentTemplate = props => {
       }
     }
   };
+  const endTournament = () => {
+    document.querySelector(".results-wrapper").classList.add("end");
+    document.querySelector(".players-baskets").classList.add("end");
+    document.querySelector(".tournament-winner").classList.add("end");
+    setPlayerTwoTeams([]);
+    setPlayerOneTeams([]);
+    setTournamentEnd(true);
+  };
 
   if (players.length > 0) {
     return (
@@ -77,7 +91,11 @@ const TournamentTemplate = props => {
           <StyledTitle>
             Turniej
             <br />
-            <DateDescription>{moment(new Date()).calendar()}</DateDescription>
+            <DateDescription>
+              {moment(new Date())
+                .locale("pl")
+                .calendar()}
+            </DateDescription>
           </StyledTitle>
         </TopBar>
         {teamsInBasket.length === 0 ? null : (
@@ -131,8 +149,11 @@ const TournamentTemplate = props => {
             ) : null}
           </PlayerBasket>
         </PlayersTeams>
-        {teamsInBasket.length === 0 ? (
-          <StyledButton>Zakończ turniej</StyledButton>
+        {playerTwoTeams.length > 0 && tournament.length > 0 ? (
+          <StyledButton onClick={endTournament}>Zakończ turniej</StyledButton>
+        ) : null}
+        {isTournamentEnd ? (
+          <StyledButton onClick={addTournamentToStats}>Koniec</StyledButton>
         ) : null}
 
         {tournament.length >= 0 && matchTeams.length > 0 ? (

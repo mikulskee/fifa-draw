@@ -7,20 +7,23 @@ import { BrowserRouter, Route } from "react-router-dom";
 import PlayersContextProvider from "./contexts/PlayersContext";
 import TeamsContextProvider from "./contexts/TeamsContext";
 import ScoresContextProvider from "./contexts/ScoresContext";
+import StatsContextProvider from "./contexts/StatsContext";
 
 const App = () => {
   return (
     <PlayersContextProvider>
       <TeamsContextProvider>
         <ScoresContextProvider>
-          <div className="App">
-            <BrowserRouter>
-              <Route path="/" exact component={MainTemplate} />
-              <Route path="/newcup" component={NewCupTemplate} />
-              <Route path="/stats" component={StatsTemplate} />
-              <Route path="/tournament" component={TournamentTemplate} />
-            </BrowserRouter>
-          </div>
+          <StatsContextProvider>
+            <div className="App">
+              <BrowserRouter>
+                <Route path="/" exact component={MainTemplate} />
+                <Route path="/newcup" component={NewCupTemplate} />
+                <Route path="/stats" component={StatsTemplate} />
+                <Route path="/tournament" component={TournamentTemplate} />
+              </BrowserRouter>
+            </div>
+          </StatsContextProvider>
         </ScoresContextProvider>
       </TeamsContextProvider>
     </PlayersContextProvider>

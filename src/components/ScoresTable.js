@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { ColumnFlexWrapper } from "./ColumnFlexWrapper";
 import { Title } from "./Title";
@@ -143,9 +143,17 @@ const WinnerTitle = styled(Title)`
 `;
 
 const ScoresTable = () => {
-  const { tournament } = useContext(ScoresContext);
+  const {
+    tournament,
+    winner,
+    showWinner,
+    setTournamentEnd,
+    isTournamentEnd
+  } = useContext(ScoresContext);
   const { matchTeams } = useContext(TeamsContext);
-  const { playerTwoTeams } = useContext(PlayersContext);
+  const { playerTwoTeams, setPlayerTwoTeams, setPlayerOneTeams } = useContext(
+    PlayersContext
+  );
 
   const handleClick = e => {
     e.target.parentNode.classList.toggle("active");
@@ -157,7 +165,6 @@ const ScoresTable = () => {
       const pl1wins = tournament.filter(tour => tour.win === 0).length;
       const pl2wins = tournament.filter(tour => tour.win === 1).length;
       const requiredWins = (playerTwoTeams.length + tournament.length) / 2;
-
       if (
         requiredWins < pl1wins ||
         requiredWins < pl2wins ||
@@ -165,32 +172,30 @@ const ScoresTable = () => {
       ) {
         document.querySelector(".results-wrapper").classList.add("end");
         document.querySelector(".players-baskets").classList.add("end");
+        setTournamentEnd(true);
       }
     }
   });
 
-  const [winner, setWinner] = useState("");
   useEffect(() => {
-    const pl1wins = tournament.filter(tour => tour.win === 0).length;
-    const pl2wins = tournament.filter(tour => tour.win === 1).length;
-
     const isTournamentFinish = document
       .querySelector(".results-wrapper")
       .classList.contains("end");
 
     if (isTournamentFinish) {
-      const pl1Name = tournament[0].playersNames[0];
-      const pl2Name = tournament[0].playersNames[1];
       document.querySelector(".tournament-winner").classList.add("end");
-      if (pl1wins > pl2wins) {
-        setWinner(pl1Name.toUpperCase());
-      } else if (pl1wins < pl2wins) {
-        setWinner(pl2Name.toUpperCase());
-      } else {
-        return;
-      }
+      showWinner();
     }
-  }, [tournament]);
+  });
+
+  useEffect(() => {
+    if (isTournamentEnd) {
+      setPlayerTwoTeams([]);
+      setPlayerOneTeams([]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTournamentEnd]);
+
   return (
     <StyledColumnFlexWrapper className={"results-wrapper"}>
       <button onClick={handleClick}>
