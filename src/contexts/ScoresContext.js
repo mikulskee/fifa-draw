@@ -34,7 +34,8 @@ const ScoresContextProvider = props => {
         winner,
         showWinner,
         isTournamentEnd,
-        setTournamentEnd
+        setTournamentEnd,
+        setWinner
       }}
     >
       {props.children}

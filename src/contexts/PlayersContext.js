@@ -44,6 +44,8 @@ const PlayersContextProvider = props => {
       value={{
         addPlayers,
         players,
+        setPlayers,
+        setSubmitPlayers,
         submitNewPlayersForm,
         unsubmitNewPlayersForm,
         isNewPlayersSubmited,

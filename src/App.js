@@ -8,6 +8,7 @@ import PlayersContextProvider from "./contexts/PlayersContext";
 import TeamsContextProvider from "./contexts/TeamsContext";
 import ScoresContextProvider from "./contexts/ScoresContext";
 import StatsContextProvider from "./contexts/StatsContext";
+import Loader from "./components/Loader";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
                 <Route path="/newcup" component={NewCupTemplate} />
                 <Route path="/stats" component={StatsTemplate} />
                 <Route path="/tournament" component={TournamentTemplate} />
+                <Loader />
               </BrowserRouter>
             </div>
           </StatsContextProvider>

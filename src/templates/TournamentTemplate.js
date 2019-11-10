@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { TeamsContext } from "../contexts/TeamsContext";
 import { ScoresContext } from "../contexts/ScoresContext";
@@ -17,6 +17,7 @@ import styled from "styled-components";
 import TeamsTable from "../components/TeamsTable";
 import MatchResults from "../components/MatchResult";
 import ScoresTable from "../components/ScoresTable";
+import { LoaderAnimation } from "../animations/LoaderAnimation";
 
 const DateDescription = styled.span`
   font-weight: 300;
@@ -32,6 +33,8 @@ const StyledButton = styled(Button)`
 `;
 const TournamentTemplate = props => {
   const {
+    setPlayers,
+    setSubmitPlayers,
     players,
     playerOneTeams,
     playerTwoTeams,
@@ -41,11 +44,17 @@ const TournamentTemplate = props => {
     setPlayerOneTeams
   } = useContext(PlayersContext);
 
-  const { teamsInBasket, setTeam, matchTeams } = useContext(TeamsContext);
-  const { addTournamentToStats } = useContext(StatsContext);
-  const { tournament, isTournamentEnd, setTournamentEnd } = useContext(
-    ScoresContext
+  const { teamsInBasket, setTeam, matchTeams, setTeamsInBasket } = useContext(
+    TeamsContext
   );
+  const { addTournamentToStats } = useContext(StatsContext);
+  const {
+    tournament,
+    isTournamentEnd,
+    setTournamentEnd,
+    setTournament,
+    setWinner
+  } = useContext(ScoresContext);
 
   const handleClick = e => {
     if (matchTeams.length > 1) {
@@ -82,6 +91,19 @@ const TournamentTemplate = props => {
     setPlayerTwoTeams([]);
     setPlayerOneTeams([]);
     setTournamentEnd(true);
+  };
+  const closeTournament = () => {
+    addTournamentToStats();
+    LoaderAnimation();
+    setTimeout(() => {
+      props.history.push("/");
+      setPlayers([]);
+      setSubmitPlayers(false);
+      setTeamsInBasket([]);
+      setTournament([]);
+      setWinner("");
+      setTournamentEnd(false);
+    }, 1000);
   };
 
   if (players.length > 0) {
@@ -153,7 +175,7 @@ const TournamentTemplate = props => {
           <StyledButton onClick={endTournament}>Zakończ turniej</StyledButton>
         ) : null}
         {isTournamentEnd ? (
-          <StyledButton onClick={addTournamentToStats}>Koniec</StyledButton>
+          <StyledButton onClick={closeTournament}>Koniec</StyledButton>
         ) : null}
 
         {tournament.length >= 0 && matchTeams.length > 0 ? (

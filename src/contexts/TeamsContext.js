@@ -94,6 +94,7 @@ const TeamsContextProvider = props => {
     <TeamsContext.Provider
       value={{
         teams,
+        setTeamsInBasket,
         setTeamSelected,
         teamsInBasket,
         deleteTeamsInBasket,

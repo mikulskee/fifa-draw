@@ -15,7 +15,7 @@ const ScoresContextProvider = props => {
     setStats([...stats, Object.assign({}, tournament)]);
   };
   return (
-    <StatsContext.Provider value={{ stats, addTournamentToStats }}>
+    <StatsContext.Provider value={{ stats, addTournamentToStats, setStats }}>
       {props.children}
     </StatsContext.Provider>
   );

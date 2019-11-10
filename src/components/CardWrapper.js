@@ -9,7 +9,6 @@ const Wrapper = styled.ul`
   flex-direction: column;
   flex-wrap: wrap;
   list-style: none;
-
   margin: 0 auto;
 `;
 
