@@ -10,7 +10,7 @@ const NewCupTemplate = () => {
   const { isNewPlayersSubmited } = useContext(PlayersContext);
 
   return (
-    <Background newcup flex>
+    <Background main flex>
       <TopBar>
         <Title>Nowy Turniej</Title>
       </TopBar>

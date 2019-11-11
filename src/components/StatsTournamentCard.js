@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,11 +10,13 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-  width: 311px;
+  width: 340px;
   margin-top: 40px;
   padding: 7px 44px;
   color: white;
   font-size: 34px;
+  transform: translate(0);
+
   div.title {
     display: flex;
     flex-direction: column;
@@ -29,19 +32,37 @@ const Wrapper = styled.div`
     color: #d4b726;
     font-weight: bold;
   }
+
+  button {
+    background: none;
+    font-size: 34px;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    svg {
+      pointer-events: none;
+    }
+  }
 `;
 
-const StatsTournamentCard = () => {
+const StatsTournamentCard = props => {
+  const { tournamentNumber, date, winner, id } = props;
+  const openDetails = e => {
+    props.history.push(`/stats/${id}`);
+  };
   return (
     <Wrapper>
       <div className="title">
-        <span className="title">Turniej 1</span>
-        <span className="date">22.10.2019 19:45:26</span>
+        <span className="title">Turniej {tournamentNumber}</span>
+        <span className="date">{date}</span>
       </div>
-      <div className="winner-name">Mateo</div>
-      <FontAwesomeIcon icon={faCaretRight} />
+      <div className="winner-name">{winner ? winner : "REMIS"}</div>
+      <button onClick={openDetails}>
+        <FontAwesomeIcon icon={faCaretRight} />
+      </button>
     </Wrapper>
   );
 };
 
-export default StatsTournamentCard;
+export default withRouter(StatsTournamentCard);

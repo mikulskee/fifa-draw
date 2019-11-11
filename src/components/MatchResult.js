@@ -182,7 +182,9 @@ const MatchResults = () => {
       );
       const playersNames = Object.assign({}, players);
       const teams = Object.assign({}, matchTeams);
-      const date = moment(new Date()).format("LLLL");
+      const date = moment(new Date())
+        .locale("pl")
+        .format("lll");
       addMatchResult(date, result, playersNames, teams, win);
       clearScore();
       setPlayerTwoInput(0);

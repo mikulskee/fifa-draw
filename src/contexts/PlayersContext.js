@@ -3,10 +3,10 @@ import React, { createContext, useState } from "react";
 export const PlayersContext = createContext();
 
 const PlayersContextProvider = props => {
-  const [players, setPlayers] = useState(["konstanty", "ziemowit"]);
+  const [players, setPlayers] = useState([]);
   const [playerOneTeams, setPlayerOneTeams] = useState([]);
   const [playerTwoTeams, setPlayerTwoTeams] = useState([]);
-  const [isNewPlayersSubmited, setSubmitPlayers] = useState(true);
+  const [isNewPlayersSubmited, setSubmitPlayers] = useState(false);
 
   const addTeamForPlayerOne = team =>
     setPlayerOneTeams([...playerOneTeams].concat(team));

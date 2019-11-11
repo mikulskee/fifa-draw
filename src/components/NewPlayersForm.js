@@ -64,15 +64,17 @@ const NewPlayersForm = props => {
           value={playerOneName}
           onChange={e => setPlayerOneName(e.target.value)}
           type="text"
-          placeholder="Imię pierwszego gracza"
+          placeholder="Imię pierwszego gracza (max 8 znaków)"
           required
+          maxLength="8"
         />
         <Input
           value={playerTwoName}
           onChange={e => setPlayerTwoName(e.target.value)}
           type="text"
-          placeholder="Imię drugiego gracza"
+          placeholder="Imię drugiego gracza (max 8 znaków)"
           required
+          maxLength="8"
         />
       </div>
       <ConfirmButtons

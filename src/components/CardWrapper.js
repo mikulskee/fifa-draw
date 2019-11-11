@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import StatsTournamentCard from "./StatsTournamentCard";
+import { StatsContext } from "../contexts/StatsContext";
 
 const Wrapper = styled.ul`
   height: 80%;
@@ -13,31 +14,20 @@ const Wrapper = styled.ul`
 `;
 
 const CardWrapper = () => {
-  return (
-    <Wrapper>
-      <li>
-        <StatsTournamentCard />
-      </li>
-      <li>
-        <StatsTournamentCard />
-      </li>
-      <li>
-        <StatsTournamentCard />
-      </li>
-      <li>
-        <StatsTournamentCard />
-      </li>
-      <li>
-        <StatsTournamentCard />
-      </li>
-      <li>
-        <StatsTournamentCard />
-      </li>
-      <li>
-        <StatsTournamentCard />
-      </li>
-    </Wrapper>
-  );
+  const { stats } = useContext(StatsContext);
+
+  const tournaments = stats.map((item, i) => (
+    <li key={item.key}>
+      <StatsTournamentCard
+        tournamentNumber={i + 1}
+        date={item[0].date}
+        winner={item.winner}
+        id={item.key}
+      />
+    </li>
+  ));
+
+  return <Wrapper>{tournaments}</Wrapper>;
 };
 
 export default CardWrapper;

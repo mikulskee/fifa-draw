@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import mainBg from "../images/main-bg.png";
+import mainBg from "../images/main-bg.jpg";
 import statsBg from "../images/stats-bg.png";
 import newCupBg from "../images/newcup-bg.png";
 import tournamentBg from "../images/tournament-bg.png";
