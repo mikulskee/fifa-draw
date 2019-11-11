@@ -47,9 +47,7 @@ const TeamsContextProvider = props => {
   ]);
   const [teamsInBasket, setTeamsInBasket] = useState([]);
   const [matchTeams, setMatchTeam] = useState([]);
-
-  const deleteTeamsInBasket = () => setTeamsInBasket([]);
-  const addAllTeamsToBasket = () => setTeamsInBasket(teams);
+  const addAllTeamsToBasket = () => setTeamsInBasket([...teams]);
   const setTeamSelected = id => {
     let teamToDeleteFromBasket = teamsInBasket.filter(team => team.team === id);
     if (teamToDeleteFromBasket.length > 0) {
@@ -76,7 +74,6 @@ const TeamsContextProvider = props => {
         setTeamsInBasket,
         setTeamSelected,
         teamsInBasket,
-        deleteTeamsInBasket,
         addAllTeamsToBasket,
         matchTeams,
         setTeam,

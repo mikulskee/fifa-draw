@@ -22,7 +22,7 @@ const DrawingButtons = () => {
     PlayersContext
   );
 
-  const { teamsInBasket, deleteTeamsInBasket } = useContext(TeamsContext);
+  const { teamsInBasket, setTeamsInBasket } = useContext(TeamsContext);
 
   const handleDrawAll = () => {
     let teamsNumber = teamsInBasket.length;
@@ -39,7 +39,7 @@ const DrawingButtons = () => {
       }
       teamsInBasket.splice(index, 1);
     }
-    deleteTeamsInBasket();
+    setTeamsInBasket([]);
     addTeamForPlayerOne(teamOne);
     addTeamForPlayerTwo(teamTwo);
   };
