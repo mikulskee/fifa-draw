@@ -9,11 +9,11 @@ import Details from "../components/Details";
 const StatsDetailsTemplate = props => {
   const { stats } = useContext(StatsContext);
 
-  const tournamentNumber = stats.findIndex(
+  const tournamentNumber = [...stats].findIndex(
     item => item.key === props.match.params.tournament_id
   );
 
-  const details = stats.filter(
+  const details = [...stats].filter(
     item => item.key === props.match.params.tournament_id
   );
   const date = details[0]["0"].date;
@@ -23,7 +23,7 @@ const StatsDetailsTemplate = props => {
   const results = detailsArray.filter(item => item.result);
 
   return (
-    <Background stats>
+    <Background>
       <TopBar>
         <Title>Turniej {tournamentNumber + 1}</Title>
       </TopBar>

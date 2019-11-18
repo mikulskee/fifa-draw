@@ -46,7 +46,6 @@ const NewPlayersForm = props => {
   const { addPlayers, submitNewPlayersForm } = useContext(PlayersContext);
   const goBackFunction = () => {
     props.history.push("/");
-    console.log(props);
   };
 
   return (

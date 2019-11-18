@@ -47,7 +47,7 @@ const ChooseTeams = props => {
     teams,
     setTeamSelected,
     teamsInBasket,
-    deleteTeamsInBasket,
+    setTeamsInBasket,
     addAllTeamsToBasket
   } = useContext(TeamsContext);
 
@@ -83,7 +83,7 @@ const ChooseTeams = props => {
   const deleteAllFromBasket = () => {
     const teams = window.document.querySelectorAll(".team-in-basket");
     teams.forEach(team => team.classList.remove("selected"));
-    deleteTeamsInBasket();
+    setTeamsInBasket([]);
   };
 
   return (

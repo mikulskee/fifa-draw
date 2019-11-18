@@ -10,9 +10,8 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-  width: 340px;
-  margin-top: 40px;
-  padding: 7px 44px;
+  width: 360px;
+  padding: 7px 24px;
   color: white;
   font-size: 34px;
   transform: translate(0);
@@ -52,7 +51,7 @@ const StatsTournamentCard = props => {
     props.history.push(`/stats/${id}`);
   };
   return (
-    <Wrapper>
+    <Wrapper className="stats-tournament-card">
       <div className="title">
         <span className="title">Turniej {tournamentNumber}</span>
         <span className="date">{date}</span>

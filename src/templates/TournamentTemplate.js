@@ -18,7 +18,6 @@ import TeamsTable from "../components/TeamsTable";
 import MatchResults from "../components/MatchResult";
 import ScoresTable from "../components/ScoresTable";
 import { LoaderAnimation } from "../animations/LoaderAnimation";
-
 const DateDescription = styled.span`
   font-weight: 300;
   font-size: 16px;
@@ -108,7 +107,7 @@ const TournamentTemplate = props => {
 
   if (players.length > 0) {
     return (
-      <Background flex tournament>
+      <Background flex className="tournament">
         <TopBar>
           <StyledTitle>
             Turniej

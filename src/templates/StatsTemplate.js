@@ -28,7 +28,7 @@ const StatsTemplate = props => {
     props.history.push("/");
   };
   return (
-    <Background stats>
+    <Background className="stats">
       <TopBar>
         <Title>Statystyki</Title>
       </TopBar>

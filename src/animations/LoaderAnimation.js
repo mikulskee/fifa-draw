@@ -1,5 +1,4 @@
 import { TimelineMax } from "gsap/all";
-// import { TweenMax } from "gsap/TweenMax";
 
 export const LoaderAnimation = () => {
   const cardB = document.querySelector(".card-blue");
@@ -31,24 +30,4 @@ export const LoaderAnimation = () => {
     .set(cardB, {
       clearProps: "all"
     });
-
-  //   new TweenMax(span, 0.8, {
-  //     css: { transform: "translateY(-100%)" }
-  //   });
-  //   new TweenMax(
-  //     loader,
-  //     0.8,
-  //     {
-  //       css: { transform: "translateY(0)" }
-  //     },
-  //     "+=0.8"
-  //   );
-  //   new TweenMax(
-  //     loader,
-  //     0.8,
-  //     {
-  //       css: { transform: "translateY(-100%)" }
-  //     },
-  //     "+=7"
-  //   );
 };

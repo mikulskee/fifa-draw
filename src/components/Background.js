@@ -51,6 +51,7 @@ const Background = props => {
       stats={props.stats}
       tournament={props.tournament}
       flex={props.flex}
+      className={props.className}
     >
       {props.children}
     </Wrapper>

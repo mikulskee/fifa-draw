@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { Title } from "./Title";
@@ -6,7 +6,7 @@ import uuidv1 from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./Button";
-import { StatsContext } from "../contexts/StatsContext";
+// import { StatsContext } from "../contexts/StatsContext";
 
 const Wrapper = styled.div`
   width: 70%;
@@ -75,14 +75,9 @@ const StyledButton = styled(Button)`
     pointer-events: none;
   }
 `;
-const DeleteButton = styled(Button)`
-  position: absolute;
-  top: 125px;
-  left: 60px;
-`;
 
 const Details = props => {
-  const { stats, setStats } = useContext(StatsContext);
+  // const { stats, setStats } = useContext(StatsContext);
   const { date, playerOne, playerTwo, results } = props;
 
   const newResults = results.map(item => (
@@ -105,14 +100,15 @@ const Details = props => {
   const goBack = () => {
     props.history.push("/stats");
   };
-  const deleteTournament = () => {
-    const id = props.match.params.tournament_id;
+  // const deleteTournament = () => {
+  //   console.log(stats);
+  //   const id = props.match.params.tournament_id;
 
-    const newStats = [...stats].filter(item => item.key !== id);
+  //   const newStats = [...stats].filter(item => item.key !== id);
+  //   props.history.push("/stats");
 
-    setStats(newStats);
-    props.history.push("/stats");
-  };
+  //   setStats(newStats);
+  // };
   return (
     <Wrapper>
       <Title relative>{date}</Title>
@@ -125,9 +121,6 @@ const Details = props => {
       <StyledButton onClick={goBack}>
         <FontAwesomeIcon icon={faTimes} />
       </StyledButton>
-      <DeleteButton small onClick={deleteTournament}>
-        Usuń turniej ze statystyk
-      </DeleteButton>
     </Wrapper>
   );
 };
