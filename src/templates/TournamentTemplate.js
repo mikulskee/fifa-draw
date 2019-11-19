@@ -87,7 +87,7 @@ const TournamentTemplate = props => {
   };
   const endTournament = () => {
     document.querySelector(".results-wrapper").classList.add("end");
-    document.querySelector(".players-baskets").classList.add("end");
+    document.querySelector(".baskets-dashboard").classList.add("end");
     document.querySelector(".tournament-winner").classList.add("end");
     setPlayerTwoTeams([]);
     setPlayerOneTeams([]);
@@ -121,13 +121,8 @@ const TournamentTemplate = props => {
             </DateDescription>
           </StyledTitle>
         </TopBar>
-        {teamsInBasket.length === 0 ? null : (
-          <>
-            <Basket />
-            <DrawingButtons />
-          </>
-        )}
-        <PlayersTeams className={"players-baskets"}>
+
+        <PlayersTeams className={"baskets-dashboard"}>
           <PlayerBasket>
             <Title>Team {players[0].toUpperCase()}</Title>
             <TeamsTable column>
@@ -150,6 +145,7 @@ const TournamentTemplate = props => {
               <Title className={"choose-team"}>Wybierz drużynę</Title>
             ) : null}
           </PlayerBasket>
+          {teamsInBasket.length === 0 ? null : <Basket />}
           <PlayerBasket>
             <Title>Team {players[1].toUpperCase()}</Title>
             <TeamsTable column>
@@ -172,6 +168,7 @@ const TournamentTemplate = props => {
             ) : null}
           </PlayerBasket>
         </PlayersTeams>
+        {teamsInBasket.length === 0 ? null : <DrawingButtons />}
         {playerTwoTeams.length > 0 && tournament.length > 0 ? (
           <StyledButton onClick={endTournament}>Zakończ turniej</StyledButton>
         ) : null}

@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 85%;
-  margin: 0 auto;
+  margin: 20px auto;
 `;
 
 const StyledButton = styled(Button)`
@@ -75,18 +75,28 @@ const DrawingButtons = () => {
     let teamsNumber = teamsInBasket.length;
     let index = Math.floor(Math.random() * teamsNumber);
     let teamDraw = teamsInBasket[index];
-    if (e.target.dataset.player === players[0]) {
-      setDrawedTeam(teamDraw);
-      DrawAnimation();
-      setTimeout(() => {
+    if (teamsNumber === 1) {
+      if (e.target.dataset.player === players[0]) {
+        setDrawedTeam(teamDraw);
         addTeamForPlayerOne(teamDraw);
-      }, 1000);
-    } else if (e.target.dataset.player === players[1]) {
-      setDrawedTeam(teamDraw);
-      DrawAnimation();
-      setTimeout(() => {
+      } else if (e.target.dataset.player === players[1]) {
+        setDrawedTeam(teamDraw);
         addTeamForPlayerTwo(teamDraw);
-      }, 1000);
+      }
+    } else {
+      if (e.target.dataset.player === players[0]) {
+        setDrawedTeam(teamDraw);
+        DrawAnimation();
+        setTimeout(() => {
+          addTeamForPlayerOne(teamDraw);
+        }, 1000);
+      } else if (e.target.dataset.player === players[1]) {
+        setDrawedTeam(teamDraw);
+        DrawAnimation();
+        setTimeout(() => {
+          addTeamForPlayerTwo(teamDraw);
+        }, 1000);
+      }
     }
 
     teamsInBasket.splice(index, 1);

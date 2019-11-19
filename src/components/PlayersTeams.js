@@ -6,8 +6,8 @@ export const PlayersTeams = styled.div`
   align-items: start;
   justify-content: space-between;
   margin: 20px auto;
-  height: 100%;
   width: 95%;
+  height: 67%;
 
   &.end {
     display: none;

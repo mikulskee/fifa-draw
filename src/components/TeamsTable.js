@@ -5,11 +5,10 @@ const Wrapper = styled.ul`
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
+  width: 80%;
   list-style: none;
   justify-content: center;
   align-items: center;
-  height: 40%;
   ${({ column }) =>
     column &&
     css`

@@ -171,7 +171,7 @@ const ScoresTable = () => {
         (!playerTwoTeams.length && tournament.length)
       ) {
         document.querySelector(".results-wrapper").classList.add("end");
-        document.querySelector(".players-baskets").classList.add("end");
+        document.querySelector(".baskets-dashboard").classList.add("end");
         setTournamentEnd(true);
       }
     }
