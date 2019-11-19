@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext, useState } from "react";
+import styled, { css } from "styled-components";
 import { Button } from "./Button";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { TeamsContext } from "../contexts/TeamsContext";
+import DrawTeamAnimation from "./DrawTeamAnimation";
+import { DrawAnimation } from "../animations/DrawAnimation";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,15 +17,30 @@ const Wrapper = styled.div`
 
 const StyledButton = styled(Button)`
   font-size: 20px;
+  opacity: ${({ disabled }) => (disabled ? "40%" : "100%")};
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      :hover::after {
+        transform: translate(-50%, 50%);
+      }
+      :hover {
+        color: white;
+      }
+    `}
 `;
 
 const DrawingButtons = () => {
-  const { players, addTeamForPlayerOne, addTeamForPlayerTwo } = useContext(
-    PlayersContext
-  );
+  const {
+    players,
+    addTeamForPlayerOne,
+    addTeamForPlayerTwo,
+    playerOneTeams,
+    playerTwoTeams
+  } = useContext(PlayersContext);
 
   const { teamsInBasket, setTeamsInBasket } = useContext(TeamsContext);
-
+  const [drawedTeam, setDrawedTeam] = useState({});
   const handleDrawAll = () => {
     let teamsNumber = teamsInBasket.length;
     let teamOne = [];
@@ -32,11 +49,21 @@ const DrawingButtons = () => {
     for (let i = teamsNumber; i > 0; i--) {
       let index = Math.floor(Math.random() * i);
       let teamDraw = teamsInBasket[index];
-      if (i % 2 === 0) {
-        teamOne.push(teamDraw);
+
+      if (playerTwoTeams.length > playerOneTeams.length) {
+        if (i % 2 === 0) {
+          teamTwo.push(teamDraw);
+        } else {
+          teamOne.push(teamDraw);
+        }
       } else {
-        teamTwo.push(teamDraw);
+        if (i % 2 === 0) {
+          teamOne.push(teamDraw);
+        } else {
+          teamTwo.push(teamDraw);
+        }
       }
+
       teamsInBasket.splice(index, 1);
     }
     setTeamsInBasket([]);
@@ -44,11 +71,55 @@ const DrawingButtons = () => {
     addTeamForPlayerTwo(teamTwo);
   };
 
+  const handleDrawForPlayer = e => {
+    let teamsNumber = teamsInBasket.length;
+    let index = Math.floor(Math.random() * teamsNumber);
+    let teamDraw = teamsInBasket[index];
+    if (e.target.dataset.player === players[0]) {
+      setDrawedTeam(teamDraw);
+      DrawAnimation();
+      setTimeout(() => {
+        addTeamForPlayerOne(teamDraw);
+      }, 1000);
+    } else if (e.target.dataset.player === players[1]) {
+      setDrawedTeam(teamDraw);
+      DrawAnimation();
+      setTimeout(() => {
+        addTeamForPlayerTwo(teamDraw);
+      }, 1000);
+    }
+
+    setTimeout(() => {
+      teamsInBasket.splice(index, 1);
+    }, 1000);
+  };
+
   return (
     <Wrapper>
-      <StyledButton>Losuj drużynę dla {players[0].toUpperCase()} </StyledButton>
+      {playerOneTeams.length <= playerTwoTeams.length ? (
+        <StyledButton data-player={players[0]} onClick={handleDrawForPlayer}>
+          Losuj drużynę dla {players[0].toUpperCase()}{" "}
+        </StyledButton>
+      ) : (
+        <StyledButton disabled>
+          Losuj drużynę dla {players[0].toUpperCase()}{" "}
+        </StyledButton>
+      )}
       <StyledButton onClick={handleDrawAll}>Wylosuj wszystkie</StyledButton>
-      <StyledButton>Losuj drużynę dla {players[1].toUpperCase()}</StyledButton>
+      {playerOneTeams.length >= playerTwoTeams.length ? (
+        <StyledButton data-player={players[1]} onClick={handleDrawForPlayer}>
+          Losuj drużynę dla {players[1].toUpperCase()}
+        </StyledButton>
+      ) : (
+        <StyledButton
+          disabled
+          data-player={players[1]}
+          onClick={handleDrawForPlayer}
+        >
+          Losuj drużynę dla {players[1].toUpperCase()}
+        </StyledButton>
+      )}
+      <DrawTeamAnimation drawTeam={drawedTeam} />
     </Wrapper>
   );
 };
