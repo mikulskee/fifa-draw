@@ -38,7 +38,7 @@ const Basket = () => {
       <Title>Koszyk</Title>
       <TeamsTable>
         {teamsInBasket.map(team => (
-          <li key={team.id}>
+          <li key={team.id} className="basket--team-logo">
             <div>
               <img src={team.img} alt={team.team}></img>
             </div>

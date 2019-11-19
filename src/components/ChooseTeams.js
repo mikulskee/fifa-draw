@@ -89,7 +89,7 @@ const ChooseTeams = props => {
   return (
     <>
       <StyledTitle>Wybierz drużyny :</StyledTitle>
-      <TeamsTable>
+      <TeamsTable newcup>
         {teams.map(team => (
           <li key={team.id} onClick={handleTeamClick}>
             <div className={"team-in-basket"}>

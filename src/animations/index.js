@@ -3,6 +3,8 @@ import { TimelineMax as Timeline, Power1 } from "gsap";
 const getHomeEnterTimeline = node => {
   const timeline = new Timeline({ paused: true });
   const cards = node.querySelectorAll(".stats-tournament-card");
+  const basketTeamLogo = node.querySelectorAll(".basket--team-logo");
+
   timeline
     .from(node, 0.35, {
       autoAlpha: 0,
@@ -12,6 +14,12 @@ const getHomeEnterTimeline = node => {
     .staggerFrom(
       cards,
       0.3,
+      { autoAlpha: 0, x: -25, ease: Power1.easeOut },
+      0.1
+    )
+    .staggerFrom(
+      basketTeamLogo,
+      0.275,
       { autoAlpha: 0, x: -25, ease: Power1.easeOut },
       0.1
     );

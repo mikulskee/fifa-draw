@@ -9,6 +9,12 @@ const Wrapper = styled.ul`
   list-style: none;
   justify-content: center;
   align-items: center;
+  ${({ newcup }) =>
+    newcup &&
+    css`
+      width: 60%;
+      height: 40%;
+    `}
   ${({ column }) =>
     column &&
     css`
@@ -72,7 +78,11 @@ const Wrapper = styled.ul`
 `;
 
 const TeamsTable = props => {
-  return <Wrapper column={props.column}>{props.children}</Wrapper>;
+  return (
+    <Wrapper newcup={props.newcup} column={props.column}>
+      {props.children}
+    </Wrapper>
+  );
 };
 
 export default TeamsTable;
