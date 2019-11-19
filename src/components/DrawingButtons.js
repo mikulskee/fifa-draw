@@ -89,9 +89,7 @@ const DrawingButtons = () => {
       }, 1000);
     }
 
-    setTimeout(() => {
-      teamsInBasket.splice(index, 1);
-    }, 1000);
+    teamsInBasket.splice(index, 1);
   };
 
   return (

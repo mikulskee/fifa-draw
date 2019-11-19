@@ -56,32 +56,34 @@ const TournamentTemplate = props => {
   } = useContext(ScoresContext);
 
   const handleClick = e => {
-    if (matchTeams.length > 1) {
-      return;
-    } else {
-      const matchResults = document.querySelector(".results-wrapper");
-      const playerNames = document.querySelector(".player-names");
-      const teams = playerOneTeams.concat(playerTwoTeams);
-      const selectedTeam = teams.filter(team => team.team === e.target.alt);
+    if (teamsInBasket.length === 0) {
+      if (matchTeams.length > 1) {
+        return;
+      } else {
+        const matchResults = document.querySelector(".results-wrapper");
+        const playerNames = document.querySelector(".player-names");
+        const teams = playerOneTeams.concat(playerTwoTeams);
+        const selectedTeam = teams.filter(team => team.team === e.target.alt);
 
-      if (matchResults) {
-        matchResults.classList.remove("active");
-        playerNames.classList.remove("active");
+        if (matchResults) {
+          matchResults.classList.remove("active");
+          playerNames.classList.remove("active");
+        }
+        if (
+          e.target.classList.contains("player-one") &&
+          playerOneTeams.length === playerTwoTeams.length
+        ) {
+          deletePlayerOneTeam(selectedTeam);
+          setTeam(selectedTeam);
+        } else if (
+          e.target.classList.contains("player-two") &&
+          playerOneTeams.length < playerTwoTeams.length
+        ) {
+          deletePlayerTwoTeam(selectedTeam);
+          setTeam(selectedTeam);
+        }
       }
-      if (
-        e.target.classList.contains("player-one") &&
-        playerOneTeams.length === playerTwoTeams.length
-      ) {
-        deletePlayerOneTeam(selectedTeam);
-        setTeam(selectedTeam);
-      } else if (
-        e.target.classList.contains("player-two") &&
-        playerOneTeams.length < playerTwoTeams.length
-      ) {
-        deletePlayerTwoTeam(selectedTeam);
-        setTeam(selectedTeam);
-      }
-    }
+    } else return;
   };
   const endTournament = () => {
     document.querySelector(".results-wrapper").classList.add("end");
@@ -144,7 +146,7 @@ const TournamentTemplate = props => {
               ))}
             </TeamsTable>
 
-            {playerOneTeams.length > 0 && matchTeams.length === 0 ? (
+            {(teamsInBasket.length === 0 && matchTeams.length) === 0 ? (
               <Title className={"choose-team"}>Wybierz drużynę</Title>
             ) : null}
           </PlayerBasket>
