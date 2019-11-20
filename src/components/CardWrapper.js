@@ -13,6 +13,7 @@ const Wrapper = styled.ul`
   flex-wrap: wrap;
   list-style: none;
   margin: 0 auto;
+  overflow-x: auto;
   li {
     margin-top: 40px;
     .stats-tournament-card:hover ~ button.delete {

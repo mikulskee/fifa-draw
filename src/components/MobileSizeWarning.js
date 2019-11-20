@@ -46,6 +46,9 @@ const Description = styled.p`
     width: 180px;
     font-size: calc(0.6rem + 0.5vw);
   }
+  @media only screen and (min-width: 768px) {
+    width: 180px;
+  }
 `;
 const Browser = styled.div`
   position: relative;

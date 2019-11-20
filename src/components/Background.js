@@ -14,9 +14,12 @@ const Wrapper = styled.div`
       align-items: center;
       justify-content: flex-start;
     `}
-  position: fixed;
+
   height: 100vh;
   width: 100vw;
+  max-width: 1920px;
+  max-height: 1080px;
+  margin: 0 auto;
 
   ${({ main }) =>
     main &&

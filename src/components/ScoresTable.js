@@ -15,14 +15,18 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
   left: 50%;
   transform: translateX(-50%);
   max-height: 55px;
-  width: 20%;
+  width: 33%;
   border-radius: 10px;
   justify-content: flex-start;
   overflow: hidden;
   transition: max-height 0.25s ease-out, width 0.25s 0.25s ease-out;
   &.end {
     max-height: 900px;
-    width: 40%;
+    max-width: 650px;
+    width: 58%;
+    @media only screen and (min-width: 1336px) {
+      width: 47%;
+    }
     .results > * {
       opacity: 1;
     }

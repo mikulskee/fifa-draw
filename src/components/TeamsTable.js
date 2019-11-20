@@ -13,7 +13,7 @@ const Wrapper = styled.ul`
     newcup &&
     css`
       width: 60%;
-      height: 40%;
+      height: 35%;
     `}
   ${({ column }) =>
     column &&
@@ -54,10 +54,13 @@ const Wrapper = styled.ul`
       img {
         position: relative;
         display: block;
-        height: 60px;
+        height: 45px;
         cursor: pointer;
         margin: 0 auto;
         z-index: 2;
+        @media only screen and (min-width: 1366px) {
+          height: 60px;
+        }
       }
 
       h1 {
@@ -66,10 +69,10 @@ const Wrapper = styled.ul`
         top: 50%;
         left: 50%;
         transform: translate(-82%, -50%);
-        font-size: 86px;
+        font-size: 76px;
         font-weight: bolder;
         z-index: 1;
-        width: 100px;
+        width: 60px;
         text-align: center;
         opacity: 0.2;
       }

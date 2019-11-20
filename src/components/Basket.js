@@ -5,7 +5,7 @@ import { TeamsContext } from "../contexts/TeamsContext";
 import TeamsTable from "./TeamsTable";
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 36%;
   background-color: #043c56;
   margin: 0 10px;
   border-radius: 10px;
