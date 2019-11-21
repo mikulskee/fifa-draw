@@ -21,11 +21,12 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
   overflow: hidden;
   transition: max-height 0.25s ease-out, width 0.25s 0.25s ease-out;
   &.end {
-    max-height: 900px;
+    max-height: 540px;
     max-width: 650px;
     width: 58%;
     @media only screen and (min-width: 1336px) {
       width: 47%;
+      max-height: 900px;
     }
     .results > * {
       opacity: 1;
@@ -99,13 +100,16 @@ const Results = styled.div`
   align-items: center;
 `;
 const Result = styled.div`
-  margin: 10px 0;
+  margin: 3px 0;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   color: white;
+  @media only screen and (min-width: 1336px) {
+    margin: 10px 0;
+  }
 
   .image {
     width: 30px;
@@ -123,6 +127,12 @@ const Result = styled.div`
   }
   p:last-child.team-1 {
     color: #d4b726;
+  }
+
+  h3 {
+    @media only screen and (min-width: 1336px) {
+      font-size: 28px;
+    }
   }
 `;
 
@@ -224,10 +234,9 @@ const ScoresTable = () => {
             <div className={"image"}>
               <img src={tour.teams[0].img} alt={tour.teams[0].team} />
             </div>
-
-            <h1>{tour.result[0]}</h1>
+            <h3>{tour.result[0]}</h3>
             <span>:</span>
-            <h1>{tour.result[1]}</h1>
+            <h3>{tour.result[1]}</h3>
             <div className={"image"}>
               <img src={tour.teams[1].img} alt={tour.teams[1].team} />
             </div>

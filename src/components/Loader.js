@@ -8,7 +8,7 @@ const CardBlue = styled.div`
   position: absolute;
   z-index: 999999;
   background-color: #043c56;
-  transform: translateY(100%);
+  transform: translateY(0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@ const CardWhite = styled.div`
   position: absolute;
   z-index: 999998;
   background-color: #ffffff;
-  transform: translateY(100%);
+  transform: translateY(0);
 `;
 
 const Loader = () => {

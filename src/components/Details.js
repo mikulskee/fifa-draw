@@ -81,7 +81,7 @@ const Details = props => {
   const { date, playerOne, playerTwo, results } = props;
 
   const newResults = results.map(item => (
-    <ResultTitle relative key={uuidv1()}>
+    <ResultTitle relative key={uuidv1()} className={"result-table--result"}>
       <span className="team-name">{item.teams["0"].team}</span>
       <div className="team-logo">
         <img src={item.teams["0"].img} alt={item.teams["0"].team} />
@@ -100,15 +100,7 @@ const Details = props => {
   const goBack = () => {
     props.history.push("/stats");
   };
-  // const deleteTournament = () => {
-  //   console.log(stats);
-  //   const id = props.match.params.tournament_id;
 
-  //   const newStats = [...stats].filter(item => item.key !== id);
-  //   props.history.push("/stats");
-
-  //   setStats(newStats);
-  // };
   return (
     <Wrapper>
       <Title relative>{date}</Title>

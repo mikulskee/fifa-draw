@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   background-color: #043c56;
   color: white;
   border-radius: 10px;
-  margin: 20px auto 0;
+  margin: 0 auto;
 `;
 
 const TopBar = props => {

@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const PlayersContext = createContext();
 
 const PlayersContextProvider = props => {
-  const [players, setPlayers] = useState(["Czesiek", "Jurek"]);
+  const [players, setPlayers] = useState(["jędrzej", "bolek"]);
   const [playerOneTeams, setPlayerOneTeams] = useState([]);
   const [playerTwoTeams, setPlayerTwoTeams] = useState([]);
   const [isNewPlayersSubmited, setSubmitPlayers] = useState(true);
