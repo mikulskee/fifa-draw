@@ -21,7 +21,7 @@ const App = () => {
       <TeamsContextProvider>
         <ScoresContextProvider>
           <StatsContextProvider>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Media
                 query="(max-width: 1023px)"
                 render={() => <MobileSizeWarning />}
