@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import ConfirmButtons from "../components/ConfirmButtons";
 import TeamsTable from "../components/TeamsTable";
+import { ScoresContext } from "../contexts/ScoresContext";
 
 const AmountOfTeams = styled(Title)`
   position: fixed;
@@ -52,6 +53,7 @@ const ChooseTeams = props => {
   } = useContext(TeamsContext);
 
   const { unsubmitNewPlayersForm, clearPlayers } = useContext(PlayersContext);
+  const { setTournamentStart } = useContext(ScoresContext);
 
   const handleConfirm = () => {
     if (teamsInBasket.length > 0) {
@@ -60,6 +62,7 @@ const ChooseTeams = props => {
         return;
       } else if (teamsInBasket.length % 2 === 0) {
         props.history.push("/tournament");
+        setTournamentStart(true);
       }
     } else alert("Wybierz drużyny!");
     return;

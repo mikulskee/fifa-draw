@@ -40,7 +40,7 @@ const App = () => {
                               appear={true}
                               onEnter={node => play(node, pathname)}
                               onExit={node => exit(node, pathname)}
-                              timeout={{ enter: 1200, exit: 3800 }}
+                              timeout={{ enter: 400, exit: 400 }}
                             >
                               <Switch location={location}>
                                 <Route

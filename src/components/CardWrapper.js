@@ -25,7 +25,7 @@ const Wrapper = styled.ul`
       display: flex;
       flex-direction: row;
       align-items: center;
-      width: 360px;
+      width: 340px;
       &:hover button.delete {
         display: block;
         opacity: 1;

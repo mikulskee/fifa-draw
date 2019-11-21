@@ -6,6 +6,7 @@ const ScoresContextProvider = props => {
   const [tournament, setTournament] = useState([]);
   const [winner, setWinner] = useState("");
   const [isTournamentEnd, setTournamentEnd] = useState(false);
+  const [isTournamentStarted, setTournamentStart] = useState(false);
 
   const showWinner = () => {
     const pl1wins = tournament.filter(tour => tour.win === 0).length;
@@ -35,7 +36,9 @@ const ScoresContextProvider = props => {
         showWinner,
         isTournamentEnd,
         setTournamentEnd,
-        setWinner
+        setWinner,
+        isTournamentStarted,
+        setTournamentStart
       }}
     >
       {props.children}

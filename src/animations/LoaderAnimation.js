@@ -2,33 +2,26 @@ import { TimelineMax } from "gsap/all";
 
 export const LoaderAnimation = () => {
   const tl = new TimelineMax({ paused: true });
-  const cardB = document.querySelector(".card-blue");
+  const cardB = document.querySelector(".card-black");
   const cardW = document.querySelector(".card-white");
 
-  tl.to(cardW, 0.6, {
-    css: { transform: "translateY(-100%)" }
-  })
-    .to(
-      cardB,
-      0.6,
-      {
-        css: { transform: "translateY(-100%)" }
-      },
-      "-=0.3"
-    )
-    .set(cardW, {
-      clearProps: "all"
+  tl.set(cardB, { css: { zIndex: 999999 } })
+    .set(cardW, { css: { zIndex: 999998 } })
+    .to(cardW, 0.6, {
+      css: { transform: "translatey(0)" }
     })
     .to(
       cardB,
       0.6,
       {
-        css: { transform: "translateY(-200%)" }
+        css: { transform: "translatey(0)" }
       },
-      "+=0.5"
+      "-=0.4"
     )
-    .set(cardB, {
-      clearProps: "all"
+    .set(cardW, { clearProps: "all" })
+    .to(cardB, 0.6, {
+      css: { transform: "translatey(-100%)" },
+      delay: 1
     });
 
   tl.play();

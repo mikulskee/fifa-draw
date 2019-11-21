@@ -45,7 +45,7 @@ const TeamsContextProvider = props => {
     { id: 18, team: "Tottenham Hotspur", img: tottenham },
     { id: 19, team: "Manchester United", img: united }
   ]);
-  const [teamsInBasket, setTeamsInBasket] = useState(teams);
+  const [teamsInBasket, setTeamsInBasket] = useState([]);
   const [matchTeams, setMatchTeam] = useState([]);
   const addAllTeamsToBasket = () => setTeamsInBasket([...teams]);
   const setTeamSelected = id => {

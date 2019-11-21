@@ -2,9 +2,19 @@ import { TimelineMax as Timeline, Power1 } from "gsap";
 
 const getHomeEnterTimeline = node => {
   const timeline = new Timeline({ paused: true });
+
+  timeline.from(node, 0.35, {
+    autoAlpha: 0,
+    scale: 1.1,
+    ease: Power1.easeOut
+  });
+
+  return timeline;
+};
+
+const getStatsEnterTimeline = node => {
+  const timeline = new Timeline({ paused: true });
   const cards = node.querySelectorAll(".stats-tournament-card");
-  const basketTeamLogo = node.querySelectorAll(".basket--team-logo");
-  const results = node.querySelectorAll(".result-table--result");
 
   timeline
     .from(node, 0.35, {
@@ -17,16 +27,23 @@ const getHomeEnterTimeline = node => {
       0.3,
       { autoAlpha: 0, x: -25, ease: Power1.easeOut },
       0.1
-    )
+    );
+
+  return timeline;
+};
+const getTournamentEnterTimeline = node => {
+  const timeline = new Timeline({ paused: true });
+  const basketTeamLogo = node.querySelectorAll(".basket--team-logo");
+
+  timeline
+    .from(node, 0.35, {
+      autoAlpha: 0,
+      scale: 1.1,
+      ease: Power1.easeOut
+    })
     .staggerFrom(
       basketTeamLogo,
       0.275,
-      { autoAlpha: 0, x: -25, ease: Power1.easeOut },
-      0.1
-    )
-    .staggerFrom(
-      results,
-      0.3,
       { autoAlpha: 0, x: -25, ease: Power1.easeOut },
       0.1
     );
@@ -34,10 +51,14 @@ const getHomeEnterTimeline = node => {
   return timeline;
 };
 
-export const play = node => {
+export const play = (node, pathname) => {
   let timeline;
 
-  timeline = getHomeEnterTimeline(node);
+  if (pathname === "/stats") {
+    timeline = getStatsEnterTimeline(node);
+  } else if (pathname === "/tournament") {
+    timeline = getTournamentEnterTimeline(node);
+  } else timeline = getHomeEnterTimeline(node);
 
   window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()));
 };

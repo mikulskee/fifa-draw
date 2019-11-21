@@ -2,36 +2,40 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../images/logo-white-png.png";
 
-const CardBlue = styled.div`
+const CardBlack = styled.div`
   height: 100vh;
   width: 100vw;
   position: absolute;
-  z-index: 999999;
-  background-color: #043c56;
-  transform: translateY(0);
+  z-index: -200;
+  background-color: #121212;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transform: translateY(100%);
   img {
     height: 17vw;
   }
 `;
-
 const CardWhite = styled.div`
   height: 100vh;
   width: 100vw;
   position: absolute;
-  z-index: 999998;
-  background-color: #ffffff;
-  transform: translateY(0);
+  z-index: -200;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
 `;
 
 const Loader = () => {
   return (
     <>
-      <CardBlue className="card-blue">
+      <CardBlack className="card-black">
         <img src={logo} alt="logo FifaDraw" />
-      </CardBlue>
+      </CardBlack>
       <CardWhite className="card-white" />
     </>
   );
