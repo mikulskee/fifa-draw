@@ -10,13 +10,11 @@ import { Button } from "./Button";
 
 const Wrapper = styled.div`
   width: 70%;
-  height: 70%;
-  margin: 40px auto;
+  margin: 15px auto;
 `;
 
 const StyledTitle = styled(Title)`
-  margin: 20px 0 20px;
-  font-size: 46px;
+  margin: 15px 0 15px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -35,7 +33,7 @@ const StyledTitle = styled(Title)`
 
 const ResultTitle = styled(Title)`
   padding: 10px 0;
-  font-size: 26px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -53,12 +51,15 @@ const ResultTitle = styled(Title)`
     align-items: center;
     img {
       margin: 0 20px;
-      width: 40px;
+      width: 20px;
     }
   }
 `;
-const ResultTable = styled.div`
-  margin-top: 40px;
+const ResultTable = styled.ul`
+  width: 70%;
+  margin: 0 auto;
+  list-style: none;
+  overflow: hidden;
 `;
 
 const StyledButton = styled(Button)`
@@ -66,6 +67,7 @@ const StyledButton = styled(Button)`
   top: 125px;
   right: 60px;
   color: #d4b726;
+  font-size: 26px;
   &::after,
   &::before {
     display: none;
@@ -81,20 +83,22 @@ const Details = props => {
   const { date, playerOne, playerTwo, results } = props;
 
   const newResults = results.map(item => (
-    <ResultTitle relative key={uuidv1()} className={"result-table--result"}>
-      <span className="team-name">{item.teams["0"].team}</span>
-      <div className="team-logo">
-        <img src={item.teams["0"].img} alt={item.teams["0"].team} />
-      </div>
+    <li>
+      <ResultTitle relative key={uuidv1()} className={"result-table--result"}>
+        <span className="team-name">{item.teams["0"].team}</span>
+        <div className="team-logo">
+          <img src={item.teams["0"].img} alt={item.teams["0"].team} />
+        </div>
 
-      <div className="score">
-        <span>{item.result["0"]}</span> : <span>{item.result["1"]}</span>
-      </div>
-      <div className="team-logo">
-        <img src={item.teams["1"].img} alt={item.teams["1"].team} />
-      </div>
-      <span className="team-name">{item.teams["1"].team}</span>
-    </ResultTitle>
+        <div className="score">
+          <span>{item.result["0"]}</span> : <span>{item.result["1"]}</span>
+        </div>
+        <div className="team-logo">
+          <img src={item.teams["1"].img} alt={item.teams["1"].team} />
+        </div>
+        <span className="team-name">{item.teams["1"].team}</span>
+      </ResultTitle>
+    </li>
   ));
 
   const goBack = () => {
@@ -103,8 +107,10 @@ const Details = props => {
 
   return (
     <Wrapper>
-      <Title relative>{date}</Title>
-      <StyledTitle relative yellow>
+      <Title small relative>
+        {date}
+      </Title>
+      <StyledTitle relative yellow medium>
         <span className="player-name">{playerOne}</span>
         <span className="vs">vs</span>
         <span className="player-name">{playerTwo}</span>

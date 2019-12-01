@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const PlayerBasket = styled.div`
   position: relative;
-  width: 280px;
+  width: 260px;
   background-color: #043c56;
   border-radius: 10px;
-  padding: 20px 0;
-  @media only screen and (min-width: 1366px) {
+  padding: 15px 0;
+  @media only screen and (min-width: 1336px) {
     width: 340px;
   }
 

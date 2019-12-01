@@ -23,9 +23,9 @@ const StatsDetailsTemplate = props => {
   const results = detailsArray.filter(item => item.result);
 
   return (
-    <Background>
+    <Background overflow>
       <TopBar>
-        <Title>Turniej {tournamentNumber + 1}</Title>
+        <Title medium>Turniej {tournamentNumber + 1}</Title>
       </TopBar>
       <Details
         date={date}

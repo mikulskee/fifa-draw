@@ -5,8 +5,8 @@ export const LoaderAnimation = () => {
   const cardB = document.querySelector(".card-black");
   const cardW = document.querySelector(".card-white");
 
-  tl.set(cardB, { css: { zIndex: 999999 } })
-    .set(cardW, { css: { zIndex: 999998 } })
+  tl.set(cardB, { css: { zIndex: 999999, display: "flex" } })
+    .set(cardW, { css: { zIndex: 999998, display: "block" } })
     .to(cardW, 0.6, {
       css: { transform: "translatey(0)" }
     })
@@ -22,7 +22,8 @@ export const LoaderAnimation = () => {
     .to(cardB, 0.6, {
       css: { transform: "translatey(-100%)" },
       delay: 1
-    });
+    })
+    .set(cardB, { clearProps: "all" });
 
   tl.play();
 };

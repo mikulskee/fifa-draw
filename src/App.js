@@ -23,11 +23,11 @@ const App = () => {
           <StatsContextProvider>
             <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Media
-                query="(max-width: 1023px)"
+                query="(orientation: portrait)"
                 render={() => <MobileSizeWarning />}
               />
               <Media
-                query="(min-width: 1024px)"
+                query="(orientation: landscape)"
                 render={() => (
                   <div className="App">
                     <Route

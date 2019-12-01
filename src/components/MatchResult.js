@@ -12,12 +12,15 @@ import { RowFlexWrapper } from "./RowFlexWrapper";
 import { Button } from "./Button";
 
 const Wrapper = styled.form`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 75px 0;
+  align-self: center;
   color: white;
   font-size: 60px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .score-table {
     display: flex;
@@ -189,6 +192,10 @@ const MatchResults = () => {
       clearScore();
       setPlayerTwoInput(0);
       setPlayerOneInput(0);
+    } else if (playerOneInput === playerTwoInput) {
+      alert(
+        "Mecz MUSI zakończyć się rozstrzygnięciem. W razie remisu wpisz wynik z dogrywki lub rzutów karnych."
+      );
     }
   };
 
@@ -233,8 +240,6 @@ const MatchResults = () => {
                   </ChangeScoreButton>
                 </ColumnFlexWrapper>
               ) : null}
-
-              {/* <h1>{matchTeams[0].team}</h1> */}
             </>
           ) : null}
         </div>
@@ -274,7 +279,6 @@ const MatchResults = () => {
                 </ChangeScoreButton>
               </ColumnFlexWrapper>
               <img src={matchTeams[1].img} alt="logo" />
-              {/* <h1>{matchTeams[1].team}</h1> */}
             </>
           ) : null}
         </div>

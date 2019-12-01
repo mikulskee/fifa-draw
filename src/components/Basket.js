@@ -14,7 +14,6 @@ const Wrapper = styled.div`
     position: static;
     text-align: center;
     transform: translateX(0);
-    margin-bottom: 30px;
     ::after {
       content: "";
       display: block;
@@ -35,7 +34,7 @@ const Basket = () => {
 
   return (
     <Wrapper>
-      <Title>Koszyk</Title>
+      <Title medium>Koszyk</Title>
       <TeamsTable>
         {teamsInBasket.map(team => (
           <li key={team.id} className="basket--team-logo">

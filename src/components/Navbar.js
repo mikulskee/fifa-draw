@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Wrapper = styled.nav`
   flex-grow: 1;
   ul {
+    margin-top: 15px;
     height: 100%;
     list-style: none;
     display: flex;
@@ -14,18 +15,18 @@ const Wrapper = styled.nav`
     height: 70;
     li {
       display: block;
-      width: 222px;
-      height: 51px;
+      width: 200px;
       &:nth-child(1) {
         margin-bottom: 70px;
       }
       a {
-        display: block;
+        display: flex;
+        align-items: center;
         text-align: center;
         background-color: #d4b726;
         text-decoration: none;
         color: white;
-        font-size: 34px;
+        font-size: 26px;
         font-weight: bold;
         border-radius: 10px;
         display: block;

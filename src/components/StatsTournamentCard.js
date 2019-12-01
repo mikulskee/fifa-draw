@@ -10,26 +10,29 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-  width: 360px;
+  width: 260px;
   padding: 7px 24px;
   color: white;
   font-size: 34px;
   transform: translate(0);
+  cursor: pointer;
 
   div.title {
     display: flex;
     flex-direction: column;
     span.title {
       font-weight: bold;
+      font-size: 26px;
     }
     span.date {
       font-weight: lighter;
-      font-size: 18px;
+      font-size: 16px;
     }
   }
   div.winner-name {
     color: #d4b726;
     font-weight: bold;
+    font-size: 28px;
   }
 
   button {
@@ -51,7 +54,7 @@ const StatsTournamentCard = props => {
     props.history.push(`/stats/${id}`);
   };
   return (
-    <Wrapper className="stats-tournament-card">
+    <Wrapper className="stats-tournament-card" onClick={openDetails}>
       <div className="title">
         <span className="title">Turniej {tournamentNumber}</span>
         <span className="date">{date}</span>

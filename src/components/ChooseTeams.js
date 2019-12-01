@@ -11,16 +11,31 @@ import ConfirmButtons from "../components/ConfirmButtons";
 import TeamsTable from "../components/TeamsTable";
 import { ScoresContext } from "../contexts/ScoresContext";
 
+const Wrapper = styled.div`
+  width: 90%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  .dashboard {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+`;
 const AmountOfTeams = styled(Title)`
-  position: fixed;
-  bottom: 200px;
+  padding: 10px 0;
+  position: relative;
+  transform: translate(0);
+  left: 0;
 `;
 
 const StyledTitle = styled(Title)`
   position: relative;
   text-align: center;
   margin: 20px auto;
-  font-size: 44px;
+
   left: auto;
   transform: translateX(0);
   ::after {
@@ -28,7 +43,7 @@ const StyledTitle = styled(Title)`
     left: 50%;
     transform: translateX(-50%);
     content: "";
-    width: 250%;
+    width: 350%;
     height: 2px;
     background-color: white;
     display: block;
@@ -37,10 +52,18 @@ const StyledTitle = styled(Title)`
 `;
 
 const ManageButtons = styled.div`
-  width: 40%;
+  margin: 20px auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 340px;
+
+  button {
+    font-size: 16px;
+    height: auto;
+    padding: 10px 20px;
+    margin: 0 5px;
+  }
 `;
 
 const ChooseTeams = props => {
@@ -90,36 +113,39 @@ const ChooseTeams = props => {
   };
 
   return (
-    <>
-      <StyledTitle>Wybierz drużyny :</StyledTitle>
-      <TeamsTable newcup>
-        {teams.map(team => (
-          <li key={team.id} onClick={handleTeamClick}>
-            <div className={"team-in-basket"}>
-              <img src={team.img} alt={team.team}></img>
-              <FontAwesomeIcon icon={faCheckCircle} />
-            </div>
-          </li>
-        ))}
-      </TeamsTable>
-      <ManageButtons>
-        <Button small onClick={addAllToBasket}>
-          Dodaj wszystkie do koszyka
-        </Button>
-        <Button small onClick={deleteAllFromBasket}>
-          Usuń zanaczenie
-        </Button>
-      </ManageButtons>
-      <AmountOfTeams>
-        Ilość wybranych drużyn: {teamsInBasket.length}
-      </AmountOfTeams>
+    <Wrapper>
+      <div className={"dashboard"}>
+        <StyledTitle>Wybierz drużyny :</StyledTitle>
+        <TeamsTable newcup>
+          {teams.map(team => (
+            <li key={team.id} onClick={handleTeamClick}>
+              <div className={"team-in-basket"}>
+                <img src={team.img} alt={team.team}></img>
+                <FontAwesomeIcon icon={faCheckCircle} />
+              </div>
+            </li>
+          ))}
+        </TeamsTable>
+        <AmountOfTeams small>
+          Ilość wybranych drużyn: {teamsInBasket.length}
+        </AmountOfTeams>
+        <ManageButtons>
+          <Button small onClick={addAllToBasket}>
+            Dodaj wszystkie do koszyka
+          </Button>
+          <Button small onClick={deleteAllFromBasket}>
+            Usuń zanaczenie
+          </Button>
+        </ManageButtons>
+      </div>
+
       <ConfirmButtons
         textButton={"Utwórz turniej"}
         goBackFunction={goBackFunction}
         handleConfirm={handleConfirm}
       />
       {/* <WarningWindow /> */}
-    </>
+    </Wrapper>
   );
 };
 

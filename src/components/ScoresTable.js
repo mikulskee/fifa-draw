@@ -9,23 +9,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
-  background-color: #043c56;
-  position: fixed;
-  top: 116px;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
+  background-color: #043c56;
   max-height: 55px;
-  width: 33%;
+  width: 130%;
   border-radius: 10px;
   justify-content: flex-start;
   overflow: hidden;
   transition: max-height 0.25s ease-out, width 0.25s 0.25s ease-out;
+  will-change: max-height, width;
   &.end {
-    max-height: 540px;
+    max-height: 800px;
     max-width: 650px;
-    width: 58%;
+    width: 145%;
     @media only screen and (min-width: 1336px) {
-      width: 47%;
+      width: 155%;
       max-height: 900px;
     }
     .results > * {
@@ -43,6 +43,7 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
 
   &.active {
     max-height: 800px;
+
     button {
       transform: rotate(180deg);
     }
@@ -93,11 +94,16 @@ const PlayersNames = styled.div`
   }
 `;
 
-const Results = styled.div`
+const Results = styled.ul`
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  list-style: none;
+  padding-bottom: 20px;
+  li {
+    width: 100%;
+  }
 `;
 const Result = styled.div`
   margin: 3px 0;
@@ -114,7 +120,10 @@ const Result = styled.div`
   .image {
     width: 30px;
     img {
-      height: 30px;
+      height: 20px;
+      @media only screen and (min-width: 1336px) {
+        height: 30px;
+      }
     }
   }
 
@@ -137,19 +146,18 @@ const Result = styled.div`
 `;
 
 const WinnerTitle = styled(Title)`
-  height: 0;
   width: 100%;
   position: static;
   text-align: center;
   opacity: 0;
-  display: block;
+  display: none;
   transform: translate(0, 100%);
-  padding: 20px 0;
+  padding-bottom: 10px;
   transition: opacity 0.25s 0.5s ease-out, transform 0.25s 0.5s ease-out;
   &.end {
-    height: auto;
     transform: translate(0, 0);
     opacity: 1;
+    display: block;
   }
   span {
     color: #d4b726;
@@ -229,19 +237,21 @@ const ScoresTable = () => {
 
       <Results className="results">
         {tournament.map(tour => (
-          <Result key={tour.teams[0].team}>
-            <p className={`team-${tour.win}`}>{tour.teams[0].team}</p>
-            <div className={"image"}>
-              <img src={tour.teams[0].img} alt={tour.teams[0].team} />
-            </div>
-            <h3>{tour.result[0]}</h3>
-            <span>:</span>
-            <h3>{tour.result[1]}</h3>
-            <div className={"image"}>
-              <img src={tour.teams[1].img} alt={tour.teams[1].team} />
-            </div>
-            <p className={`team-${tour.win}`}>{tour.teams[1].team}</p>
-          </Result>
+          <li key={tour.teams[0].team}>
+            <Result>
+              <p className={`team-${tour.win}`}>{tour.teams[0].team}</p>
+              <div className={"image"}>
+                <img src={tour.teams[0].img} alt={tour.teams[0].team} />
+              </div>
+              <h3>{tour.result[0]}</h3>
+              <span>:</span>
+              <h3>{tour.result[1]}</h3>
+              <div className={"image"}>
+                <img src={tour.teams[1].img} alt={tour.teams[1].team} />
+              </div>
+              <p className={`team-${tour.win}`}>{tour.teams[1].team}</p>
+            </Result>
+          </li>
         ))}
       </Results>
 

@@ -4,9 +4,14 @@ export const DrawAnimation = () => {
   const wrapper = document.querySelector(".drawing-animation-card");
   const logo = document.querySelector(".drawing-animation-card--team-logo");
   const title = document.querySelector(".drawing-animation-card--team-title");
+  const bg = document.querySelector(".tournament");
   const tl = new TimelineMax({ play: false });
 
-  tl.set(wrapper, { css: { zIndex: 99999999 } })
+  tl.set(bg, { css: { overflow: "hidden" } }).set(bg, { clearProps: "all" });
+
+  tl.set(bg, { css: { overflow: "hidden" } })
+    .set(wrapper, { css: { zIndex: 99999999, display: "flex" } })
+
     .to(wrapper, 0.35, {
       opacity: 1
     })
@@ -26,5 +31,6 @@ export const DrawAnimation = () => {
     .to(wrapper, 0.35, { opacity: 0, delay: 1 })
     .set(wrapper, { clearProps: "all" })
     .set(logo, { clearProps: "all" })
-    .set(title, { clearProps: "all" });
+    .set(title, { clearProps: "all" })
+    .set(bg, { clearProps: "all" });
 };

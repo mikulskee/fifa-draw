@@ -9,11 +9,11 @@ const Wrapper = styled.ul`
   list-style: none;
   justify-content: center;
   align-items: center;
+  padding: 5px 0;
   ${({ newcup }) =>
     newcup &&
     css`
-      width: 60%;
-      height: 35%;
+      width: 45%;
     `}
   ${({ column }) =>
     column &&
@@ -29,7 +29,7 @@ const Wrapper = styled.ul`
       column &&
       css`
         width: 50%;
-        margin: 20px 0;
+        margin: 12px 0;
       `}
     div {
       position: relative;
@@ -54,13 +54,11 @@ const Wrapper = styled.ul`
       img {
         position: relative;
         display: block;
-        height: 45px;
+        height: 3vw;
+        max-height: 60px;
         cursor: pointer;
         margin: 0 auto;
         z-index: 2;
-        @media only screen and (min-width: 1366px) {
-          height: 60px;
-        }
       }
 
       h1 {
@@ -69,12 +67,15 @@ const Wrapper = styled.ul`
         top: 50%;
         left: 50%;
         transform: translate(-82%, -50%);
-        font-size: 76px;
+        font-size: 56px;
         font-weight: bolder;
         z-index: 1;
         width: 60px;
         text-align: center;
         opacity: 0.2;
+        @media only screen and (min-width: 1336px) {
+          font-size: 76px;
+        }
       }
     }
   }

@@ -3,8 +3,9 @@ import styled from "styled-components";
 import logo from "../images/logo-white-png.png";
 
 const CardBlack = styled.div`
-  height: 100vh;
-  width: 100vw;
+  display: none;
+  height: 100%;
+  width: 100%;
   position: absolute;
   z-index: -200;
   background-color: #121212;
@@ -20,8 +21,9 @@ const CardBlack = styled.div`
   }
 `;
 const CardWhite = styled.div`
-  height: 100vh;
-  width: 100vw;
+  display: none;
+  height: 100%;
+  width: 100%;
   position: absolute;
   z-index: -200;
   background-color: #fff;

@@ -12,11 +12,13 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 85%;
-  margin: 20px auto;
+  margin: 0px auto;
 `;
 
 const StyledButton = styled(Button)`
-  font-size: 20px;
+  font-size: 14px;
+  height: auto;
+  padding: 10px 15px;
   opacity: ${({ disabled }) => (disabled ? "40%" : "100%")};
   ${({ disabled }) =>
     disabled &&

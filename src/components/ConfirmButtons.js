@@ -5,16 +5,14 @@ import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../components/Button";
 
 const Wrapper = styled.div`
-  position: fixed;
-  bottom: 100px;
   width: 90%;
-  font-size: 40px;
+  font-size: 36px;
   color: #d4b726;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  margin: 20px auto 20px;
 
   svg {
     cursor: pointer;

@@ -8,18 +8,18 @@ const Wrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #121212;
   z-index: -200;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
 const TeamLogo = styled.div`
-  transform: translateY(100%);
+  transform: translateY(50%);
   opacity: 0;
 `;
 const TeamName = styled(Title)`

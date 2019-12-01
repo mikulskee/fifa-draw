@@ -171,7 +171,7 @@ const MobileSizeWarning = () => {
       <SubTitle>Powiększ okno swojej przeglądarki</SubTitle>
       <Description>
         Korzystanie z aplikacji <br /> w najbardziej optymalny <br /> i
-        przejrzysty sposób wymaga większego ekranu. Nie chyba chcemy zebyś
+        przejrzysty sposób wymaga większego ekranu. Nie chcemy chyba zebyś
         przegapił jakąkolwiek bramkę...
       </Description>
       <Browser className={"browser-icon"}>

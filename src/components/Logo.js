@@ -16,12 +16,12 @@ const Wrapper = styled.div`
 
   img {
     display: block;
-    height: 76px;
+    height: 55px;
     margin: 0 auto;
     ${({ big }) =>
       big &&
       css`
-        height: 126px;
+        height: 105px;
       `}
   }
 `;

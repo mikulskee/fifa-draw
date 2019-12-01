@@ -12,10 +12,10 @@ const Wrapper = styled.ul`
   flex-direction: column;
   flex-wrap: wrap;
   list-style: none;
-  margin: 0 auto;
+  margin: 30px auto 0;
   overflow-x: auto;
   li {
-    margin-top: 40px;
+    margin-top: 20px;
     .stats-tournament-card:hover ~ button.delete {
       display: block;
       opacity: 1;
