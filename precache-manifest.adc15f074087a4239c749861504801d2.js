@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f40ef799d4294201c55359d2bc4429dc",
+    "revision": "67e098fba78f51f3fac646d566fac913",
     "url": "/fifa-draw/index.html"
   },
   {
-    "revision": "2bba0101e5f6113fb7ac",
-    "url": "/fifa-draw/static/css/main.6e755607.chunk.css"
+    "revision": "60a601df3d5327c42b25",
+    "url": "/fifa-draw/static/css/main.64d418c8.chunk.css"
   },
   {
-    "revision": "8b6b6abf9b358b2343ef",
-    "url": "/fifa-draw/static/js/2.15c3cca5.chunk.js"
+    "revision": "a795cde47e4ae5a6f759",
+    "url": "/fifa-draw/static/js/2.67b832f0.chunk.js"
   },
   {
-    "revision": "2bba0101e5f6113fb7ac",
-    "url": "/fifa-draw/static/js/main.65c88214.chunk.js"
+    "revision": "60a601df3d5327c42b25",
+    "url": "/fifa-draw/static/js/main.294b65b4.chunk.js"
   },
   {
     "revision": "9453c1e4f257ceefb5df",
@@ -80,10 +80,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/media/napoli.9591566f.png"
   },
   {
-    "revision": "d62cccb2347176d6b4f5e22acbe14bdc",
-    "url": "/fifa-draw/static/media/newcup-bg.d62cccb2.png"
-  },
-  {
     "revision": "93ce4b22ad2378418c49b43282f7ed2e",
     "url": "/fifa-draw/static/media/psg.93ce4b22.png"
   },
@@ -96,16 +92,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/media/roma.a496a2d7.png"
   },
   {
-    "revision": "b5f4c7aa9eb6b52a3d147cb19ee765a0",
-    "url": "/fifa-draw/static/media/stats-bg.b5f4c7aa.png"
-  },
-  {
     "revision": "62e768a07539ca483b93cbeca82dbfec",
     "url": "/fifa-draw/static/media/tottenham.62e768a0.png"
-  },
-  {
-    "revision": "6d4eb6758d0cf618e876c0ffced78b51",
-    "url": "/fifa-draw/static/media/tournament-bg.6d4eb675.png"
   },
   {
     "revision": "7958e9194662d701b91ec02deaec3396",
