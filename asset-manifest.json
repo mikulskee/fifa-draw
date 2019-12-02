@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/fifa-draw/static/css/main.2554e95e.chunk.css",
-    "main.js": "/fifa-draw/static/js/main.ff695dd5.chunk.js",
-    "main.js.map": "/fifa-draw/static/js/main.ff695dd5.chunk.js.map",
+    "main.css": "/fifa-draw/static/css/main.4a5139be.chunk.css",
+    "main.js": "/fifa-draw/static/js/main.9aa31d53.chunk.js",
+    "main.js.map": "/fifa-draw/static/js/main.9aa31d53.chunk.js.map",
     "runtime-main.js": "/fifa-draw/static/js/runtime-main.86f760c9.js",
     "runtime-main.js.map": "/fifa-draw/static/js/runtime-main.86f760c9.js.map",
     "static/js/2.7c3ac965.chunk.js": "/fifa-draw/static/js/2.7c3ac965.chunk.js",
     "static/js/2.7c3ac965.chunk.js.map": "/fifa-draw/static/js/2.7c3ac965.chunk.js.map",
     "index.html": "/fifa-draw/index.html",
-    "precache-manifest.72d3104310ca8f5d89bba1fc9252bd13.js": "/fifa-draw/precache-manifest.72d3104310ca8f5d89bba1fc9252bd13.js",
+    "precache-manifest.7e7ebde92ca4ee603746b44a75c978ac.js": "/fifa-draw/precache-manifest.7e7ebde92ca4ee603746b44a75c978ac.js",
     "service-worker.js": "/fifa-draw/service-worker.js",
-    "static/css/main.2554e95e.chunk.css.map": "/fifa-draw/static/css/main.2554e95e.chunk.css.map",
+    "static/css/main.4a5139be.chunk.css.map": "/fifa-draw/static/css/main.4a5139be.chunk.css.map",
     "static/media/arsenal.png": "/fifa-draw/static/media/arsenal.3e16f35d.png",
     "static/media/barca.png": "/fifa-draw/static/media/barca.8bb3aa44.png",
     "static/media/bayer.png": "/fifa-draw/static/media/bayer.e187c8cb.png",
@@ -22,7 +22,7 @@
     "static/media/lipsk.png": "/fifa-draw/static/media/lipsk.703cd1cf.png",
     "static/media/liverpool.png": "/fifa-draw/static/media/liverpool.4088e2bc.png",
     "static/media/logo-white-png.png": "/fifa-draw/static/media/logo-white-png.9c30fcde.png",
-    "static/media/main-bg.jpg": "/fifa-draw/static/media/main-bg.879a2d77.jpg",
+    "static/media/index.css": "/fifa-draw/static/media/main-bg.879a2d77.jpg",
     "static/media/milan.png": "/fifa-draw/static/media/milan.75f441e7.png",
     "static/media/monaco.png": "/fifa-draw/static/media/monaco.455f11bc.png",
     "static/media/napoli.png": "/fifa-draw/static/media/napoli.9591566f.png",
@@ -35,7 +35,7 @@
   "entrypoints": [
     "static/js/runtime-main.86f760c9.js",
     "static/js/2.7c3ac965.chunk.js",
-    "static/css/main.2554e95e.chunk.css",
-    "static/js/main.ff695dd5.chunk.js"
+    "static/css/main.4a5139be.chunk.css",
+    "static/js/main.9aa31d53.chunk.js"
   ]
 }
