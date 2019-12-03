@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/fifa-draw/static/css/main.d34274b8.chunk.css",
-    "main.js": "/fifa-draw/static/js/main.7ff32e8a.chunk.js",
-    "main.js.map": "/fifa-draw/static/js/main.7ff32e8a.chunk.js.map",
+    "main.js": "/fifa-draw/static/js/main.43f7a5e5.chunk.js",
+    "main.js.map": "/fifa-draw/static/js/main.43f7a5e5.chunk.js.map",
     "runtime-main.js": "/fifa-draw/static/js/runtime-main.86f760c9.js",
     "runtime-main.js.map": "/fifa-draw/static/js/runtime-main.86f760c9.js.map",
     "static/js/2.67b832f0.chunk.js": "/fifa-draw/static/js/2.67b832f0.chunk.js",
     "static/js/2.67b832f0.chunk.js.map": "/fifa-draw/static/js/2.67b832f0.chunk.js.map",
     "index.html": "/fifa-draw/index.html",
-    "precache-manifest.2f3760ec31f7b841ec16799e8ca343e3.js": "/fifa-draw/precache-manifest.2f3760ec31f7b841ec16799e8ca343e3.js",
+    "precache-manifest.b6b5108ff2af950ef9492299f7d62855.js": "/fifa-draw/precache-manifest.b6b5108ff2af950ef9492299f7d62855.js",
     "service-worker.js": "/fifa-draw/service-worker.js",
     "static/css/main.d34274b8.chunk.css.map": "/fifa-draw/static/css/main.d34274b8.chunk.css.map",
     "static/media/arsenal.png": "/fifa-draw/static/media/arsenal.3e16f35d.png",
@@ -36,6 +36,6 @@
     "static/js/runtime-main.86f760c9.js",
     "static/js/2.67b832f0.chunk.js",
     "static/css/main.d34274b8.chunk.css",
-    "static/js/main.7ff32e8a.chunk.js"
+    "static/js/main.43f7a5e5.chunk.js"
   ]
 }
