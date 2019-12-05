@@ -9,9 +9,15 @@ import { Button } from "./Button";
 // import { StatsContext } from "../contexts/StatsContext";
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 70%;
   margin: 15px auto;
+  overflow: hidden;
+  @media only screen and (min-width: 1024px) {
+    height: 80%;
+    min-height: 200px;
+  }
 `;
 
 const StyledTitle = styled(Title)`
@@ -40,6 +46,9 @@ const ResultTitle = styled(Title)`
   text-align: center;
   justify-content: center;
   border-bottom: 2px solid white;
+  @media only screen and (min-width: 1024px) {
+    font-size: 22px;
+  }
   .team-name {
     width: 30%;
   }
@@ -54,6 +63,9 @@ const ResultTitle = styled(Title)`
     img {
       margin: 0 10px 0 0;
       width: 20px;
+      @media only screen and (min-width: 1024px) {
+        width: 30px;
+      }
     }
   }
 
@@ -74,7 +86,7 @@ const ResultTable = styled.ul`
 
 const StyledButton = styled(Button)`
   position: absolute;
-  top: 51px;
+  top: 0;
   right: 60px;
   color: #d4b726;
   font-size: 26px;

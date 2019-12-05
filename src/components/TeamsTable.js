@@ -15,6 +15,7 @@ const Wrapper = styled.ul`
     css`
       height: 89%;
       overflow: auto;
+      align-items: start;
     `}
   ${({ newcup }) =>
     newcup &&

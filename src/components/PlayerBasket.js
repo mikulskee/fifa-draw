@@ -8,7 +8,11 @@ export const PlayerBasket = styled.div`
   overflow: hidden;
   width: 100%;
   height: 100%;
+  min-height: 50px;
 
+  @media only screen and (min-width: 1024px) {
+    width: 340px;
+  }
   @media only screen and (min-width: 1336px) {
     width: 340px;
   }
