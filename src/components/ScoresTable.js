@@ -13,21 +13,16 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
   left: 50%;
   transform: translateX(-50%);
   background-color: #043c56;
-  max-height: 55px;
-  width: 130%;
+  width: 100%;
+  height: 100%;
+
   border-radius: 10px;
   justify-content: flex-start;
   overflow: hidden;
-  transition: max-height 0.25s ease-out, width 0.25s 0.25s ease-out;
-  will-change: max-height, width;
+
   &.end {
-    max-height: 800px;
-    max-width: 650px;
-    width: 145%;
-    @media only screen and (min-width: 1336px) {
-      width: 155%;
-      max-height: 900px;
-    }
+    width: 100%;
+
     .results > * {
       opacity: 1;
     }
@@ -60,9 +55,12 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
     color: white;
     border: none;
     position: fixed;
-    top: 8px;
+    top: -6px;
     right: 5px;
     cursor: pointer;
+    @media only screen and (min-width: 1024px) {
+      top: 8px;
+    }
     svg {
       pointer-events: none;
     }
@@ -73,16 +71,23 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
 `;
 
 const StyledTitle = styled(Title)`
-  top: 20px;
+  top: 10px;
+  font-size: 14px;
+  @media only screen and (min-width: 1024px) {
+    top: 20px;
+  }
 `;
 
 const PlayersNames = styled.div`
   transform: translateY(-35px);
-  margin-top: 55px;
+  margin-top: 42px;
   width: 70%;
   display: flex;
   justify-content: space-between;
   transition: transform 0.25s ease-in-out;
+  @media only screen and (min-width: 1024px) {
+    margin-top: 55px;
+  }
   &.active {
     transform: translateY(-10px);
   }
@@ -95,14 +100,23 @@ const PlayersNames = styled.div`
 `;
 
 const Results = styled.ul`
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   list-style: none;
   padding-bottom: 20px;
+  height: 70%;
+  overflow: auto;
+  @media only screen and (min-width: 1024px) {
+    width: 80%;
+  }
   li {
     width: 100%;
+    margin: 5px 0;
+    @media only screen and (min-width: 1024px) {
+      margin: 0;
+    }
   }
 `;
 const Result = styled.div`
@@ -118,7 +132,11 @@ const Result = styled.div`
   }
 
   .image {
-    width: 30px;
+    /* width: 30px; */
+    margin: 0 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img {
       height: 20px;
       @media only screen and (min-width: 1336px) {
@@ -129,7 +147,12 @@ const Result = styled.div`
 
   p {
     text-align: center;
-    width: 20%;
+    width: 30%;
+    font-size: 13px;
+    @media only screen and (min-width: 1024px) {
+      width: 20%;
+      font-size: 16px;
+    }
   }
   p:first-child.team-0 {
     color: #d4b726;
@@ -152,8 +175,12 @@ const WinnerTitle = styled(Title)`
   opacity: 0;
   display: none;
   transform: translate(0, 100%);
-  padding-bottom: 10px;
+  padding: 10px 0;
   transition: opacity 0.25s 0.5s ease-out, transform 0.25s 0.5s ease-out;
+
+  @media only screen and (min-width: 1024px) {
+    padding: 0 0 10px;
+  }
   &.end {
     transform: translate(0, 0);
     opacity: 1;
@@ -162,6 +189,10 @@ const WinnerTitle = styled(Title)`
   span {
     color: #d4b726;
   }
+`;
+
+const PlayerNameTitle = styled(Title)`
+  font-size: 16px;
 `;
 
 const ScoresTable = () => {
@@ -180,6 +211,7 @@ const ScoresTable = () => {
   const handleClick = e => {
     e.target.parentNode.classList.toggle("active");
     document.querySelector(".player-names").classList.toggle("active");
+    document.querySelector(".end-wrapper").classList.toggle("active");
   };
 
   useEffect(() => {
@@ -206,6 +238,7 @@ const ScoresTable = () => {
 
     if (isTournamentFinish) {
       document.querySelector(".tournament-winner").classList.add("end");
+      document.querySelector(".end-wrapper").classList.add("end");
       showWinner();
     }
   });
@@ -225,14 +258,14 @@ const ScoresTable = () => {
       </button>
       <StyledTitle small>Wyniki</StyledTitle>
       <PlayersNames className="player-names">
-        <Title small>
+        <PlayerNameTitle small>
           {tournament[0].playersNames[0]} (
           {tournament.filter(tour => tour.win === 0).length})
-        </Title>
-        <Title small>
+        </PlayerNameTitle>
+        <PlayerNameTitle small>
           {tournament[0].playersNames[1]} (
           {tournament.filter(tour => tour.win === 1).length})
-        </Title>
+        </PlayerNameTitle>
       </PlayersNames>
 
       <Results className="results">

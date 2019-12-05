@@ -64,7 +64,7 @@ const ResultTable = styled.ul`
 
 const StyledButton = styled(Button)`
   position: absolute;
-  top: 125px;
+  top: 51px;
   right: 60px;
   color: #d4b726;
   font-size: 26px;
@@ -83,7 +83,7 @@ const Details = props => {
   const { date, playerOne, playerTwo, results } = props;
 
   const newResults = results.map(item => (
-    <li>
+    <li key={uuidv1()}>
       <ResultTitle relative key={uuidv1()} className={"result-table--result"}>
         <span className="team-name">{item.teams["0"].team}</span>
         <div className="team-logo">

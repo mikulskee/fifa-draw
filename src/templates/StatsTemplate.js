@@ -11,9 +11,13 @@ import { StatsContext } from "../contexts/StatsContext";
 
 const StyledButton = styled(Button)`
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   left: 40px;
   color: #d4b726;
+  font-size: 28px;
+  @media only screen and (min-width: 667px) {
+    bottom: 40px;
+  }
 
   svg {
     pointer-events: none;

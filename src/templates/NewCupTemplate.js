@@ -10,7 +10,7 @@ const NewCupTemplate = () => {
   const { isNewPlayersSubmited } = useContext(PlayersContext);
 
   return (
-    <Background flex className="new-cup">
+    <Background overflow flex className="new-cup">
       <TopBar>
         <Title>Nowy Turniej</Title>
       </TopBar>

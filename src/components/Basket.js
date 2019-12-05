@@ -10,6 +10,12 @@ const Wrapper = styled.div`
   margin: 0 10px;
   border-radius: 10px;
   padding: 15px 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
   h1 {
     position: static;
     text-align: center;
@@ -35,7 +41,7 @@ const Basket = () => {
   return (
     <Wrapper>
       <Title medium>Koszyk</Title>
-      <TeamsTable>
+      <TeamsTable tournament>
         {teamsInBasket.map(team => (
           <li key={team.id} className="basket--team-logo">
             <div>

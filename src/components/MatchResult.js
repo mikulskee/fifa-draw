@@ -5,29 +5,36 @@ import "moment/locale/pl";
 import { TeamsContext } from "../contexts/TeamsContext";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { ScoresContext } from "../contexts/ScoresContext";
-import { ColumnFlexWrapper } from "./ColumnFlexWrapper";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { RowFlexWrapper } from "./RowFlexWrapper";
 import { Button } from "./Button";
+import select from "../images/select.png";
 
 const Wrapper = styled.form`
-  padding: 75px 0;
   align-self: center;
   color: white;
   font-size: 60px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 40%;
+  margin-top: 30px;
+  @media only screen and (min-width: 1024px) {
+    padding: 75px 0;
+    height: 100%;
+    margin-top: 0;
+  }
 
   .score-table {
     display: flex;
     flex-direction: row;
-    width: 400px;
     justify-content: center;
     align-items: center;
+    width: 100%;
+
+    @media only screen and (min-width: 1024px) {
+      width: 400px;
+    }
   }
 
   span {
@@ -44,10 +51,15 @@ const Wrapper = styled.form`
 
     img {
       display: block;
-      margin: 0 20px;
-      height: 100px;
+      margin: 0 5px;
       position: relative;
       z-index: 2;
+      width: 9.7vw;
+      @media only screen and (min-width: 1024px) {
+        height: 100px;
+        width: auto;
+        margin: 0 20px;
+      }
     }
     h1 {
       font-size: 80px;
@@ -66,56 +78,40 @@ const Wrapper = styled.form`
   }
 `;
 
-const Input = styled.input`
-  &[type="number"] {
-    width: 40px;
-    font-size: 60px;
-    background: none;
-    border: none;
-    border: 2px solid #d4b726;
-    color: white;
-    text-align: center;
-    font-weight: bolder;
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-    }
-    :focus {
-      outline: none;
-    }
-  }
-`;
-
-const ChangeScoreButton = styled.button`
+const Select = styled.select`
+  display: block;
+  font-size: 50px;
   background: none;
-  background-color: #d4b726;
   border: none;
-  width: 40px;
+  border: 2px solid #d4b726;
+
+  font-weight: bolder;
+  margin: 0 5px;
+
+  background: url(${select}) no-repeat 11px center;
+  background-color: #121212;
   color: white;
-  font-size: 18px;
-  text-align: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  transition: background-color 0.15s linear;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-  &.pressed {
-    background-color: #a68e17;
-  }
-  &:nth-of-type(2) {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+
+  padding: 0 14px 0 5px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  .option {
+    font-size: 18px;
   }
 
-  svg {
-    pointer-events: none;
+  @media only screen and (min-width: 1024px) {
+    font-size: 60px;
+    background: url(${select}) no-repeat 18px center;
+    background-color: #121212;
+    color: white;
+  }
+
+  :focus {
+    outline: none;
   }
 `;
 
@@ -123,49 +119,26 @@ const StyledRowFlexWrapper = styled(RowFlexWrapper)`
   margin-top: 20px;
 `;
 
+const StyledButton = styled(Button)`
+  height: auto;
+  padding: 5px 20px;
+`;
+
 const MatchResults = () => {
   const { matchTeams, clearScore } = useContext(TeamsContext);
   const { players } = useContext(PlayersContext);
   const { addMatchResult } = useContext(ScoresContext);
-  const [playerOneInput, setPlayerOneInput] = useState(0);
-  const [playerTwoInput, setPlayerTwoInput] = useState(0);
-
-  const handlePlayerOneScoreButtonUp = e => {
-    e.preventDefault();
-    setPlayerOneInput(playerOneInput + 1);
-  };
-  const handlePlayerOneScoreButtonDown = e => {
-    e.preventDefault();
-
-    if (playerOneInput === 0) {
-      return;
-    } else {
-      setPlayerOneInput(playerOneInput + -1);
-    }
-  };
-  const handlePlayerTwoScoreButtonUp = e => {
-    e.preventDefault();
-
-    setPlayerTwoInput(playerTwoInput + 1);
-  };
-  const handlePlayerTwoScoreButtonDown = e => {
-    e.preventDefault();
-
-    if (playerTwoInput === 0) {
-      return;
-    } else {
-      setPlayerTwoInput(playerTwoInput + -1);
-    }
-  };
+  const [playerOneSelect, setPlayerOneSelect] = useState(0);
+  const [playerTwoSelect, setPlayerTwoSelect] = useState(0);
 
   const handleSaveScore = e => {
     e.preventDefault();
 
-    if (playerOneInput > playerTwoInput) {
+    if (playerOneSelect > playerTwoSelect) {
       const win = 0;
       const result = Object.assign(
         {},
-        Array.of(playerOneInput, playerTwoInput)
+        Array.of(playerOneSelect, playerTwoSelect)
       );
       const playersNames = Object.assign({}, players);
       const teams = Object.assign({}, matchTeams);
@@ -175,13 +148,13 @@ const MatchResults = () => {
 
       addMatchResult(date, result, playersNames, teams, win);
       clearScore();
-      setPlayerTwoInput(0);
-      setPlayerOneInput(0);
-    } else if (playerOneInput < playerTwoInput) {
+      setPlayerTwoSelect(0);
+      setPlayerOneSelect(0);
+    } else if (playerOneSelect < playerTwoSelect) {
       const win = 1;
       const result = Object.assign(
         {},
-        Array.of(playerOneInput, playerTwoInput)
+        Array.of(playerOneSelect, playerTwoSelect)
       );
       const playersNames = Object.assign({}, players);
       const teams = Object.assign({}, matchTeams);
@@ -190,9 +163,9 @@ const MatchResults = () => {
         .format("lll");
       addMatchResult(date, result, playersNames, teams, win);
       clearScore();
-      setPlayerTwoInput(0);
-      setPlayerOneInput(0);
-    } else if (playerOneInput === playerTwoInput) {
+      setPlayerTwoSelect(0);
+      setPlayerOneSelect(0);
+    } else if (playerOneSelect === playerTwoSelect) {
       alert(
         "Mecz MUSI zakończyć się rozstrzygnięciem. W razie remisu wpisz wynik z dogrywki lub rzutów karnych."
       );
@@ -208,37 +181,56 @@ const MatchResults = () => {
               <img src={matchTeams[0].img} alt="logo" />
 
               {matchTeams.length > 1 ? (
-                <ColumnFlexWrapper>
-                  <ChangeScoreButton
-                    onClick={handlePlayerOneScoreButtonUp}
-                    onMouseDown={e => {
-                      e.target.classList.add("pressed");
-                    }}
-                    onMouseUp={e => {
-                      e.target.classList.remove("pressed");
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  </ChangeScoreButton>
-                  <Input
-                    type="number"
-                    value={playerOneInput}
-                    onChange={e => setPlayerOneInput(e.target.value)}
-                    min={0}
-                    max={99}
-                  />
-                  <ChangeScoreButton
-                    onClick={handlePlayerOneScoreButtonDown}
-                    onMouseDown={e => {
-                      e.target.classList.add("pressed");
-                    }}
-                    onMouseUp={e => {
-                      e.target.classList.remove("pressed");
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  </ChangeScoreButton>
-                </ColumnFlexWrapper>
+                <Select
+                  name="select"
+                  id="score"
+                  size="10px"
+                  onChange={e => setPlayerOneSelect(e.target.value)}
+                  value={playerOneSelect}
+                >
+                  <option className="option" value="0">
+                    0
+                  </option>
+                  <option className="option" value="1">
+                    1
+                  </option>
+                  <option className="option" value="2">
+                    2
+                  </option>
+                  <option className="option" value="3">
+                    3
+                  </option>
+                  <option className="option" value="4">
+                    4
+                  </option>
+                  <option className="option" value="5">
+                    5
+                  </option>
+                  <option className="option" value="6">
+                    6
+                  </option>
+                  <option className="option" value="7">
+                    7
+                  </option>
+                  <option className="option" value="8">
+                    8
+                  </option>
+                  <option className="option" value="9">
+                    9
+                  </option>
+                  <option className="option" value="10">
+                    10
+                  </option>
+                  <option className="option" value="11">
+                    11
+                  </option>
+                  <option className="option" value="12">
+                    12
+                  </option>
+                  <option className="option" value="13">
+                    13
+                  </option>
+                </Select>
               ) : null}
             </>
           ) : null}
@@ -247,37 +239,55 @@ const MatchResults = () => {
         <div className="score">
           {matchTeams.length > 1 ? (
             <>
-              <ColumnFlexWrapper>
-                <ChangeScoreButton
-                  onClick={handlePlayerTwoScoreButtonUp}
-                  onMouseDown={e => {
-                    e.target.classList.add("pressed");
-                  }}
-                  onMouseUp={e => {
-                    e.target.classList.remove("pressed");
-                  }}
-                >
-                  <FontAwesomeIcon icon={faCaretUp} />
-                </ChangeScoreButton>
-                <Input
-                  type="number"
-                  value={playerTwoInput}
-                  onChange={e => setPlayerTwoInput(e.target.value)}
-                  min={0}
-                  max={99}
-                />
-                <ChangeScoreButton
-                  onClick={handlePlayerTwoScoreButtonDown}
-                  onMouseDown={e => {
-                    e.target.classList.add("pressed");
-                  }}
-                  onMouseUp={e => {
-                    e.target.classList.remove("pressed");
-                  }}
-                >
-                  <FontAwesomeIcon icon={faCaretDown} />
-                </ChangeScoreButton>
-              </ColumnFlexWrapper>
+              <Select
+                name="select"
+                id="score"
+                onChange={e => setPlayerTwoSelect(e.target.value)}
+                value={playerTwoSelect}
+              >
+                <option className="option" value="0">
+                  0
+                </option>
+                <option className="option" value="1">
+                  1
+                </option>
+                <option className="option" value="2">
+                  2
+                </option>
+                <option className="option" value="3">
+                  3
+                </option>
+                <option className="option" value="4">
+                  4
+                </option>
+                <option className="option" value="5">
+                  5
+                </option>
+                <option className="option" value="6">
+                  6
+                </option>
+                <option className="option" value="7">
+                  7
+                </option>
+                <option className="option" value="8">
+                  8
+                </option>
+                <option className="option" value="9">
+                  9
+                </option>
+                <option className="option" value="10">
+                  10
+                </option>
+                <option className="option" value="11">
+                  11
+                </option>
+                <option className="option" value="12">
+                  12
+                </option>
+                <option className="option" value="13">
+                  13
+                </option>
+              </Select>
               <img src={matchTeams[1].img} alt="logo" />
             </>
           ) : null}
@@ -286,9 +296,9 @@ const MatchResults = () => {
 
       {matchTeams.length > 1 ? (
         <StyledRowFlexWrapper>
-          <Button small onClick={handleSaveScore}>
+          <StyledButton small onClick={handleSaveScore}>
             Zapisz wynik
-          </Button>
+          </StyledButton>
         </StyledRowFlexWrapper>
       ) : null}
     </Wrapper>

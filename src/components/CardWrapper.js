@@ -6,21 +6,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.ul`
-  height: 80%;
+  height: 58%;
   width: 80%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   list-style: none;
-  margin: 30px auto 0;
+  margin: 5px auto 0;
   overflow-x: auto;
+  @media only screen and (min-width: 667px) {
+    height: 63%;
+  }
+  @media only screen and (min-width: 1024px) {
+    height: 70%;
+
+    margin: 50px auto 0;
+  }
   li {
-    margin-top: 20px;
+    margin-top: 10px;
+    @media only screen and (min-width: 1024px) {
+      margin-top: 20px;
+    }
     .stats-tournament-card:hover ~ button.delete {
       display: block;
       opacity: 1;
     }
-    div.wrap {
+    div.wrap--stats-tournament-card {
       position: relative;
       display: flex;
       flex-direction: row;
@@ -38,9 +49,13 @@ const Wrapper = styled.ul`
         color: white;
         padding: 5px 10px;
         cursor: pointer;
-        font-size: 18px;
-        opacity: 0;
+        font-size: 14px;
+        opacity: 1;
         transition: opacity 0.15s ease-in-out;
+        @media only screen and (min-width: 1024px) {
+          opacity: 0;
+          font-size: 18px;
+        }
         svg {
           pointer-events: none;
         }
@@ -61,7 +76,7 @@ const CardWrapper = () => {
 
   const tournaments = stats.map((item, i) => (
     <li key={item.key}>
-      <div className="wrap">
+      <div className="wrap--stats-tournament-card">
         <StatsTournamentCard
           tournamentNumber={i + 1}
           date={item[0].date}

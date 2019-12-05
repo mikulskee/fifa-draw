@@ -12,20 +12,32 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto 20px;
+  margin: 10px auto;
 
   svg {
-    cursor: pointer;
+    pointer-events: none;
   }
 `;
+const StyledButton = styled(Button)`
+  color: #d4b726;
 
+  font-size: 28px;
+
+  svg {
+    pointer-events: none;
+  }
+  &::before,
+  &::after {
+    display: none;
+  }
+`;
 const ConfirmButtons = props => {
   return (
     <Wrapper>
-      <FontAwesomeIcon
-        icon={faArrowCircleLeft}
-        onClick={props.goBackFunction}
-      />
+      <StyledButton onClick={props.goBackFunction}>
+        <FontAwesomeIcon icon={faArrowCircleLeft} />
+      </StyledButton>
+
       <Button onClick={props.handleConfirm}>{props.textButton}</Button>
     </Wrapper>
   );

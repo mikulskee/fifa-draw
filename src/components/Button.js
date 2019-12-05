@@ -7,7 +7,7 @@ export const Button = styled.button`
   box-shadow: none;
   height: 51px;
   color: white;
-  font-size: ${({ small }) => (small ? "18px" : "34px")};
+  font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
   padding: 0 20px;
@@ -15,6 +15,7 @@ export const Button = styled.button`
   cursor: pointer;
   overflow: hidden;
   transition: color 0.2s linear;
+
   &:focus {
     outline: none;
   }
@@ -46,10 +47,12 @@ export const Button = styled.button`
     transition: transform 0.2s linear;
   }
 
-  :hover::after {
-    transform: translate(-50%, -50%);
-  }
-  :hover {
-    color: #d4b726;
+  @media only screen and (min-width: 1024px) {
+    :hover::after {
+      transform: translate(-50%, -50%);
+    }
+    :hover {
+      color: #d4b726;
+    }
   }
 `;

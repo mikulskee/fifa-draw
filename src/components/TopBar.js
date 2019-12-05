@@ -10,13 +10,14 @@ const Wrapper = styled.div`
   background-color: #043c56;
   color: white;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 10px auto 0;
+  padding: 5px 0;
 `;
 
 const TopBar = props => {
   return (
     <Wrapper>
-      <Logo small />
+      <Logo small={"small"} />
       {props.children}
     </Wrapper>
   );

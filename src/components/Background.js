@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
-  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  overflow: auto !important;
   ${({ flex }) =>
     flex &&
     css`
@@ -11,24 +13,34 @@ const Wrapper = styled.div`
       align-items: center;
       justify-content: flex-start;
     `}
-  ${({ overflow }) =>
-    overflow &&
-    css`
-      overflow-y: auto;
-    `}
+  @media only screen and (min-width: 1024px) {
+    ${({ overflow }) =>
+      overflow &&
+      css`
+        overflow-y: auto;
+      `}
+  }
 
-  height: 100%;
-  width: 100%;
   max-width: 1920px;
   max-height: 1080px;
   margin: 0 auto;
-  padding: 20px 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  /* padding: 10px 0; */
+
+  @media only screen and (min-width: 1024px) {
+    padding: 20px 0;
+  }
 `;
 
 const Background = props => {
+  // useEffect(() => {
+  //   let vh = window.innerHeight * 0.01;
+  //   document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+  //   window.addEventListener("resize", () => {
+  //     let vh = window.innerHeight * 0.01;
+  //     document.documentElement.style.setProperty("--vh", `${vh}px`);
+  //   });
+  // });
   return (
     <Wrapper
       overflow={props.overflow}

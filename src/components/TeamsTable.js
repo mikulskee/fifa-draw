@@ -10,11 +10,32 @@ const Wrapper = styled.ul`
   justify-content: center;
   align-items: center;
   padding: 5px 0;
+  ${({ playerBasket }) =>
+    playerBasket &&
+    css`
+      height: 89%;
+      overflow: auto;
+    `}
   ${({ newcup }) =>
     newcup &&
     css`
-      width: 45%;
+      flex-wrap: nowrap;
+      width: fit-content;
+      padding: 0;
+      min-height: 65px;
+      @media only screen and (min-width: 1024px) {
+        width: 80%;
+        flex-wrap: wrap;
+        padding: 5px 0;
+        max-width: 620px;
+      }
     `}
+    ${({ tournament }) =>
+      tournament &&
+      css`
+        height: 80%;
+        overflow-y: auto;
+      `}
   ${({ column }) =>
     column &&
     css`
@@ -28,9 +49,13 @@ const Wrapper = styled.ul`
     ${({ column }) =>
       column &&
       css`
-        width: 50%;
+        width: 32%;
         margin: 12px 0;
+        @media only screen and (min-width: 1024px) {
+          width: 33%;
+        }
       `}
+
     div {
       position: relative;
       color: #19ff00;
@@ -54,11 +79,40 @@ const Wrapper = styled.ul`
       img {
         position: relative;
         display: block;
-        height: 3vw;
+        height: 4vw;
         max-height: 60px;
         cursor: pointer;
         margin: 0 auto;
         z-index: 2;
+        ${({ playerBasket }) =>
+          playerBasket &&
+          css`
+            height: 5vw;
+            @media only screen and (min-width: 1024px) {
+              max-height: 50px;
+            }
+            @media only screen and (min-width: 1336px) {
+              max-height: 60px;
+            }
+          `}
+
+        ${({ tournament }) =>
+          tournament &&
+          css`
+            height: 4vw;
+            @media only screen and (min-width: 1024px) {
+              height: 3.6vw;
+            }
+          `}
+
+          ${({ newcup }) =>
+            newcup &&
+            css`
+              height: 7vw;
+              @media only screen and (min-width: 1024px) {
+                height: 3.6vw;
+              }
+            `}
       }
 
       h1 {
@@ -67,14 +121,20 @@ const Wrapper = styled.ul`
         top: 50%;
         left: 50%;
         transform: translate(-82%, -50%);
-        font-size: 56px;
         font-weight: bolder;
         z-index: 1;
-        width: 60px;
         text-align: center;
         opacity: 0.2;
+        width: 4.7vw;
+        font-size: 6vw;
+        @media only screen and (min-width: 1024px) {
+          width: 4vw;
+          font-size: 5vw;
+        }
         @media only screen and (min-width: 1336px) {
-          font-size: 76px;
+          font-size: 66px;
+          width: 57px;
+
         }
       }
     }
@@ -83,7 +143,12 @@ const Wrapper = styled.ul`
 
 const TeamsTable = props => {
   return (
-    <Wrapper newcup={props.newcup} column={props.column}>
+    <Wrapper
+      newcup={props.newcup}
+      tournament={props.tournament}
+      column={props.column}
+      playerBasket={props.playerBasket}
+    >
       {props.children}
     </Wrapper>
   );

@@ -14,7 +14,7 @@ const getHomeEnterTimeline = node => {
 
 const getStatsEnterTimeline = node => {
   const timeline = new Timeline({ paused: true });
-  const cards = node.querySelectorAll(".stats-tournament-card");
+  const cards = node.querySelectorAll(".wrap--stats-tournament-card");
 
   timeline
     .from(node, 0.35, {

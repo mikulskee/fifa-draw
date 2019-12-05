@@ -21,19 +21,91 @@ import { LoaderAnimation } from "../animations/LoaderAnimation";
 import Redirect from "../components/Redirect";
 
 const Wrapper = styled.div`
-  flex-grow: 1;
+  height: 80%;
   display: flex;
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
+  max-height: 640px;
+
+  @media only screen and (min-width: 1024px) {
+    flex-grow: 1;
+  }
+`;
+
+const PlayerBasketWrap = styled.div`
+  position: relative;
+  height: 90%;
+  width: 27%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1.choose-team {
+    color: #d4b726;
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    animation: shake 4s 4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+    transform: translate3d(0, 0, 0);
+    @keyframes shake {
+      7%,
+      15% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      8%,
+      14% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      9%,
+      11%,
+      13% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      10%,
+      12% {
+        transform: translate3d(4px, 0, 0);
+      }
+      16% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
 `;
 
 const EndWrapper = styled.div`
   position: fixed;
-  top: 95px;
+  top: 55px;
   left: 50%;
   transform: translateX(-50%);
-  width: 33%;
+  width: 43%;
+  /* overflow: hidden; */
+  height: 35px;
+  transition: height 0.25s ease-out, width 0.25s 0.25s ease-out;
+  will-change: height, width;
+
+  /* @media only screen and (min-width: 1024px) {
+    height: auto;
+  } */
+
+  &.active {
+    height: 80%;
+  }
+  &.end {
+    height: 65%;
+    width: 55%;
+    max-height: 800px;
+    max-width: 650px;
+    @media only screen and (min-width: 1336px) {
+      max-height: 900px;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    top: 95px;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
@@ -95,12 +167,14 @@ const TournamentTemplate = props => {
       } else {
         const matchResults = document.querySelector(".results-wrapper");
         const playerNames = document.querySelector(".player-names");
+        const endWrapper = document.querySelector(".end-wrapper");
         const teams = playerOneTeams.concat(playerTwoTeams);
         const selectedTeam = teams.filter(team => team.team === e.target.alt);
 
         if (matchResults) {
           matchResults.classList.remove("active");
           playerNames.classList.remove("active");
+          endWrapper.classList.remove("active");
         }
         if (
           e.target.classList.contains("player-one") &&
@@ -119,6 +193,7 @@ const TournamentTemplate = props => {
     } else return;
   };
   const endTournament = () => {
+    document.querySelector(".end-wrapper").classList.add("end");
     document.querySelector(".results-wrapper").classList.add("end");
     document.querySelector(".baskets-dashboard").classList.add("end");
     document.querySelector(".tournament-winner").classList.add("end");
@@ -163,53 +238,57 @@ const TournamentTemplate = props => {
               </TopBar>
               <Wrapper>
                 <MainDashboard className={"baskets-dashboard"}>
-                  <PlayerBasket>
-                    <Title small>Team {players[0].toUpperCase()}</Title>
-                    <TeamsTable column>
-                      {playerOneTeams.map((team, id) => (
-                        <li key={team.id}>
-                          <div>
-                            <h1>{id + 1}.</h1>
-                            <img
-                              src={team.img}
-                              alt={team.team}
-                              onClick={handleClick}
-                              className="player-one"
-                            ></img>
-                          </div>
-                        </li>
-                      ))}
-                    </TeamsTable>
+                  <PlayerBasketWrap>
+                    <PlayerBasket>
+                      <Title small>Team {players[0].toUpperCase()}</Title>
+                      <TeamsTable playerBasket column>
+                        {playerOneTeams.map((team, id) => (
+                          <li key={team.id}>
+                            <div>
+                              <h1>{id + 1}.</h1>
+                              <img
+                                src={team.img}
+                                alt={team.team}
+                                onClick={handleClick}
+                                className="player-one"
+                              ></img>
+                            </div>
+                          </li>
+                        ))}
+                      </TeamsTable>
+                    </PlayerBasket>
                     {(teamsInBasket.length === 0 && matchTeams.length) === 0 ? (
                       <Title className={"choose-team"}>Wybierz drużynę</Title>
                     ) : null}
-                  </PlayerBasket>
+                  </PlayerBasketWrap>
                   {teamsInBasket.length === 0 ? null : <Basket />}
 
                   {tournament.length >= 0 && matchTeams.length > 0 ? (
                     <MatchResults />
                   ) : null}
-                  <PlayerBasket>
-                    <Title small>Team {players[1].toUpperCase()}</Title>
-                    <TeamsTable column>
-                      {playerTwoTeams.map((team, id) => (
-                        <li key={team.id}>
-                          <div>
-                            <h1>{id + 1}.</h1>
-                            <img
-                              src={team.img}
-                              alt={team.team}
-                              onClick={handleClick}
-                              className="player-two"
-                            ></img>
-                          </div>
-                        </li>
-                      ))}
-                    </TeamsTable>
+                  <PlayerBasketWrap>
+                    <PlayerBasket>
+                      <Title small>Team {players[1].toUpperCase()}</Title>
+                      <TeamsTable playerBasket column>
+                        {playerTwoTeams.map((team, id) => (
+                          <li key={team.id}>
+                            <div>
+                              <h1>{id + 1}.</h1>
+                              <img
+                                src={team.img}
+                                alt={team.team}
+                                onClick={handleClick}
+                                className="player-two"
+                              ></img>
+                            </div>
+                          </li>
+                        ))}
+                      </TeamsTable>
+                    </PlayerBasket>
                     {matchTeams.length === 1 ? (
                       <Title className={"choose-team"}>Wybierz drużynę</Title>
                     ) : null}
-                  </PlayerBasket>
+                  </PlayerBasketWrap>
                 </MainDashboard>
                 <ButtonsWrapper>
                   {teamsInBasket.length === 0 ? null : <DrawingButtons />}
@@ -220,12 +299,15 @@ const TournamentTemplate = props => {
                   ) : null}
                 </ButtonsWrapper>
               </Wrapper>
-              <EndWrapper>
-                {tournament.length > 0 ? <ScoresTable /> : null}
-                {isTournamentEnd ? (
-                  <EndButton onClick={closeTournament}>Koniec</EndButton>
-                ) : null}
-              </EndWrapper>
+
+              {tournament.length > 0 ? (
+                <EndWrapper className={"end-wrapper"}>
+                  <ScoresTable />
+                  {isTournamentEnd ? (
+                    <EndButton onClick={closeTournament}>Koniec</EndButton>
+                  ) : null}
+                </EndWrapper>
+              ) : null}
             </Background>
           ) : null}
         </>

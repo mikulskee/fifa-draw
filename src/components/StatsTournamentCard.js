@@ -10,38 +10,55 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-  width: 260px;
-  padding: 7px 24px;
+  width: 200px;
+  padding: 7px 16px;
   color: white;
   font-size: 34px;
   transform: translate(0);
   cursor: pointer;
+  @media only screen and (min-width: 1024px) {
+    width: 260px;
+    padding: 7px 24px;
+  }
 
   div.title {
     display: flex;
     flex-direction: column;
     span.title {
       font-weight: bold;
-      font-size: 26px;
+      font-size: 16px;
+      @media only screen and (min-width: 1024px) {
+        font-size: 26px;
+      }
     }
     span.date {
       font-weight: lighter;
-      font-size: 16px;
+      font-size: 10px;
+      @media only screen and (min-width: 1024px) {
+        font-size: 16px;
+      }
     }
   }
   div.winner-name {
     color: #d4b726;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 20px;
+    @media only screen and (min-width: 1024px) {
+      font-size: 28px;
+    }
   }
 
   button {
     background: none;
-    font-size: 34px;
+    font-size: 24px;
     border: none;
     color: white;
-    padding: 5px 10px;
+    padding: 5px 15px;
     cursor: pointer;
+    @media only screen and (min-width: 1024px) {
+      font-size: 34px;
+      padding: 5px 10px;
+    }
     svg {
       pointer-events: none;
     }

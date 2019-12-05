@@ -44,7 +44,8 @@ const NewPlayersForm = props => {
   const [playerOneName, setPlayerOneName] = useState("");
   const [playerTwoName, setPlayerTwoName] = useState("");
   const { addPlayers, submitNewPlayersForm } = useContext(PlayersContext);
-  const goBackFunction = () => {
+  const goBackFunction = e => {
+    e.preventDefault();
     props.history.push("/");
   };
 

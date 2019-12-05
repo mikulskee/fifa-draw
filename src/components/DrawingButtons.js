@@ -11,8 +11,9 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
+  width: 90%;
   margin: 0px auto;
+  max-width: 1460px;
 `;
 
 const StyledButton = styled(Button)`
@@ -30,6 +31,18 @@ const StyledButton = styled(Button)`
         color: white;
       }
     `}
+`;
+const StyledButtonDisabled = styled(Button)`
+  font-size: 14px;
+  height: auto;
+  padding: 10px 15px;
+  opacity: 0.4;
+  :hover::after {
+    transform: translate(-50%, 50%);
+  }
+  :hover {
+    color: white;
+  }
 `;
 
 const DrawingButtons = () => {
@@ -111,23 +124,22 @@ const DrawingButtons = () => {
           Losuj drużynę dla {players[0].toUpperCase()}{" "}
         </StyledButton>
       ) : (
-        <StyledButton disabled>
+        <StyledButtonDisabled>
           Losuj drużynę dla {players[0].toUpperCase()}{" "}
-        </StyledButton>
+        </StyledButtonDisabled>
       )}
       <StyledButton onClick={handleDrawAll}>Wylosuj wszystkie</StyledButton>
-      {playerOneTeams.length >= playerTwoTeams.length ? (
+      {playerOneTeams.length !== playerTwoTeams.length ? (
         <StyledButton data-player={players[1]} onClick={handleDrawForPlayer}>
           Losuj drużynę dla {players[1].toUpperCase()}
         </StyledButton>
       ) : (
-        <StyledButton
-          disabled
+        <StyledButtonDisabled
           data-player={players[1]}
           onClick={handleDrawForPlayer}
         >
           Losuj drużynę dla {players[1].toUpperCase()}
-        </StyledButton>
+        </StyledButtonDisabled>
       )}
       <DrawTeamAnimation drawTeam={drawedTeam} />
     </Wrapper>

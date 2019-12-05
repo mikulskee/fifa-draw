@@ -11,7 +11,6 @@ const CardBlack = styled.div`
   background-color: #121212;
   top: 0;
   left: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
 

@@ -2,14 +2,16 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Title } from "./Title";
 import { scalingBrowser } from "../animations/scalingBrowser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   padding: 20px 30px 0;
 `;
 
@@ -53,26 +55,29 @@ const Description = styled.p`
 const Browser = styled.div`
   position: relative;
   margin-top: 30px;
-  width: 80px;
-  height: 50px;
+  width: 50px;
+  height: 90px;
   border: 1px solid white;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   align-self: center;
-  transform: scaleX(0.9);
+  opacity: 0;
+  visibility: hidden;
+  /* transform: rotate(90deg); */
   will-change: transform;
   @media only screen and (orientation: landscape) {
     position: absolute;
   }
 
   .top-bar {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 20%;
+    height: 14%;
     border-bottom: 1px solid white;
 
     div {
-      position: absolute;
+      margin: 0 2px;
       width: 2px;
       height: 2px;
       border-radius: 50%;
@@ -91,73 +96,65 @@ const Browser = styled.div`
 
   .content {
     width: 100%;
-    height: 80%;
+    height: 72%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    .arrow-left {
-      position: relative;
-      width: 25px;
-      height: 1px;
-      margin-left: 5px;
-      background-color: #fff;
-
-      ::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: "";
-        display: block;
-        width: 6px;
-        height: 1px;
+    .aside-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18%;
+      height: 100%;
+      border-right: 1px solid white;
+      transform: translateX(2px);
+      opacity: 0;
+      div {
+        width: 60%;
+        height: 90%;
+        border: 1px solid white;
         background-color: #fff;
-        transform: rotate(45deg);
-        transform-origin: center left;
-      }
-      ::after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        content: "";
-        display: block;
-        width: 6px;
-        height: 1px;
-        background-color: #fff;
-        transform: rotate(-45deg);
-        transform-origin: center left;
+        border-radius: 3px;
       }
     }
-    .arrow-right {
-      position: relative;
-      width: 25px;
-      height: 1px;
-      margin-right: 5px;
-      background-color: #fff;
-      ::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        content: "";
-        display: block;
-        width: 6px;
-        height: 1px;
-        background-color: #fff;
-        transform: rotate(45deg);
-        transform-origin: center right;
+
+    .aside-middle {
+      width: 74%;
+      height: 100%;
+      background-color: green;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      svg {
+        transform: rotate(-90deg);
+        opacity: 0;
       }
-      ::after {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        content: "";
-        display: block;
-        width: 6px;
-        height: 1px;
-        background-color: #fff;
-        transform: rotate(-45deg);
-        transform-origin: center right;
-      }
+    }
+
+    .aside-left {
+      width: 8%;
+      height: 100%;
+      border-left: 1px solid white;
+      transform: translateX(-2px);
+      opacity: 0;
+    }
+  }
+
+  .bottom-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 14%;
+    border-top: 1px solid white;
+    div {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      border: 1px solid white;
     }
   }
 `;
@@ -165,14 +162,15 @@ const MobileSizeWarning = () => {
   useEffect(() => {
     scalingBrowser();
   });
+
   return (
     <Wrapper>
-      <StyledTitle relative>Ekran jest zbyt mały!</StyledTitle>
-      <SubTitle>Powiększ okno swojej przeglądarki</SubTitle>
+      <StyledTitle relative>Ekran jest zbyt wąski!</StyledTitle>
+      <SubTitle>Zmień orientację przeglądarki na poziomą</SubTitle>
       <Description>
         Korzystanie z aplikacji <br /> w najbardziej optymalny <br /> i
-        przejrzysty sposób wymaga większego ekranu. Nie chcemy chyba zebyś
-        przegapił jakąkolwiek bramkę...
+        przejrzysty sposób wymaga ekranu w pozycji horyzontalnej. Nie chcemy
+        chyba żebyś przegapił jakąkolwiek bramkę...
       </Description>
       <Browser className={"browser-icon"}>
         <div className="top-bar">
@@ -181,8 +179,16 @@ const MobileSizeWarning = () => {
           <div />
         </div>
         <div className="content">
-          <div className="arrow-left" />
-          <div className="arrow-right" />
+          <div className="aside-right">
+            <div />
+          </div>
+          <div className="aside-middle">
+            <FontAwesomeIcon icon={faCheckCircle} />
+          </div>
+          <div className="aside-left" />
+        </div>
+        <div className="bottom-bar">
+          <div />
         </div>
       </Browser>
     </Wrapper>

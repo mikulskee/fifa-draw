@@ -22,6 +22,11 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    .ul-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
   }
 `;
 const AmountOfTeams = styled(Title)`
@@ -32,12 +37,12 @@ const AmountOfTeams = styled(Title)`
 `;
 
 const StyledTitle = styled(Title)`
-  position: relative;
+  position: static;
   text-align: center;
-  margin: 20px auto;
+  margin: 20px auto 10px;
 
   left: auto;
-  transform: translateX(0);
+  transform: translate(0);
   ::after {
     position: absolute;
     left: 50%;
@@ -52,17 +57,21 @@ const StyledTitle = styled(Title)`
 `;
 
 const ManageButtons = styled.div`
-  margin: 20px auto;
+  margin: 10px auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 340px;
 
   button {
-    font-size: 16px;
+    font-size: 12px;
     height: auto;
-    padding: 10px 20px;
+    min-height: 30px;
+    padding: 5px 15px;
     margin: 0 5px;
+    @media only screen and (min-width: 1024px) {
+      height: auto;
+    }
   }
 `;
 
@@ -116,16 +125,19 @@ const ChooseTeams = props => {
     <Wrapper>
       <div className={"dashboard"}>
         <StyledTitle>Wybierz drużyny :</StyledTitle>
-        <TeamsTable newcup>
-          {teams.map(team => (
-            <li key={team.id} onClick={handleTeamClick}>
-              <div className={"team-in-basket"}>
-                <img src={team.img} alt={team.team}></img>
-                <FontAwesomeIcon icon={faCheckCircle} />
-              </div>
-            </li>
-          ))}
-        </TeamsTable>
+        <div className="ul-wrapper">
+          <TeamsTable newcup>
+            {teams.map(team => (
+              <li key={team.id} onClick={handleTeamClick}>
+                <div className={"team-in-basket"}>
+                  <img src={team.img} alt={team.team}></img>
+                  <FontAwesomeIcon icon={faCheckCircle} />
+                </div>
+              </li>
+            ))}
+          </TeamsTable>
+        </div>
+
         <AmountOfTeams small>
           Ilość wybranych drużyn: {teamsInBasket.length}
         </AmountOfTeams>
@@ -144,7 +156,6 @@ const ChooseTeams = props => {
         goBackFunction={goBackFunction}
         handleConfirm={handleConfirm}
       />
-      {/* <WarningWindow /> */}
     </Wrapper>
   );
 };
