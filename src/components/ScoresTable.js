@@ -78,7 +78,7 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
     &:focus {
       outline: none;
     }
-  }
+  
 `;
 
 const StyledTitle = styled(Title)`
