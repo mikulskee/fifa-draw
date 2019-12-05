@@ -49,6 +49,16 @@ const NewPlayersForm = props => {
     props.history.push("/");
   };
 
+  const checkName = () => {
+    if (playerOneName.length > 0 && playerTwoName.length > 0) {
+      if (playerOneName === playerTwoName) {
+        alert("Imiona graczy muszą się różnić!");
+        setPlayerOneName("");
+        setPlayerTwoName("");
+      }
+    } else return;
+  };
+
   return (
     <Form
       onSubmit={e => {
@@ -63,6 +73,7 @@ const NewPlayersForm = props => {
         <Input
           value={playerOneName}
           onChange={e => setPlayerOneName(e.target.value)}
+          onBlur={checkName}
           type="text"
           placeholder="Imię pierwszego gracza (max 8 znaków)"
           required
@@ -71,6 +82,7 @@ const NewPlayersForm = props => {
         <Input
           value={playerTwoName}
           onChange={e => setPlayerTwoName(e.target.value)}
+          onBlur={checkName}
           type="text"
           placeholder="Imię drugiego gracza (max 8 znaków)"
           required
