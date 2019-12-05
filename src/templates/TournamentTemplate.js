@@ -21,6 +21,7 @@ import { LoaderAnimation } from "../animations/LoaderAnimation";
 import Redirect from "../components/Redirect";
 
 const Wrapper = styled.div`
+  position: relative;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -77,8 +78,8 @@ const PlayerBasketWrap = styled.div`
 `;
 
 const EndWrapper = styled.div`
-  position: fixed;
-  top: 55px;
+  position: absolute;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   width: 43%;
@@ -95,7 +96,7 @@ const EndWrapper = styled.div`
     height: 80%;
   }
   &.end {
-    height: 65%;
+    height: 80%;
     width: 55%;
     max-height: 800px;
     max-width: 650px;
@@ -126,7 +127,7 @@ const StyledButton = styled(Button)`
 `;
 const EndButton = styled(Button)`
   font-size: 16px;
-  position: fixed;
+  position: absolute;
   height: 41px;
   bottom: -85px;
   left: 50%;
@@ -298,16 +299,15 @@ const TournamentTemplate = props => {
                     </StyledButton>
                   ) : null}
                 </ButtonsWrapper>
+                {tournament.length > 0 ? (
+                  <EndWrapper className={"end-wrapper"}>
+                    <ScoresTable />
+                    {isTournamentEnd ? (
+                      <EndButton onClick={closeTournament}>Koniec</EndButton>
+                    ) : null}
+                  </EndWrapper>
+                ) : null}
               </Wrapper>
-
-              {tournament.length > 0 ? (
-                <EndWrapper className={"end-wrapper"}>
-                  <ScoresTable />
-                  {isTournamentEnd ? (
-                    <EndButton onClick={closeTournament}>Koniec</EndButton>
-                  ) : null}
-                </EndWrapper>
-              ) : null}
             </Background>
           ) : null}
         </>

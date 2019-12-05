@@ -4,8 +4,14 @@ import { Title } from "./Title";
 import { scalingBrowser } from "../animations/scalingBrowser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import mainBg from "../images/main-bg.jpg";
 
 const Wrapper = styled.div`
+  position: fixed;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -13,6 +19,10 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   padding: 20px 30px 0;
+  background-image: url(${mainBg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const StyledTitle = styled(Title)`

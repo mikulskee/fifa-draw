@@ -9,7 +9,8 @@ import { Button } from "./Button";
 // import { StatsContext } from "../contexts/StatsContext";
 
 const Wrapper = styled.div`
-  width: 70%;
+  width: 100%;
+  height: 70%;
   margin: 15px auto;
 `;
 
@@ -45,21 +46,30 @@ const ResultTitle = styled(Title)`
   .score {
     width: 20%;
   }
+
   .team-logo {
     width: 10%;
     display: flex;
     align-items: center;
     img {
-      margin: 0 20px;
+      margin: 0 10px 0 0;
       width: 20px;
+    }
+  }
+
+  .team-logo:nth-of-type(1) {
+    img {
+      margin: 0 0 0 10px;
     }
   }
 `;
 const ResultTable = styled.ul`
-  width: 70%;
+  width: 100%;
+  padding: 0 18%;
+  height: 75%;
   margin: 0 auto;
   list-style: none;
-  overflow: hidden;
+  overflow: auto;
 `;
 
 const StyledButton = styled(Button)`
