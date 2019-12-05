@@ -20,7 +20,7 @@ const Wrapper = styled.ul`
   @media only screen and (min-width: 1024px) {
     height: 70%;
 
-    margin: 50px auto 0;
+    margin: 25px auto 0;
   }
   li {
     margin-top: 10px;

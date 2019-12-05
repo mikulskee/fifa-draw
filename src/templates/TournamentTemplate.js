@@ -19,6 +19,10 @@ import MatchResults from "../components/MatchResult";
 import ScoresTable from "../components/ScoresTable";
 import { LoaderAnimation } from "../animations/LoaderAnimation";
 import Redirect from "../components/Redirect";
+import {
+  showWinnerAnimation,
+  showResults
+} from "../animations/endOfTournamentAnimation";
 
 const Wrapper = styled.div`
   position: relative;
@@ -83,14 +87,12 @@ const EndWrapper = styled.div`
   left: 50%;
   transform: translateX(-50%);
   width: 43%;
-  /* overflow: hidden; */
   height: 35px;
+  z-index: 99999;
+  max-width: 650px;
+
   transition: height 0.25s ease-out, width 0.25s 0.25s ease-out;
   will-change: height, width;
-
-  /* @media only screen and (min-width: 1024px) {
-    height: auto;
-  } */
 
   &.active {
     height: 80%;
@@ -98,14 +100,18 @@ const EndWrapper = styled.div`
   &.end {
     height: 80%;
     width: 55%;
-    max-height: 800px;
-    max-width: 650px;
-    @media only screen and (min-width: 1336px) {
-      max-height: 900px;
+    max-height: 8000px;
+    max-width: 7500px;
+    @media only screen and (min-width: 1024px) and (max-height: 400px) {
+      min-height: 260px;
     }
   }
   @media only screen and (min-width: 1024px) {
-    top: 95px;
+    top: 10px;
+    height: 55px;
+  }
+  @media only screen and (min-width: 1336px) {
+    max-height: 9000px;
   }
 `;
 
@@ -114,6 +120,10 @@ const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and (min-width: 1024px) {
+    margin: 10px auto;
+    width: 95%;
+  }
 `;
 const DateDescription = styled.span`
   font-weight: 300;
@@ -193,11 +203,16 @@ const TournamentTemplate = props => {
       }
     } else return;
   };
+
   const endTournament = () => {
     document.querySelector(".end-wrapper").classList.add("end");
     document.querySelector(".results-wrapper").classList.add("end");
     document.querySelector(".baskets-dashboard").classList.add("end");
     document.querySelector(".tournament-winner").classList.add("end");
+    document.querySelector(".tournament-winner").classList.add("end");
+    document.querySelector(".player-names").classList.add("active");
+    showResults();
+    showWinnerAnimation();
     setPlayerTwoTeams([]);
     setPlayerOneTeams([]);
     setTournamentEnd(true);

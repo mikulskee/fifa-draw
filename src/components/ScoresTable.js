@@ -7,6 +7,11 @@ import { TeamsContext } from "../contexts/TeamsContext";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  showWinnerAnimation,
+  showResults
+} from "../animations/endOfTournamentAnimation";
+import { TimelineMax } from "gsap/all";
 
 const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
   position: relative;
@@ -19,9 +24,13 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
   border-radius: 10px;
   justify-content: flex-start;
   overflow: hidden;
+  padding-bottom: 20px;
 
   &.end {
     width: 100%;
+    @media only screen and (min-width: 1024px) and (max-height: 400px) {
+  min-height: 240px;
+}
 
     .results > * {
       opacity: 1;
@@ -38,6 +47,11 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
 
   &.active {
     max-height: 800px;
+@media only screen and (min-width: 1024px) and (max-height: 350px) {
+  min-height: 260px;
+}
+      
+    }
 
     button {
       transform: rotate(180deg);
@@ -59,7 +73,7 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
     right: 5px;
     cursor: pointer;
     @media only screen and (min-width: 1024px) {
-      top: 8px;
+      top: 5px;
     }
     svg {
       pointer-events: none;
@@ -67,7 +81,7 @@ const StyledColumnFlexWrapper = styled(ColumnFlexWrapper)`
     &:focus {
       outline: none;
     }
-  }
+  
 `;
 
 const StyledTitle = styled(Title)`
@@ -101,13 +115,13 @@ const PlayersNames = styled.div`
 
 const Results = styled.ul`
   width: 90%;
-  display: flex;
   flex-direction: column;
   align-items: center;
   list-style: none;
-  padding-bottom: 20px;
   height: 70%;
   overflow: auto;
+  display: none;
+
   @media only screen and (min-width: 1024px) {
     width: 80%;
   }
@@ -176,16 +190,11 @@ const WinnerTitle = styled(Title)`
   display: none;
   transform: translate(0, 100%);
   padding: 10px 0;
-  transition: opacity 0.25s 0.5s ease-out, transform 0.25s 0.5s ease-out;
 
   @media only screen and (min-width: 1024px) {
-    padding: 0 0 10px;
+    padding: 10px 0 10px;
   }
-  &.end {
-    transform: translate(0, 0);
-    opacity: 1;
-    display: block;
-  }
+
   span {
     color: #d4b726;
   }
@@ -212,6 +221,17 @@ const ScoresTable = () => {
     e.target.parentNode.classList.toggle("active");
     document.querySelector(".player-names").classList.toggle("active");
     document.querySelector(".end-wrapper").classList.toggle("active");
+    document.querySelector("ul.results").classList.toggle("active");
+    const ul = document.querySelector("ul.results");
+
+    if (ul.classList.contains("active")) {
+      showResults();
+    } else {
+      const tl = new TimelineMax();
+      tl.set(ul, {
+        css: { display: "none" }
+      });
+    }
   };
 
   useEffect(() => {
@@ -239,6 +259,10 @@ const ScoresTable = () => {
     if (isTournamentFinish) {
       document.querySelector(".tournament-winner").classList.add("end");
       document.querySelector(".end-wrapper").classList.add("end");
+      document.querySelector(".player-names").classList.add("active");
+      showResults();
+
+      showWinnerAnimation();
       showWinner();
     }
   });

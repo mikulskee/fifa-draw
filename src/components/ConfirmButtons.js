@@ -13,6 +13,9 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 10px auto;
+  @media only screen and (min-width: 1024px) {
+    margin: 10px auto 20px;
+  }
 
   svg {
     pointer-events: none;
