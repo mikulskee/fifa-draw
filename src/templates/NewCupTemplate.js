@@ -8,9 +8,16 @@ import { TeamsContext } from "../contexts/TeamsContext";
 import ChooseTeams from "../components/ChooseTeams";
 
 const NewCupTemplate = () => {
-  const { isNewPlayersSubmited } = useContext(PlayersContext);
+  const { isNewPlayersSubmited, setPlayers, setSubmitPlayers } = useContext(
+    PlayersContext
+  );
+  const { setTeamsInBasket } = useContext(TeamsContext);
   useEffect(() => {
-    console.log();
+    setTeamsInBasket([]);
+    setPlayers([]);
+    setSubmitPlayers(false);
+    console.log("asdasd");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
