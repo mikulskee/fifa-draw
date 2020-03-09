@@ -32,6 +32,8 @@ const Wrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   max-height: 640px;
+  min-height: 350px;
+  margin: 0 0 30px;
 
   @media only screen and (min-width: 1024px) {
     flex-grow: 1;

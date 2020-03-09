@@ -16,12 +16,12 @@ const NewCupTemplate = () => {
     setTeamsInBasket([]);
     setPlayers([]);
     setSubmitPlayers(false);
-    console.log("asdasd");
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Background overflow="overflow" flex className="new-cup">
+    <Background flex className="new-cup">
       <TopBar>
         <Title>Nowy Turniej</Title>
       </TopBar>

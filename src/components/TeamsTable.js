@@ -23,7 +23,7 @@ const Wrapper = styled.ul`
       flex-wrap: nowrap;
       width: fit-content;
       padding: 0;
-      min-height: 65px;
+      /* min-height: 65px; */
       @media only screen and (min-width: 1024px) {
         width: 80%;
         flex-wrap: wrap;

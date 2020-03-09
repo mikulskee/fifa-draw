@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   border-radius: 10px;
   margin: 10px auto 0;
   padding: 5px 0;
+  min-height: 40px;
 `;
 
 const TopBar = props => {

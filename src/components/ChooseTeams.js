@@ -12,17 +12,21 @@ import TeamsTable from "../components/TeamsTable";
 import { ScoresContext } from "../contexts/ScoresContext";
 
 const Wrapper = styled.div`
-  width: 90%;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 10%;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
   .dashboard {
-    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     .ul-wrapper {
+      min-height: 4vw;
       width: 100%;
       overflow-x: auto;
       overflow-y: hidden;
@@ -40,7 +44,6 @@ const StyledTitle = styled(Title)`
   position: static;
   text-align: center;
   margin: 20px auto 10px;
-
   left: auto;
   transform: translate(0);
   ::after {

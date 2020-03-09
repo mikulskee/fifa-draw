@@ -27,11 +27,12 @@ const MainTemplate = () => {
       <Wrapper>
         <Logo big={"big"} />
         <Navbar />
+        <DescriptionSmall>
+          © 2019 Design {"&"} Coded by{" "}
+          <a href="https://codeverse.pl">Codeverse</a>. Wszystkie prawa
+          zastrzeżone.
+        </DescriptionSmall>
       </Wrapper>
-      <DescriptionSmall>
-        © 2019 Design and Coded by <a href="https://codeverse.pl">Codeverse</a>.
-        Wszystkie prawa zastrzeżone.
-      </DescriptionSmall>
     </Background>
   );
 };
