@@ -10,7 +10,7 @@ const Wrapper = styled.nav`
   }
 
   ul {
-    height: 70%;
+    height: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -26,15 +26,10 @@ const Wrapper = styled.nav`
       justify-content: center;
       width: 200px;
       height: 41px;
+      margin: 15px auto;
       @media only screen and (min-width: 1024px) {
+        margin: 25px auto;
         height: 51px;
-      }
-      &:nth-child(1) {
-        margin-bottom: 30px;
-        @media only screen and (min-width: 1024px) {
-          margin-bottom: 70px;
-          height: 51px;
-        }
       }
       a {
         text-align: center;
@@ -68,6 +63,9 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/stats">Statystyki</Link>
+        </li>
+        <li>
+          <Link to="/about">O Aplikacji</Link>
         </li>
       </ul>
     </Wrapper>

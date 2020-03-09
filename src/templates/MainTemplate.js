@@ -11,6 +11,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const DescriptionSmall = styled.p`
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  margin: 10px 0;
+  a {
+    color: white;
+  }
+`;
 
 const MainTemplate = () => {
   return (
@@ -19,6 +28,10 @@ const MainTemplate = () => {
         <Logo big={"big"} />
         <Navbar />
       </Wrapper>
+      <DescriptionSmall>
+        © 2019 Design and Coded by <a href="https://codeverse.pl">Codeverse</a>.
+        Wszystkie prawa zastrzeżone.
+      </DescriptionSmall>
     </Background>
   );
 };

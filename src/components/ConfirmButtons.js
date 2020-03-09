@@ -37,11 +37,13 @@ const StyledButton = styled(Button)`
 const ConfirmButtons = props => {
   return (
     <Wrapper>
-      <StyledButton onClick={props.goBackFunction}>
+      <StyledButton type="button" onClick={props.goBackFunction}>
         <FontAwesomeIcon icon={faArrowCircleLeft} />
       </StyledButton>
 
-      <Button onClick={props.handleConfirm}>{props.textButton}</Button>
+      <Button type="submit" onClick={props.handleConfirm}>
+        {props.textButton}
+      </Button>
     </Wrapper>
   );
 };

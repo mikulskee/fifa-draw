@@ -5,6 +5,7 @@ import NewCupTemplate from "./templates/NewCupTemplate";
 import StatsTemplate from "./templates/StatsTemplate";
 import TournamentTemplate from "./templates/TournamentTemplate";
 import StatsDetailsTemplate from "./templates/StatsDetailsTemplate";
+import AboutTemplate from "./templates/AboutTemplate";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import PlayersContextProvider from "./contexts/PlayersContext";
 import TeamsContextProvider from "./contexts/TeamsContext";
@@ -76,6 +77,10 @@ const App = () => {
                                 <Route
                                   path="/tournament"
                                   component={TournamentTemplate}
+                                />
+                                <Route
+                                  path="/about"
+                                  component={AboutTemplate}
                                 />
                               </Switch>
                             </Transition>
