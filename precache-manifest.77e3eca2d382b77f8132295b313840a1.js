@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "42b1a7e8bcf8fcf30b5e980dad73e6a7",
+    "revision": "f1b0e748c022d9c7f03ecd930537b411",
     "url": "/fifa-draw/index.html"
   },
   {
-    "revision": "3611f631e051dbf4c36c",
+    "revision": "d10faacc5688f565d083",
     "url": "/fifa-draw/static/css/main.a08a50a6.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/js/2.bc5e54f9.chunk.js"
   },
   {
-    "revision": "3611f631e051dbf4c36c",
-    "url": "/fifa-draw/static/js/main.a785cba0.chunk.js"
+    "revision": "d10faacc5688f565d083",
+    "url": "/fifa-draw/static/js/main.77a05598.chunk.js"
   },
   {
     "revision": "9453c1e4f257ceefb5df",
