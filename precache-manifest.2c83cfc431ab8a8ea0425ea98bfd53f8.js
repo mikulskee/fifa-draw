@@ -1,23 +1,47 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6143ce3c375c2947a84e0447dcac93a6",
+    "revision": "6a3e30970acd18bb596a12b9f8c42eec",
     "url": "/fifa-draw/index.html"
   },
   {
-    "revision": "269186ce4fb19457ec69",
+    "revision": "9db2bec841622d40bb2b",
     "url": "/fifa-draw/static/css/main.d34274b8.chunk.css"
   },
   {
-    "revision": "27b4676fe646072dff0c",
-    "url": "/fifa-draw/static/js/2.f97e091b.chunk.js"
+    "revision": "70381ed66d61526de2d1",
+    "url": "/fifa-draw/static/js/2.bc5e54f9.chunk.js"
   },
   {
-    "revision": "269186ce4fb19457ec69",
-    "url": "/fifa-draw/static/js/main.0d5981ce.chunk.js"
+    "revision": "9db2bec841622d40bb2b",
+    "url": "/fifa-draw/static/js/main.8666e45b.chunk.js"
   },
   {
     "revision": "9453c1e4f257ceefb5df",
     "url": "/fifa-draw/static/js/runtime-main.86f760c9.js"
+  },
+  {
+    "revision": "6ea364309b401fab41d1ef0cf6f50885",
+    "url": "/fifa-draw/static/media/about1.6ea36430.jpg"
+  },
+  {
+    "revision": "ba13e6daa78bbeaeeaca41b58e61fa5f",
+    "url": "/fifa-draw/static/media/about2.ba13e6da.jpg"
+  },
+  {
+    "revision": "84b4f16daf54e74cbd48f2be47e034a6",
+    "url": "/fifa-draw/static/media/about3.84b4f16d.jpg"
+  },
+  {
+    "revision": "400ebc4e566c55de8f3a29169efa6041",
+    "url": "/fifa-draw/static/media/about4.400ebc4e.jpg"
+  },
+  {
+    "revision": "ffa82d03b04de8e0159efc0acf9c00af",
+    "url": "/fifa-draw/static/media/about5.ffa82d03.jpg"
+  },
+  {
+    "revision": "dc84f114c8ce9159e7814dfc883657f2",
+    "url": "/fifa-draw/static/media/about6.dc84f114.jpg"
   },
   {
     "revision": "3e16f35d19ad7bb21069cc8583b87a6c",
