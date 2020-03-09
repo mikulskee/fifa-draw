@@ -52,6 +52,11 @@ const NewPlayersForm = props => {
 
   const checkName = () => {
     if (playerOneName.length > 0 && playerTwoName.length > 0) {
+<<<<<<< HEAD
+=======
+      console.log(playerOneName);
+      console.log(playerTwoName);
+>>>>>>> 3745bdd6477be73b95e81cabb187d86d9a9dc8b4
       if (playerOneName === playerTwoName) {
         alert("Imiona graczy muszą się różnić!");
         setPlayerOneName("");
