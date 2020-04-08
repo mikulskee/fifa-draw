@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9f064937732d5cf2e9e7ffc495d8176c",
+    "revision": "5b2bb614de230e50a95dd07fe3d7091c",
     "url": "/fifa-draw/index.html"
   },
   {
-    "revision": "2d4c31b2b3ca2fea7d4f",
+    "revision": "fcf8c7bbcaa71af49cad",
     "url": "/fifa-draw/static/css/main.a08a50a6.chunk.css"
   },
   {
-    "revision": "70381ed66d61526de2d1",
-    "url": "/fifa-draw/static/js/2.bc5e54f9.chunk.js"
+    "revision": "09693352993136183841",
+    "url": "/fifa-draw/static/js/2.888ed7a3.chunk.js"
   },
   {
-    "revision": "2d4c31b2b3ca2fea7d4f",
-    "url": "/fifa-draw/static/js/main.b28b0d08.chunk.js"
+    "revision": "fcf8c7bbcaa71af49cad",
+    "url": "/fifa-draw/static/js/main.4f944438.chunk.js"
   },
   {
     "revision": "9453c1e4f257ceefb5df",
@@ -122,5 +122,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7958e9194662d701b91ec02deaec3396",
     "url": "/fifa-draw/static/media/united.7958e919.png"
+  },
+  {
+    "revision": "fb3a9374607e294b66aa23526d52310d",
+    "url": "/fifa-draw/static/media/uruguay.fb3a9374.jpg"
   }
 ]);

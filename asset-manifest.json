@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/fifa-draw/static/css/main.a08a50a6.chunk.css",
-    "main.js": "/fifa-draw/static/js/main.b28b0d08.chunk.js",
-    "main.js.map": "/fifa-draw/static/js/main.b28b0d08.chunk.js.map",
+    "main.js": "/fifa-draw/static/js/main.4f944438.chunk.js",
+    "main.js.map": "/fifa-draw/static/js/main.4f944438.chunk.js.map",
     "runtime-main.js": "/fifa-draw/static/js/runtime-main.86f760c9.js",
     "runtime-main.js.map": "/fifa-draw/static/js/runtime-main.86f760c9.js.map",
-    "static/js/2.bc5e54f9.chunk.js": "/fifa-draw/static/js/2.bc5e54f9.chunk.js",
-    "static/js/2.bc5e54f9.chunk.js.map": "/fifa-draw/static/js/2.bc5e54f9.chunk.js.map",
+    "static/js/2.888ed7a3.chunk.js": "/fifa-draw/static/js/2.888ed7a3.chunk.js",
+    "static/js/2.888ed7a3.chunk.js.map": "/fifa-draw/static/js/2.888ed7a3.chunk.js.map",
     "index.html": "/fifa-draw/index.html",
-    "precache-manifest.6598b19e9bc0a085bddc1889cc900ac5.js": "/fifa-draw/precache-manifest.6598b19e9bc0a085bddc1889cc900ac5.js",
+    "precache-manifest.381255f5b6b3e47480e6ab0c7c393aac.js": "/fifa-draw/precache-manifest.381255f5b6b3e47480e6ab0c7c393aac.js",
     "service-worker.js": "/fifa-draw/service-worker.js",
     "static/css/main.a08a50a6.chunk.css.map": "/fifa-draw/static/css/main.a08a50a6.chunk.css.map",
     "static/media/about1.jpg": "/fifa-draw/static/media/about1.6ea36430.jpg",
@@ -36,12 +36,13 @@
     "static/media/real.png": "/fifa-draw/static/media/real.78388485.png",
     "static/media/roma.png": "/fifa-draw/static/media/roma.a496a2d7.png",
     "static/media/tottenham.png": "/fifa-draw/static/media/tottenham.62e768a0.png",
-    "static/media/united.png": "/fifa-draw/static/media/united.7958e919.png"
+    "static/media/united.png": "/fifa-draw/static/media/united.7958e919.png",
+    "static/media/uruguay.jpg": "/fifa-draw/static/media/uruguay.fb3a9374.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.86f760c9.js",
-    "static/js/2.bc5e54f9.chunk.js",
+    "static/js/2.888ed7a3.chunk.js",
     "static/css/main.a08a50a6.chunk.css",
-    "static/js/main.b28b0d08.chunk.js"
+    "static/js/main.4f944438.chunk.js"
   ]
 }
