@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { TeamsContext } from "../contexts/TeamsContext";
@@ -139,8 +139,6 @@ const ChooseTeams = (props) => {
   };
 
   const handleRadioChange = (e) => {
-    console.log(e.target.value);
-
     switch (e.target.value) {
       case "option1":
         setRadioValues({

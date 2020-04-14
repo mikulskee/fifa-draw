@@ -35,7 +35,7 @@ import uruguay from "../images/uruguay.jpg";
 export const TeamsContext = createContext();
 
 const TeamsContextProvider = (props) => {
-  const [teams, setTeams] = useState([
+  const [teams] = useState([
     { id: 0, team: "Arsenal Londyn", img: arsenal, class: "club" },
     { id: 1, team: "Atletico Madryt", img: atletico, class: "club" },
     { id: 2, team: "FC Barcelona", img: barca, class: "club" },

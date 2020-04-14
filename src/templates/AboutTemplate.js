@@ -90,11 +90,9 @@ const GoBackButton = styled(Button)`
     display: none;
   }
 `;
-const AboutTemplate = props => {
-  const goToMenu = e => {
+const AboutTemplate = (props) => {
+  const goToMenu = (e) => {
     e.preventDefault();
-
-    console.log(e.target.innerHTML);
     if (e.target.innerHTML === "Rozegraj Turniej") {
       props.history.push("/newcup");
     } else {
