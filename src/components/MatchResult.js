@@ -59,6 +59,11 @@ const Wrapper = styled.form`
         height: 100px;
         width: auto;
         margin: 0 20px;
+        &.country {
+          height: auto;
+          width: 9.7vw;
+          max-width: 150px;
+        }
       }
     }
     h1 {
@@ -131,7 +136,7 @@ const MatchResults = () => {
   const [playerOneSelect, setPlayerOneSelect] = useState(0);
   const [playerTwoSelect, setPlayerTwoSelect] = useState(0);
 
-  const handleSaveScore = e => {
+  const handleSaveScore = (e) => {
     e.preventDefault();
 
     if (playerOneSelect > playerTwoSelect) {
@@ -142,9 +147,7 @@ const MatchResults = () => {
       );
       const playersNames = Object.assign({}, players);
       const teams = Object.assign({}, matchTeams);
-      const date = moment(new Date())
-        .locale("pl")
-        .format("lll");
+      const date = moment(new Date()).locale("pl").format("lll");
 
       addMatchResult(date, result, playersNames, teams, win);
       clearScore();
@@ -158,9 +161,7 @@ const MatchResults = () => {
       );
       const playersNames = Object.assign({}, players);
       const teams = Object.assign({}, matchTeams);
-      const date = moment(new Date())
-        .locale("pl")
-        .format("lll");
+      const date = moment(new Date()).locale("pl").format("lll");
       addMatchResult(date, result, playersNames, teams, win);
       clearScore();
       setPlayerTwoSelect(0);
@@ -178,14 +179,18 @@ const MatchResults = () => {
         <div className="score">
           {matchTeams.length > 0 ? (
             <>
-              <img src={matchTeams[0].img} alt="logo" />
+              <img
+                src={matchTeams[0].img}
+                alt="logo"
+                className={matchTeams[0].class}
+              />
 
               {matchTeams.length > 1 ? (
                 <Select
                   name="select"
                   id="score"
                   size="10px"
-                  onChange={e => setPlayerOneSelect(e.target.value)}
+                  onChange={(e) => setPlayerOneSelect(e.target.value)}
                   value={playerOneSelect}
                 >
                   <option className="option" value="0">
@@ -242,7 +247,7 @@ const MatchResults = () => {
               <Select
                 name="select"
                 id="score"
-                onChange={e => setPlayerTwoSelect(e.target.value)}
+                onChange={(e) => setPlayerTwoSelect(e.target.value)}
                 value={playerTwoSelect}
               >
                 <option className="option" value="0">
@@ -288,7 +293,11 @@ const MatchResults = () => {
                   13
                 </option>
               </Select>
-              <img src={matchTeams[1].img} alt="logo" />
+              <img
+                src={matchTeams[1].img}
+                alt="logo"
+                className={matchTeams[1].class}
+              />
             </>
           ) : null}
         </div>

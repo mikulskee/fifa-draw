@@ -42,10 +42,10 @@ const Basket = () => {
     <Wrapper>
       <Title medium>Koszyk</Title>
       <TeamsTable tournament>
-        {teamsInBasket.map(team => (
+        {teamsInBasket.map((team) => (
           <li key={team.id} className="basket--team-logo">
             <div>
-              <img src={team.img} alt={team.team}></img>
+              <img src={team.img} alt={team.team} className={team.class}></img>
             </div>
           </li>
         ))}

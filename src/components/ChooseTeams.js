@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { TeamsContext } from "../contexts/TeamsContext";
@@ -78,17 +78,36 @@ const ManageButtons = styled.div`
   }
 `;
 
-const ChooseTeams = props => {
+const Radio = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  div {
+    margin: 0 10px;
+    color: white;
+    input {
+      margin: 0 5px;
+    }
+  }
+`;
+
+const ChooseTeams = (props) => {
   const {
     teams,
     setTeamSelected,
     teamsInBasket,
-    setTeamsInBasket,
-    addAllTeamsToBasket
+    removeAllTeamsFromBasket,
+    addAllTeamsToBasket,
   } = useContext(TeamsContext);
 
   const { unsubmitNewPlayersForm, clearPlayers } = useContext(PlayersContext);
   const { setTournamentStart } = useContext(ScoresContext);
+  const [radioValues, setRadioValues] = useState({
+    option1: true,
+    option2: false,
+    option3: false,
+  });
 
   const handleConfirm = () => {
     if (teamsInBasket.length > 0) {
@@ -108,20 +127,67 @@ const ChooseTeams = props => {
     clearPlayers();
   };
 
-  const handleTeamClick = e => {
-    e.target.parentNode.classList.toggle("selected");
+  const handleTeamClick = (e) => {
     setTeamSelected(e.target.alt);
   };
 
   const addAllToBasket = () => {
-    const teams = window.document.querySelectorAll(".team-in-basket");
-    teams.forEach(team => team.classList.add("selected"));
     addAllTeamsToBasket();
   };
   const deleteAllFromBasket = () => {
-    const teams = window.document.querySelectorAll(".team-in-basket");
-    teams.forEach(team => team.classList.remove("selected"));
-    setTeamsInBasket([]);
+    removeAllTeamsFromBasket();
+  };
+
+  const handleRadioChange = (e) => {
+    console.log(e.target.value);
+
+    switch (e.target.value) {
+      case "option1":
+        setRadioValues({
+          option1: true,
+          option2: false,
+          option3: false,
+        });
+        break;
+      case "option2":
+        setRadioValues({
+          option1: false,
+          option2: true,
+          option3: false,
+        });
+        break;
+      case "option3":
+        setRadioValues({
+          option1: false,
+          option2: false,
+          option3: true,
+        });
+        break;
+
+      default:
+        return;
+    }
+  };
+
+  const teamsInTeamsTable = () => {
+    let teamsInTable = teams;
+
+    if (radioValues.option2) {
+      teamsInTable = teamsInTable.filter((team) => team.class === "club");
+    } else if (radioValues.option3) {
+      teamsInTable = teamsInTable.filter((team) => team.class === "country");
+    }
+
+    teamsInTable = teamsInTable.map((team) => (
+      <li key={team.id} onClick={handleTeamClick}>
+        <div className={`team-in-basket ${team.selected}`}>
+          <img src={team.img} alt={team.team} className={team.class}></img>
+          <FontAwesomeIcon icon={faCheckCircle} />
+        </div>
+      </li>
+    ));
+
+    return teamsInTable;
   };
 
   return (
@@ -129,17 +195,45 @@ const ChooseTeams = props => {
       <div className={"dashboard"}>
         <StyledTitle>Wybierz drużyny :</StyledTitle>
         <div className="ul-wrapper">
-          <TeamsTable newcup>
-            {teams.map(team => (
-              <li key={team.id} onClick={handleTeamClick}>
-                <div className={"team-in-basket"}>
-                  <img src={team.img} alt={team.team}></img>
-                  <FontAwesomeIcon icon={faCheckCircle} />
-                </div>
-              </li>
-            ))}
-          </TeamsTable>
+          <TeamsTable newcup>{teamsInTeamsTable()}</TeamsTable>
         </div>
+        <Radio>
+          <div>
+            <input
+              type="radio"
+              id="all"
+              name="teams"
+              value="option1"
+              checked={radioValues.option1}
+              onChange={handleRadioChange}
+            />
+            <label htmlFor="all">Wszystkie</label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              id="clubs"
+              name="teams"
+              value="option2"
+              checked={radioValues.option2}
+              onChange={handleRadioChange}
+            />
+            <label htmlFor="clubs">Kluby</label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              id="countries"
+              name="teams"
+              value="option3"
+              checked={radioValues.option3}
+              onChange={handleRadioChange}
+            />
+            <label htmlFor="countries">Reprezentacje</label>
+          </div>
+        </Radio>
 
         <AmountOfTeams small>
           Ilość wybranych drużyn: {teamsInBasket.length}

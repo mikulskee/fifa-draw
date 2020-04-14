@@ -18,6 +18,9 @@ import MobileSizeWarning from "./components/MobileSizeWarning";
 
 const App = () => {
   useEffect(() => {
+    window.onbeforeunload = () => {
+      return "czy chcesz opuścić stronę?";
+    };
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
 
@@ -25,7 +28,7 @@ const App = () => {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
     });
-    window.addEventListener("orientationchange", function() {
+    window.addEventListener("orientationchange", function () {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty("--vh", `${vh}px`);
     });
@@ -52,8 +55,8 @@ const App = () => {
                             <Transition
                               key={key}
                               appear={true}
-                              onEnter={node => play(node, pathname)}
-                              onExit={node => exit(node, pathname)}
+                              onEnter={(node) => play(node, pathname)}
+                              onExit={(node) => exit(node, pathname)}
                               timeout={{ enter: 400, exit: 400 }}
                             >
                               <Switch location={location}>

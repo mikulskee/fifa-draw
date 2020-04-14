@@ -21,7 +21,7 @@ import { LoaderAnimation } from "../animations/LoaderAnimation";
 import Redirect from "../components/Redirect";
 import {
   showWinnerAnimation,
-  showResults
+  showResults,
 } from "../animations/endOfTournamentAnimation";
 
 const Wrapper = styled.div`
@@ -146,7 +146,7 @@ const EndButton = styled(Button)`
   margin: 30px 0;
   transform: translateX(-50%);
 `;
-const TournamentTemplate = props => {
+const TournamentTemplate = (props) => {
   const {
     setPlayers,
     setSubmitPlayers,
@@ -156,12 +156,16 @@ const TournamentTemplate = props => {
     deletePlayerOneTeam,
     deletePlayerTwoTeam,
     setPlayerTwoTeams,
-    setPlayerOneTeams
+    setPlayerOneTeams,
   } = useContext(PlayersContext);
 
-  const { teamsInBasket, setTeam, matchTeams, setTeamsInBasket } = useContext(
-    TeamsContext
-  );
+  const {
+    teamsInBasket,
+    setTeam,
+    matchTeams,
+    setTeamsInBasket,
+    resetTeams,
+  } = useContext(TeamsContext);
   const { addTournamentToStats } = useContext(StatsContext);
   const {
     tournament,
@@ -170,10 +174,10 @@ const TournamentTemplate = props => {
     setTournament,
     setWinner,
     isTournamentStarted,
-    setTournamentStart
+    setTournamentStart,
   } = useContext(ScoresContext);
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (teamsInBasket.length === 0) {
       if (matchTeams.length > 1) {
         return;
@@ -182,7 +186,7 @@ const TournamentTemplate = props => {
         const playerNames = document.querySelector(".player-names");
         const endWrapper = document.querySelector(".end-wrapper");
         const teams = playerOneTeams.concat(playerTwoTeams);
-        const selectedTeam = teams.filter(team => team.team === e.target.alt);
+        const selectedTeam = teams.filter((team) => team.team === e.target.alt);
 
         if (matchResults) {
           matchResults.classList.remove("active");
@@ -232,6 +236,7 @@ const TournamentTemplate = props => {
       setWinner("");
       setTournamentEnd(false);
       setTournamentStart(false);
+      resetTeams();
     }, 1000);
   };
 
@@ -248,9 +253,7 @@ const TournamentTemplate = props => {
                   Turniej
                   <br />
                   <DateDescription>
-                    {moment(new Date())
-                      .locale("pl")
-                      .calendar()}
+                    {moment(new Date()).locale("pl").calendar()}
                   </DateDescription>
                 </StyledTitle>
               </TopBar>
@@ -268,7 +271,7 @@ const TournamentTemplate = props => {
                                 src={team.img}
                                 alt={team.team}
                                 onClick={handleClick}
-                                className="player-one"
+                                className={`player-one ${team.class}`}
                               ></img>
                             </div>
                           </li>
@@ -296,7 +299,7 @@ const TournamentTemplate = props => {
                                 src={team.img}
                                 alt={team.team}
                                 onClick={handleClick}
-                                className="player-two"
+                                className={`player-two ${team.class}`}
                               ></img>
                             </div>
                           </li>

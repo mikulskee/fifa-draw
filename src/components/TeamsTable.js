@@ -60,6 +60,10 @@ const Wrapper = styled.ul`
     div {
       position: relative;
       color: #19ff00;
+      min-height: 60px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
       &.selected {
         svg {
           opacity: 1;
@@ -85,10 +89,18 @@ const Wrapper = styled.ul`
         cursor: pointer;
         margin: 0 auto;
         z-index: 2;
+        &.country{
+          height: auto;
+          width: 4.5vw;
+        }
         ${({ playerBasket }) =>
           playerBasket &&
           css`
             height: 5vw;
+            &.country {
+              height: auto;
+              width: 4.5vw;
+            }
             @media only screen and (min-width: 1024px) {
               max-height: 50px;
             }
@@ -101,8 +113,16 @@ const Wrapper = styled.ul`
           tournament &&
           css`
             height: 4vw;
+            &.country {
+              height: auto;
+              width: 6vw;
+            }
             @media only screen and (min-width: 1024px) {
               height: 3.6vw;
+              &.country {
+                height: auto;
+                width: 5vw;
+              }
             }
           `}
 
@@ -110,8 +130,16 @@ const Wrapper = styled.ul`
             newcup &&
             css`
               height: 7vw;
+              &.country {
+                height: auto;
+                width: 10vw;
+              }
               @media only screen and (min-width: 1024px) {
                 height: 3.6vw;
+                &.country {
+                  height: auto;
+                  width: 5vw;
+                }
               }
             `}
       }
@@ -142,7 +170,7 @@ const Wrapper = styled.ul`
   }
 `;
 
-const TeamsTable = props => {
+const TeamsTable = (props) => {
   return (
     <Wrapper
       newcup={props.newcup}
