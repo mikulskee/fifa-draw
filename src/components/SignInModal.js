@@ -131,7 +131,7 @@ const Loader = styled.div`
   }
 `;
 
-const Modal = () => {
+const SignInModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -234,4 +234,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default SignInModal;

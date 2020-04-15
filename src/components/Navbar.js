@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import firebase from "../firebase";
 
 const Wrapper = styled.nav`
   height: 80%;
@@ -33,6 +34,7 @@ const Wrapper = styled.nav`
       }
       a,
       button {
+        cursor: pointer;
         border: none;
         box-shadow: none;
         text-align: center;
@@ -57,20 +59,36 @@ const Wrapper = styled.nav`
   }
 `;
 
-const openSignUpModal = () => {
-  document.querySelector(".signup-modal").style.display = "flex";
-
-  setTimeout(() => {
-    document.querySelector(".signup-modal").style.opacity = "1";
-  }, 10);
-};
-
 const Navbar = () => {
+  const openLogInModal = () => {
+    document.querySelector(".login-modal").style.display = "flex";
+
+    setTimeout(() => {
+      document.querySelector(".login-modal").style.opacity = "1";
+    }, 10);
+  };
+  const openSignUpModal = () => {
+    document.querySelector(".signup-modal").style.display = "flex";
+
+    setTimeout(() => {
+      document.querySelector(".signup-modal").style.opacity = "1";
+    }, 10);
+  };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        console.log("wylogowano");
+      });
+  };
   return (
     <Wrapper>
       <ul>
         <li>
-          <button>Zaloguj się</button>
+          <button onClick={openLogInModal}>Zaloguj się</button>
         </li>
         <li>
           <button onClick={openSignUpModal}>Zarejestruj się</button>
@@ -83,6 +101,9 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/about">O Aplikacji</Link>
+        </li>
+        <li>
+          <button onClick={handleLogout}>Wyloguj się</button>
         </li>
       </ul>
     </Wrapper>
