@@ -66,20 +66,28 @@ const Wrapper = styled.ul`
 
 const CardWrapper = () => {
   const { stats, setStats } = useContext(StatsContext);
-  const handleDelete = e => {
+  const handleDelete = (e) => {
     const id = e.target.dataset.key;
-
-    const newStats = [...stats].filter(item => item.key !== id);
-
+    const newStats = [...stats].filter((item) => item.key !== id);
     setStats(newStats);
   };
 
-  const tournaments = stats.map((item, i) => (
+  const compare = (a, b) => {
+    if (a.timestamp < b.timestamp) {
+      return -1;
+    }
+    if (a.timestamp > b.timestamp) {
+      return 1;
+    }
+    return 0;
+  };
+
+  const tournaments = stats.sort(compare).map((item, i) => (
     <li key={item.key}>
       <div className="wrap--stats-tournament-card">
         <StatsTournamentCard
           tournamentNumber={i + 1}
-          date={item[0].date}
+          date={item.tournament[0].date}
           winner={item.winner}
           id={item.key}
         />

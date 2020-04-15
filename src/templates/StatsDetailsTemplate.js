@@ -6,33 +6,46 @@ import { Title } from "../components/Title";
 import { StatsContext } from "../contexts/StatsContext";
 import Details from "../components/Details";
 
-const StatsDetailsTemplate = props => {
+const StatsDetailsTemplate = (props) => {
   const { stats } = useContext(StatsContext);
 
-  const tournamentNumber = [...stats].findIndex(
-    item => item.key === props.match.params.tournament_id
-  );
+  const setValues = () => {
+    if (stats.length > 0) {
+      const tournamentNumber = [...stats].findIndex(
+        (item) => item.key === props.match.params.tournament_id
+      );
 
-  const details = [...stats].filter(
-    item => item.key === props.match.params.tournament_id
-  );
-  const date = details[0]["0"].date;
-  const playerOne = details[0]["0"].playersNames["0"];
-  const playerTwo = details[0]["0"].playersNames["1"];
-  const detailsArray = Object.keys(details["0"]).map(key => details["0"][key]);
-  const results = detailsArray.filter(item => item.result);
+      const details = [...stats].filter(
+        (item) => item.key === props.match.params.tournament_id
+      );
+
+      const date = details[0].tournament[0].date;
+      const playerOne = details[0].tournament[0].playersNames[0];
+      const playerTwo = details[0].tournament[0].playersNames[1];
+      const results = details[0].tournament;
+
+      return { tournamentNumber, details, date, playerOne, playerTwo, results };
+    } else return;
+  };
 
   return (
-    <Background overflow>
+    <Background overflow="true">
       <TopBar>
-        <Title medium>Turniej {tournamentNumber + 1}</Title>
+        <Title medium>
+          Turniej {stats.length === 0 ? null : setValues().tournamentNumber + 1}
+        </Title>
       </TopBar>
-      <Details
-        date={date}
-        playerOne={playerOne}
-        playerTwo={playerTwo}
-        results={results}
-      />
+
+      {stats.length === 0 ? (
+        <h1>Ładowanie...</h1>
+      ) : (
+        <Details
+          date={setValues().date}
+          playerOne={setValues().playerOne}
+          playerTwo={setValues().playerTwo}
+          results={setValues().results}
+        />
+      )}
     </Background>
   );
 };

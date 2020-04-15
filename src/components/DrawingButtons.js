@@ -51,11 +51,12 @@ const DrawingButtons = () => {
     addTeamForPlayerOne,
     addTeamForPlayerTwo,
     playerOneTeams,
-    playerTwoTeams
+    playerTwoTeams,
   } = useContext(PlayersContext);
 
   const { teamsInBasket, setTeamsInBasket } = useContext(TeamsContext);
   const [drawedTeam, setDrawedTeam] = useState({});
+
   const handleDrawAll = () => {
     let teamsNumber = teamsInBasket.length;
     let teamOne = [];
@@ -86,7 +87,7 @@ const DrawingButtons = () => {
     addTeamForPlayerTwo(teamTwo);
   };
 
-  const handleDrawForPlayer = e => {
+  const handleDrawForPlayer = (e) => {
     let teamsNumber = teamsInBasket.length;
     let index = Math.floor(Math.random() * teamsNumber);
     let teamDraw = teamsInBasket[index];

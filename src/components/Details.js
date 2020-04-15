@@ -60,6 +60,8 @@ const ResultTitle = styled(Title)`
     width: 10%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+
     img {
       margin: 0 10px 0 0;
       width: 20px;
@@ -70,6 +72,8 @@ const ResultTitle = styled(Title)`
   }
 
   .team-logo:nth-of-type(1) {
+    justify-content: flex-start;
+
     img {
       margin: 0 0 0 10px;
     }
@@ -100,11 +104,11 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Details = props => {
+const Details = (props) => {
   // const { stats, setStats } = useContext(StatsContext);
   const { date, playerOne, playerTwo, results } = props;
 
-  const newResults = results.map(item => (
+  const newResults = results.map((item) => (
     <li key={uuidv1()}>
       <ResultTitle relative key={uuidv1()} className={"result-table--result"}>
         <span className="team-name">{item.teams["0"].team}</span>

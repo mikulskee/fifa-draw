@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Background from "../components/Background";
 import Logo from "../components/Logo";
 import Navbar from "../components/Navbar";
+import Modal from "../components/Modal";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -33,6 +34,7 @@ const MainTemplate = () => {
           zastrzeżone.
         </DescriptionSmall>
       </Wrapper>
+      <Modal />
     </Background>
   );
 };

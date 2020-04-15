@@ -43,8 +43,9 @@ const StyledTitle = styled(Title)`
   }
 `;
 
-const StatsTemplate = props => {
+const StatsTemplate = (props) => {
   const { stats } = useContext(StatsContext);
+
   const goBack = () => {
     props.history.push("/");
   };

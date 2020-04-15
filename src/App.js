@@ -18,9 +18,9 @@ import MobileSizeWarning from "./components/MobileSizeWarning";
 
 const App = () => {
   useEffect(() => {
-    window.onbeforeunload = () => {
-      return "czy chcesz opuścić stronę?";
-    };
+    // window.onbeforeunload = () => {
+    //   return "czy chcesz opuścić stronę?";
+    // };
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
 

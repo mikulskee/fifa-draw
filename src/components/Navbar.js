@@ -31,7 +31,10 @@ const Wrapper = styled.nav`
         margin: 25px auto;
         height: 51px;
       }
-      a {
+      a,
+      button {
+        border: none;
+        box-shadow: none;
         text-align: center;
         background-color: #d4b726;
         text-decoration: none;
@@ -54,10 +57,24 @@ const Wrapper = styled.nav`
   }
 `;
 
+const openSignUpModal = () => {
+  document.querySelector(".signup-modal").style.display = "flex";
+
+  setTimeout(() => {
+    document.querySelector(".signup-modal").style.opacity = "1";
+  }, 10);
+};
+
 const Navbar = () => {
   return (
     <Wrapper>
       <ul>
+        <li>
+          <button>Zaloguj się</button>
+        </li>
+        <li>
+          <button onClick={openSignUpModal}>Zarejestruj się</button>
+        </li>
         <li>
           <Link to="/newcup">Nowy Turniej</Link>
         </li>

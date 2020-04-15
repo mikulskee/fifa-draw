@@ -72,8 +72,13 @@ const TeamsContextProvider = (props) => {
   const [teamsInBasket, setTeamsInBasket] = useState([]);
   const [matchTeams, setMatchTeam] = useState([]);
   const addAllTeamsToBasket = () => {
-    teams.map((team) => (team.selected = "selected"));
-    setTeamsInBasket(teams);
+    const newTeams = [...teams].map((team) => {
+      team.selected = "selected";
+
+      return team;
+    });
+    console.log(newTeams);
+    setTeamsInBasket(newTeams);
   };
   const removeAllTeamsFromBasket = () => {
     teams.map((team) => (team.selected = ""));
