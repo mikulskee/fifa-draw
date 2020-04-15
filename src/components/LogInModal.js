@@ -145,7 +145,6 @@ const LogInModal = () => {
       .auth()
       .signInWithEmailAndPassword(mail, password)
       .then((cred) => {
-        console.log(cred.user);
         setIsLoading(false);
         document.querySelector(".login-modal").style.opacity = "0";
         setTimeout(() => {

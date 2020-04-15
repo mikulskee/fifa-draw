@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../components/Button";
 import { StatsContext } from "../contexts/StatsContext";
+import Redirect from "../components/Redirect";
 
 const StyledButton = styled(Button)`
   position: absolute;
@@ -51,20 +52,26 @@ const StatsTemplate = (props) => {
   };
 
   return (
-    <Background className="stats">
-      <TopBar>
-        <Title>Statystyki</Title>
-      </TopBar>
-      {stats.length === 0 ? (
-        <StyledTitle>Brak rozegranych turniejów</StyledTitle>
-      ) : (
-        <CardWrapper />
-      )}
+    <>
+      {stats.length ? (
+        <Background className="stats">
+          <TopBar>
+            <Title>Statystyki</Title>
+          </TopBar>
+          {stats.length === 0 ? (
+            <StyledTitle>Brak rozegranych turniejów</StyledTitle>
+          ) : (
+            <CardWrapper />
+          )}
 
-      <StyledButton onClick={goBack}>
-        <FontAwesomeIcon icon={faArrowCircleLeft} />
-      </StyledButton>
-    </Background>
+          <StyledButton onClick={goBack}>
+            <FontAwesomeIcon icon={faArrowCircleLeft} />
+          </StyledButton>
+        </Background>
+      ) : (
+        <Redirect />
+      )}
+    </>
   );
 };
 

@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { StatsContext } from "../contexts/StatsContext";
+import { withRouter } from "react-router-dom";
+import firebase from "../firebase";
 import styled from "styled-components";
 import Logo from "../components/Logo";
 
@@ -30,6 +34,7 @@ const Wrapper = styled.div`
     margin: 0 10px;
     padding: 5px 10px;
     line-height: 41px;
+    cursor: pointer;
     @media only screen and (min-width: 1024px) {
       font-size: 18px;
     }
@@ -37,13 +42,40 @@ const Wrapper = styled.div`
 `;
 
 const TopBar = (props) => {
+  const { setUser } = useContext(UserContext);
+  const { getStats, setStats } = useContext(StatsContext);
+  const handleLogout = (e) => {
+    e.preventDefault();
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        props.history.push("/");
+      });
+  };
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) {
+        console.log("uzytkownik zalogowany", user);
+        setUser(user);
+        getStats();
+      } else {
+        console.log("użytkownik wylogowany");
+        setUser(user);
+        setStats([]);
+      }
+    });
+  }, []);
+
   return (
     <Wrapper>
       <Logo small={"small"} />
       {props.children}
-      <button>wyloguj się</button>
+      <button onClick={handleLogout}>Wyloguj się</button>
     </Wrapper>
   );
 };
 
-export default TopBar;
+export default withRouter(TopBar);

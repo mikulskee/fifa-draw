@@ -5,6 +5,7 @@ import TopBar from "../components/TopBar";
 import { Title } from "../components/Title";
 import { StatsContext } from "../contexts/StatsContext";
 import Details from "../components/Details";
+import Redirect from "../components/Redirect";
 
 const StatsDetailsTemplate = (props) => {
   const { stats } = useContext(StatsContext);
@@ -29,24 +30,31 @@ const StatsDetailsTemplate = (props) => {
   };
 
   return (
-    <Background overflow="true">
-      <TopBar>
-        <Title medium>
-          Turniej {stats.length === 0 ? null : setValues().tournamentNumber + 1}
-        </Title>
-      </TopBar>
+    <>
+      {stats.length ? (
+        <Background overflow="true">
+          <TopBar>
+            <Title medium>
+              Turniej{" "}
+              {stats.length === 0 ? null : setValues().tournamentNumber + 1}
+            </Title>
+          </TopBar>
 
-      {stats.length === 0 ? (
-        <h1>Ładowanie...</h1>
+          {stats.length === 0 ? (
+            <h1>Ładowanie...</h1>
+          ) : (
+            <Details
+              date={setValues().date}
+              playerOne={setValues().playerOne}
+              playerTwo={setValues().playerTwo}
+              results={setValues().results}
+            />
+          )}
+        </Background>
       ) : (
-        <Details
-          date={setValues().date}
-          playerOne={setValues().playerOne}
-          playerTwo={setValues().playerTwo}
-          results={setValues().results}
-        />
+        <Redirect />
       )}
-    </Background>
+    </>
   );
 };
 
