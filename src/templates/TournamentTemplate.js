@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { TeamsContext } from "../contexts/TeamsContext";
 import { ScoresContext } from "../contexts/ScoresContext";
@@ -147,6 +147,12 @@ const EndButton = styled(Button)`
   transform: translateX(-50%);
 `;
 const TournamentTemplate = (props) => {
+  useEffect(() => {
+    window.onbeforeunload = () => {
+      return "czy chcesz opuścić stronę?";
+    };
+  }, []);
+
   const {
     setPlayers,
     setSubmitPlayers,
@@ -247,7 +253,7 @@ const TournamentTemplate = (props) => {
       ) : (
         <>
           {players.length > 0 ? (
-            <Background flex className="tournament">
+            <Background flex className="tournament tournament-template">
               <TopBar>
                 <StyledTitle>
                   Turniej

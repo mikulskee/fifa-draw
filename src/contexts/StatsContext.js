@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import { ScoresContext } from "./ScoresContext";
+import { UserContext } from "./UserContext";
 import uuidv2 from "uuid";
 import firebase from "../firebase";
 
@@ -7,34 +8,21 @@ export const StatsContext = createContext();
 
 const ScoresContextProvider = (props) => {
   const { tournament, winner } = useContext(ScoresContext);
+  const { user } = useContext(UserContext);
   const [stats, setStats] = useState([]);
-
-  // const useStats = () => {
-  //   const [stats, setStats] = useState([]);
-
-  //   useEffect(() => {
-  //     firebase
-  //       .firestore()
-  //       .collection("stats")
-  //       .onSnapshot((snapshot) => {
-  //         const newStats = snapshot.docs.map((doc) => doc.data());
-  //         setStats(newStats);
-  //       });
-  //   }, []);
-
-  //   return [stats, setStats];
-  // };
-
-  // const [stats, setStats] = useStats();
-
-  const getStats = () => {
+  const getStats = (user) => {
     firebase
       .firestore()
-      .collection("stats")
-      .onSnapshot((snapshot) => {
-        const newStats = snapshot.docs.map((doc) => doc.data());
-        setStats(newStats);
-      });
+      .collection(`stats-${user.uid}`)
+      .onSnapshot(
+        (snapshot) => {
+          const newStats = snapshot.docs.map((doc) => doc.data());
+          setStats(newStats);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   };
 
   const endTournamentAnimation = () => {
@@ -43,7 +31,7 @@ const ScoresContextProvider = (props) => {
   };
   const addTournamentToStats = () => {
     endTournamentAnimation();
-    firebase.firestore().collection("stats").add({
+    firebase.firestore().collection(`stats-${user.uid}`).add({
       winner,
       key: uuidv2(),
       tournament,

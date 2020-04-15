@@ -90,7 +90,7 @@ const Navbar = () => {
       .auth()
       .signOut()
       .then(() => {
-        console.log("wylogowano");
+        // console.log("wylogowano");
       });
   };
   return (

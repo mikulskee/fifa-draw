@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../components/Button";
 import { StatsContext } from "../contexts/StatsContext";
+import { UserContext } from "../contexts/UserContext";
 import Redirect from "../components/Redirect";
 
 const StyledButton = styled(Button)`
@@ -46,6 +47,7 @@ const StyledTitle = styled(Title)`
 
 const StatsTemplate = (props) => {
   const { stats } = useContext(StatsContext);
+  const { user } = useContext(UserContext);
 
   const goBack = () => {
     props.history.push("/");
@@ -53,7 +55,7 @@ const StatsTemplate = (props) => {
 
   return (
     <>
-      {stats.length ? (
+      {user ? (
         <Background className="stats">
           <TopBar>
             <Title>Statystyki</Title>

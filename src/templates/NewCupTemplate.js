@@ -5,7 +5,7 @@ import TopBar from "../components/TopBar";
 import { Title } from "../components/Title";
 import { PlayersContext } from "../contexts/PlayersContext";
 import { TeamsContext } from "../contexts/TeamsContext";
-import { StatsContext } from "../contexts/StatsContext";
+import { UserContext } from "../contexts/UserContext";
 import ChooseTeams from "../components/ChooseTeams";
 import Redirect from "../components/Redirect";
 
@@ -14,7 +14,7 @@ const NewCupTemplate = () => {
     PlayersContext
   );
   const { setTeamsInBasket } = useContext(TeamsContext);
-  const { stats } = useContext(StatsContext);
+  const { user } = useContext(UserContext);
   useEffect(() => {
     setTeamsInBasket([]);
     setPlayers([]);
@@ -25,7 +25,7 @@ const NewCupTemplate = () => {
 
   return (
     <>
-      {stats.length ? (
+      {user ? (
         <Background flex className="new-cup">
           <TopBar>
             <Title>Nowy Turniej</Title>

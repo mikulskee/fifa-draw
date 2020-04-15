@@ -87,13 +87,14 @@ const MainTemplate = () => {
     const navList = document.querySelector(".nav-list");
     const loader = document.querySelector(".nav-loader");
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
         setUser(user);
-        getStats();
+        getStats(user);
         loader.style.opacity = "0";
 
         setTimeout(() => {
+          loader.style.display = "none";
+
           navList.style.opacity = "1";
         }, 250);
       } else {
@@ -102,6 +103,8 @@ const MainTemplate = () => {
         loader.style.opacity = "0";
 
         setTimeout(() => {
+          loader.style.display = "none";
+
           navList.style.opacity = "1";
         }, 250);
       }

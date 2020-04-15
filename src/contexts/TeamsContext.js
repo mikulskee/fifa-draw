@@ -77,7 +77,6 @@ const TeamsContextProvider = (props) => {
 
       return team;
     });
-    console.log(newTeams);
     setTeamsInBasket(newTeams);
   };
   const removeAllTeamsFromBasket = () => {

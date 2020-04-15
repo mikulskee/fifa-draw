@@ -156,7 +156,6 @@ const LogInModal = () => {
       .catch((err) => {
         setPasswordError("");
         setEmailError("");
-        console.log(err);
         if (
           err.message ===
           "The password is invalid or the user does not have a password."

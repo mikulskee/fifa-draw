@@ -46,27 +46,21 @@ const TopBar = (props) => {
   const { getStats, setStats } = useContext(StatsContext);
   const handleLogout = (e) => {
     e.preventDefault();
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        props.history.push("/");
-      });
+    props.history.push("/");
+    firebase.auth().signOut();
   };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
-        console.log("uzytkownik zalogowany", user);
         setUser(user);
-        getStats();
+        getStats(user);
       } else {
-        console.log("użytkownik wylogowany");
         setUser(user);
         setStats([]);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

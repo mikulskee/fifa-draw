@@ -146,7 +146,6 @@ const SignInModal = () => {
       .auth()
       .createUserWithEmailAndPassword(mail, password)
       .then((cred) => {
-        console.log(cred);
         document.querySelector(".signup-modal").style.opacity = "0";
         setTimeout(() => {
           document.querySelector(".signup-modal").style.display = "none";
@@ -156,7 +155,6 @@ const SignInModal = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
         if (err.message === "Password should be at least 6 characters") {
           setPasswordError("Hasło powinno mieć co najmniej 6 znaków");
           setIsLoading(false);
