@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e8b01519a2fa4f04647937d205d02d39",
+    "revision": "38ea58e3ea76be79ec1ae674363d26db",
     "url": "/fifa-draw/index.html"
   },
   {
-    "revision": "6d02644fd917d6120ec3",
+    "revision": "4484e31ba74d67bd83de",
     "url": "/fifa-draw/static/css/main.a08a50a6.chunk.css"
   },
   {
-    "revision": "6a472e4573f5a637972c",
-    "url": "/fifa-draw/static/js/2.c78c95e5.chunk.js"
+    "revision": "de147e666e33f9318a9f",
+    "url": "/fifa-draw/static/js/2.1e068f3f.chunk.js"
   },
   {
-    "revision": "6d02644fd917d6120ec3",
-    "url": "/fifa-draw/static/js/main.2420665f.chunk.js"
+    "revision": "4484e31ba74d67bd83de",
+    "url": "/fifa-draw/static/js/main.f618c5c1.chunk.js"
   },
   {
     "revision": "9453c1e4f257ceefb5df",
@@ -44,8 +44,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/media/about6.dc84f114.jpg"
   },
   {
+    "revision": "83faf9fc4c59c459014d4c9819a338b7",
+    "url": "/fifa-draw/static/media/ajax.83faf9fc.png"
+  },
+  {
     "revision": "3e16f35d19ad7bb21069cc8583b87a6c",
     "url": "/fifa-draw/static/media/arsenal.3e16f35d.png"
+  },
+  {
+    "revision": "f5721e5212f54999d741aff84a7c4ff3",
+    "url": "/fifa-draw/static/media/atalanta.f5721e52.png"
   },
   {
     "revision": "8bb3aa449f42076dfbfc433572d35e17",
@@ -60,6 +68,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/media/bayern.93c8489f.png"
   },
   {
+    "revision": "4a3e828c95b58b2ed8fc01b5c701ab3f",
+    "url": "/fifa-draw/static/media/benfica.4a3e828c.png"
+  },
+  {
     "revision": "dc37ec4db93c3ae742b7f48b6ad84ae3",
     "url": "/fifa-draw/static/media/bvb.dc37ec4d.png"
   },
@@ -72,8 +84,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/media/city.c11faa01.png"
   },
   {
+    "revision": "92e3e76ebfbb83f196d6c62a2cc56c1f",
+    "url": "/fifa-draw/static/media/eredivisie.92e3e76e.png"
+  },
+  {
     "revision": "ddb0cc7e1e47b7caa7ad1356aeb49995",
     "url": "/fifa-draw/static/media/inter.ddb0cc7e.png"
+  },
+  {
+    "revision": "872cd44f6f20e41231e13647c38fbb92",
+    "url": "/fifa-draw/static/media/laliga.872cd44f.png"
+  },
+  {
+    "revision": "80c3fe13dfba6cd35b639557742412e6",
+    "url": "/fifa-draw/static/media/lazio.80c3fe13.png"
+  },
+  {
+    "revision": "6da1112ea46ea1ca90285f555081b8e7",
+    "url": "/fifa-draw/static/media/leicester.6da1112e.png"
+  },
+  {
+    "revision": "c1e663bebf878a68ed8c437a580c47b7",
+    "url": "/fifa-draw/static/media/liganos.c1e663be.png"
   },
   {
     "revision": "703cd1cfba7986cda595028671c60e70",
@@ -86,6 +118,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9c30fcde4b0cfc54e6a58cb91adcf35d",
     "url": "/fifa-draw/static/media/logo-white-png.9c30fcde.png"
+  },
+  {
+    "revision": "487b4b70297e1ee7e44bf28116bb4ed4",
+    "url": "/fifa-draw/static/media/lyon.487b4b70.png"
   },
   {
     "revision": "879a2d774d4311dbafaaf013a8e3b642",
@@ -104,6 +140,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/media/napoli.9591566f.png"
   },
   {
+    "revision": "806a636b140c73fa1d36b5d94f878b5b",
+    "url": "/fifa-draw/static/media/porto.806a636b.png"
+  },
+  {
+    "revision": "af1b2153ddd2ce4e0343b1cfb9fb6200",
+    "url": "/fifa-draw/static/media/premiereleague.af1b2153.png"
+  },
+  {
     "revision": "93ce4b22ad2378418c49b43282f7ed2e",
     "url": "/fifa-draw/static/media/psg.93ce4b22.png"
   },
@@ -116,6 +160,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-draw/static/media/roma.a496a2d7.png"
   },
   {
+    "revision": "51f32f5fdd7cee9a579a7aa19245af9c",
+    "url": "/fifa-draw/static/media/schalke.51f32f5f.png"
+  },
+  {
+    "revision": "d6024c4c4efc37cdcaef15f337b45c0b",
+    "url": "/fifa-draw/static/media/seriea.d6024c4c.png"
+  },
+  {
     "revision": "62e768a07539ca483b93cbeca82dbfec",
     "url": "/fifa-draw/static/media/tottenham.62e768a0.png"
   },
@@ -126,5 +178,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "fb3a9374607e294b66aa23526d52310d",
     "url": "/fifa-draw/static/media/uruguay.fb3a9374.jpg"
+  },
+  {
+    "revision": "e2f53fc354337ba312ed33845ba04cfe",
+    "url": "/fifa-draw/static/media/westham.e2f53fc3.png"
   }
 ]);
