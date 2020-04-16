@@ -22,6 +22,13 @@ const TeamLogo = styled.div`
   transform: translateY(50%);
   opacity: 0;
 `;
+const LeagueLogo = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  opacity: 0;
+`;
 const TeamName = styled(Title)`
   position: relative;
   left: 0;
@@ -30,7 +37,7 @@ const TeamName = styled(Title)`
   font-size: 46px;
 `;
 
-const DrawTeamAnimation = props => {
+const DrawTeamAnimation = (props) => {
   const { drawTeam } = props;
 
   return (
@@ -38,6 +45,9 @@ const DrawTeamAnimation = props => {
       <TeamLogo className={"drawing-animation-card--team-logo"}>
         <img src={drawTeam.img} alt={drawTeam.team}></img>
       </TeamLogo>
+      <LeagueLogo className={"drawing-animation-card--league-logo"}>
+        <img src={drawTeam.league} alt="league-logo"></img>
+      </LeagueLogo>
       <TeamName className={"drawing-animation-card--team-title"}>
         {drawTeam.team}
       </TeamName>

@@ -25,10 +25,10 @@ const Wrapper = styled.ul`
       padding: 0;
       /* min-height: 65px; */
       @media only screen and (min-width: 1024px) {
-        width: 80%;
+        width: 100%;
         flex-wrap: wrap;
         padding: 5px 0;
-        max-width: 620px;
+        max-width: 900px;
       }
     `}
     ${({ tournament }) =>
