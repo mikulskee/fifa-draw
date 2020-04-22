@@ -177,7 +177,8 @@ const AboutTemplate = (props) => {
       </Description>
       <img className="screen" src={about5} alt="Koniec turnieju" />
       <Description>
-        6. Wszystkie turnieje są zapisywane w lokalnej pamięci przeglądarki.
+        6. Wszystkie turnieje rozegrane przez zalogowanych użytkowników są
+        zapisywane na ich koncie.
       </Description>
       <img className="screen" src={about6} alt="Statystyki" />
 

@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 `;
 
 const TopBar = (props) => {
-  const { setUser } = useContext(UserContext);
+  const { setUser, user } = useContext(UserContext);
   const { getStats, setStats } = useContext(StatsContext);
   const handleLogout = (e) => {
     e.preventDefault();
@@ -67,7 +67,7 @@ const TopBar = (props) => {
     <Wrapper>
       <Logo small={"small"} />
       {props.children}
-      <button onClick={handleLogout}>Wyloguj się</button>
+      {user ? <button onClick={handleLogout}>Wyloguj się</button> : null}
     </Wrapper>
   );
 };
