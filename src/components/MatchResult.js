@@ -167,9 +167,18 @@ const MatchResults = () => {
       setPlayerTwoSelect(0);
       setPlayerOneSelect(0);
     } else if (playerOneSelect === playerTwoSelect) {
-      alert(
-        "Mecz MUSI zakończyć się rozstrzygnięciem. W razie remisu wpisz wynik z dogrywki lub rzutów karnych."
+      const win = -1;
+      const result = Object.assign(
+        {},
+        Array.of(playerOneSelect, playerTwoSelect)
       );
+      const playersNames = Object.assign({}, players);
+      const teams = Object.assign({}, matchTeams);
+      const date = moment(new Date()).locale("pl").format("lll");
+      addMatchResult(date, result, playersNames, teams, win);
+      clearScore();
+      setPlayerTwoSelect(0);
+      setPlayerOneSelect(0);
     }
   };
 
