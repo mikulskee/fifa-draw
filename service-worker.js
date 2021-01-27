@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/fifa-draw/precache-manifest.15687b4bba633ce0b487947f7eea88c3.js"
+  "/fifa-draw/precache-manifest.5c93af8a9f0bc6e07268d1c507be3de9.js"
 );
 
 self.addEventListener('message', (event) => {
